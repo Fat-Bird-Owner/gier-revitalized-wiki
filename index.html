@@ -200,7 +200,7 @@ input {
 <div id="sidebar"></div>
 
 <main id="main">
-    <h1 id="title">Content Wiki</h1>
+    <h1 id="title">Gier: Revitalized Wiki</h1>
 
     <div id="subtitle">
         Loading Gier: Revitalized...
@@ -535,7 +535,7 @@ function openPage(name) {
     addStat(
         information,
         "Description",
-        Hjson.parse(content).description || "..."
+        String(Hjson.parse(content).description) || "..."
     );
     
     addStat(
