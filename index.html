@@ -490,7 +490,7 @@ function openPage(name) {
     if(!content)
         return;
 
-    title.textContent = content.name;
+    title.textContent = content.stats.name || content.name;
 
     subtitle.textContent =
         content.type +
