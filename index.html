@@ -409,6 +409,7 @@ async function loadContent(file) {
     path: file.path,
     text,
     stats: parseHJSON(text),
+    description: getDescription(text),
     sprite: null
     });
 
@@ -530,6 +531,12 @@ function openPage(name) {
         "Type",
         content.type
     );    
+
+    addStat(
+        information,
+        "Description",
+        content.description
+    );    
     
     addStat(
         information,
@@ -547,7 +554,7 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (stat.key !== "description" && stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
+        if (stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
             
             addStat(
                 stats,
@@ -633,6 +640,16 @@ function addStat(
     container.appendChild(row);
 }
 
+function getDescription(text) {
+    const match = text.match(
+        /description\s*:\s*"([\s\S]*?)"\s*(?:\n|$)/
+    );
+
+    return match
+        ? match[1].trim()
+        : "...";
+}
+    
 function parseHJSON(text) {
     const result = [];
     const lines = text.split("\n");
