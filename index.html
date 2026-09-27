@@ -614,14 +614,14 @@ function addStat(
 
     name.className = "statName";
     name.textContent = key;
-    val.style.whiteSpace = "pre-wrap";
     
     const val =
         document.createElement("div");
 
     val.className = "statValue";
     val.textContent = value;
-
+    val.style.whiteSpace = "pre-wrap";
+    
     if(depth > 0) {
         name.style.paddingLeft =
             (8 + depth * 15) + "px";
