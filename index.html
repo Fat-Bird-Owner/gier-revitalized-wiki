@@ -527,7 +527,7 @@ function openPage(name) {
         "Name",
         content.name
     );
-
+    
     addStat(
         information,
         "Type",
@@ -536,12 +536,19 @@ function openPage(name) {
 
     addStat(
         information,
+        "Description",
+        content.description || "..."
+    );
+    
+    addStat(
+        information,
         "File",
         content.path
     );
 
     page.appendChild(information);
 
+    /*
     if(content.stats.length) {
         addSection("Properties");
 
@@ -561,7 +568,8 @@ function openPage(name) {
 
         page.appendChild(stats);
     }
-
+    */
+    
     addSection("Source");
 
     const source =
