@@ -523,7 +523,7 @@ function openPage(name) {
     addStat(
         information,
         "Name",
-        content.name
+        colorText(content.name)
     );
     
     addStat(
@@ -535,7 +535,7 @@ function openPage(name) {
     addStat(
         information,
         "Description",
-        content.description
+        colorText(content.description)
     );    
     
     addStat(
@@ -648,6 +648,18 @@ function getDescription(text) {
     return match
         ? match[1].trim()
         : "...";
+}
+
+function colorText(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(
+            /\[([a-zA-Z]+|#[0-9a-fA-F]{6})\]/g,
+            '<span style="color:$1">'
+        )
+        .replace(/\n/g, "<br>");
 }
     
 function parseHJSON(text) {
