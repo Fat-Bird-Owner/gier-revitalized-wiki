@@ -300,9 +300,6 @@ async function loadWiki() {
                 path.startsWith("sprites/") &&
                 (
                     path.endsWith(".png") ||
-                    path.endsWith(".jpg") ||
-                    path.endsWith(".jpeg") ||
-                    path.endsWith(".webp")
                 )
             );
         });
@@ -338,7 +335,7 @@ async function loadWiki() {
             contents.size + " entries";
 
         subtitle.textContent =
-            "Gier: Revitalized content";
+            "Gier: Revitalized contents";
 
         if(contents.size > 0) {
             const first =
@@ -556,7 +553,24 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (stat.key != "health" && stat.key != "speed" && stat.key != "armor") continue;
+        if (stat.key == "health"){
+
+        let size = stat.size || 1;
+        let value = 40 * (size * size);
+        if (stat.value) value = stat.value;
+            
+            addStat(
+                stats,
+                stat.key,
+                value,
+                stat.depth
+            );
+            
+        continue; 
+        }
+            
+        if ( stat.key != "speed" && stat.key != "armor") continue;
+            
             addStat(
                 stats,
                 stat.key,
