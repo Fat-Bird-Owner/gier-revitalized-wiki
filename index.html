@@ -400,7 +400,7 @@ async function loadContent(file) {
     text,
     stats: parseHJSON(text),
     description: getDescription(text),
-    sprite: null
+    sprites: []
     });
 
     } catch(error) {
@@ -412,18 +412,22 @@ async function loadContent(file) {
     }
 }
 
-function findSprite(name, sprites) {
-    if(sprites.has(name))
-        return sprites.get(name);
-
+function findSprites(name, sprites) {
+    const result = [];
     const lower = name.toLowerCase();
-    
+
     for(const [spriteName, path] of sprites) {
-        if(spriteName.toLowerCase() === lower)
-            return path;
+        const spriteLower = spriteName.toLowerCase();
+
+        if(
+        spriteLower.includes(lower) &&
+        !spriteLower.includes("old")
+        ) {
+        result.push(path);
+        }
     }
 
-    return null;
+    return result;
 }
 
 function buildSidebar() {
@@ -528,7 +532,7 @@ function openPage(name) {
 
     page.innerHTML = "";
 
-    if(content.sprite) {
+    if(content.sprites.length > 0) {
     const stack = document.createElement("div");
 
     stack.style.position = "relative";
