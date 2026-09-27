@@ -321,8 +321,15 @@ async function loadWiki() {
             contentFiles.length +
             " content files...";
 
-        for(const file of contentFiles) {
-        await loadContent(file);
+        const batchSize = 20;
+
+        for(let i = 0; i < contentFiles.length; i += batchSize) {
+        const batch =
+        contentFiles.slice(i, i + batchSize);
+
+        await Promise.all(
+        batch.map(loadContent)
+        );
 
         subtitle.textContent =
         "Loaded " +
