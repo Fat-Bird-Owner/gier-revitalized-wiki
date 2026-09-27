@@ -235,22 +235,31 @@ folder.addEventListener("change", async function() {
         }
     }
 
-    for(const file of contentFiles) {
-        const info = getContentInfo(file);
-        if(!info)
-            continue;
-        const text = await file.text();
-        contents[info.name] = {
-            name: info.name,
-            type: info.type,
-            path: file.webkitRelativePath,
-            file: file,
-            text: text,
-            stats: parseHJSON(text),
-            sprite: null
-        };
-        contentList.push(info.name);
+for(const file of files) {
+    const path = file.webkitRelativePath.replace(/\\/g, "/");
+    const parts = path.split("/");
+    const lower = path.toLowerCase();
+
+    if(parts.includes("content")) {
+        if(
+            lower.endsWith(".hjson") ||
+            lower.endsWith(".json")
+        ) {
+            contentFiles.push(file);
+        }
     }
+
+    if(parts.includes("sprites")) {
+        if(
+            lower.endsWith(".png") ||
+            lower.endsWith(".jpg") ||
+            lower.endsWith(".jpeg") ||
+            lower.endsWith(".webp")
+        ) {
+            spriteFiles.push(file);
+        }
+    }
+}
 
     for(const sprite of spriteFiles) {
         const spriteName =
@@ -281,29 +290,26 @@ folder.addEventListener("change", async function() {
 });
 
 function getContentInfo(file) {
-    let path =
-        file.webkitRelativePath
-            .replace(/\\/g, "/");
-    const index =
-        path.toLowerCase()
-            .indexOf("/content/");
+    const path = file.webkitRelativePath.replace(/\\/g, "/");
+    const parts = path.split("/");
+    const index = parts.indexOf("content");
+
     if(index === -1)
         return null;
-    const relative =
-        path.slice(index + 9);
-    const parts =
-        relative.split("/");
-    if(parts.length < 2)
+
+    const relative = parts.slice(index + 1);
+
+    if(relative.length < 2)
         return null;
-    const type =
-        parts[0];
-    const filename =
-        parts[parts.length - 1];
-    const name =
-        filename.replace(
-            /\.(hjson|json)$/i,
-            ""
-        );
+
+    const type = relative[0];
+    const filename = relative[relative.length - 1];
+
+    const name = filename.replace(
+        /\.(hjson|json)$/i,
+        ""
+    );
+
     return {
         type: type,
         name: name
