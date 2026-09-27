@@ -534,7 +534,7 @@ function openPage(name) {
     addStat(
         information,
         "Description",
-        content.stats.description || "..."
+        content.stats.description.value || "..."
     );
     
     
@@ -554,7 +554,7 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
+        if (stat.key !== "description" && stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
             
             addStat(
                 stats,
