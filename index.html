@@ -554,7 +554,7 @@ function openPage(name) {
         
         addSection("Properties");
   
-        if (stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
+        if (stat.key != "health" && stat.key != "speed" && stat.key != "armor") continue;
             
             addStat(
                 stats,
@@ -562,7 +562,6 @@ function openPage(name) {
                 stat.value,
                 stat.depth
             );
-        }
 
         page.appendChild(stats);
         
