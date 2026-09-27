@@ -599,6 +599,10 @@ function openPage(name) {
             value /= 60;
             value = String(value) + " sec"
             }
+
+            if (stat.key == "size"){
+            value = String(value) + " x " + String(value);
+            }
             
             addStat(
                 stats,
