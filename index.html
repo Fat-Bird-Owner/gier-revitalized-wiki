@@ -365,6 +365,11 @@ async function loadWiki() {
             "<div class='error'>" +
             error.message +
             "</div>";
+
+            if(contents.size > 0) {
+            openPage("main");
+            }
+        
     }
 }
 
@@ -440,6 +445,15 @@ function findSprite(name, sprites) {
 function buildSidebar() {
     sidebar.innerHTML = "";
 
+    const home = document.createElement("div");
+    home.className = "item";
+    home.textContent = "Main Page";
+    home.onclick = () => {
+        openPage("main");
+        sidebar.classList.remove("open");
+    };
+    
+    sidebar.appendChild(home);
     const groups = {};
 
     for(const content of contents.values()) {
@@ -487,10 +501,31 @@ function buildSidebar() {
 }
 
 function openPage(name) {
+
+    if(name === "main") {
+        title.textContent = "Gier: Revitalized Wiki";
+
+        subtitle.textContent =
+            "Welcome to the Gier: Revitalized Wiki";
+
+        page.innerHTML = `
+            <div class="section">Welcome</div>
+            <p>
+                Gier: Revitalized Wiki.
+            </p>
+            <div class="section">IDk</div>
+            <p>
+                Test.
+            </p>
+            `;
+
+        return;
+    }
+
     const content = contents.get(name);
 
     if(!content)
-        return;
+    return;
 
     title.textContent = content.localizedName || content.name;
 
