@@ -529,16 +529,28 @@ function openPage(name) {
     page.innerHTML = "";
 
     if(content.sprite) {
-        const image =
-            document.createElement("img");
+    const stack = document.createElement("div");
 
-        image.className = "sprite";
-        image.alt = content.name;
+    stack.style.position = "relative";
+    stack.style.width = "128px";
+    stack.style.height = "128px";
 
-        image.src =
-            RAW + content.sprite;
+    for(const sprite of content.sprites) {
+    const image = document.createElement("img");
 
-        page.appendChild(image);
+    image.src = RAW + sprite;
+
+    image.style.position = "absolute";
+    image.style.left = "0";
+    image.style.top = "0";
+    image.style.width = "128px";
+    image.style.height = "128px";
+    image.style.imageRendering = "pixelated";
+
+    stack.appendChild(image);
+    }
+
+    page.appendChild(stack);
     }
 
     addSection("Information");
