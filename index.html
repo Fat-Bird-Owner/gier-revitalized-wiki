@@ -495,13 +495,13 @@ function openPage(name) {
         page.innerHTML = `
             <div class="section"> <b>!Notices!<b> </div>
             <p>
-                This wiki is for one of my mods called gier: revitalized
+                This wiki is for one of my mods called gier: revitalized<br>
                 beware there may be some inaccuaries<br><br>
 
-                Mainly around the names of blocks
+                Mainly around the names of blocks<br>
                 additionally aside from important informations like names, health, etc...<br><br>
 
-                Most stats aren't display as of now
+                Most stats aren't display as of now<br>
                 For the time being your expected to atleast known how to read JSON<br><br>
 
                 or just read the description if provied<br><br>
@@ -585,8 +585,20 @@ function openPage(name) {
         if (stat.key !== "craftTime" && stat.key !== "hitSize" && stat.key !== "size" && stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
 
             let value = stat.value;
-            if (stat.key == "speed") value *= (60/8);
-            if (stat.key == "hitSize") value /= 8;
+            if (stat.key == "speed") {
+            value *= (60/8);
+            value = String(value) + " tiles/sec"
+            }
+            
+            if (stat.key == "hitSize") {
+            value /= 8;
+            value = String(value) + " tiles"
+            }
+
+            if (stat.key == "craftTime"){
+            value /= 60;
+            value = String(value) + " sec"
+            }
             
             addStat(
                 stats,
