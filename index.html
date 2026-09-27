@@ -582,12 +582,16 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
+        if (stat.key !== "craftTime" && stat.key !== "hitSize" && stat.key !== "size" && stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
+
+            let value = stat.value;
+            if (stat.key !== "speed") value *= (60/8);
+            if (stat.key !== "hitSize") value /= 8;
             
             addStat(
                 stats,
                 stat.key,
-                stat.value,
+                value,
                 stat.depth
             );
         }
