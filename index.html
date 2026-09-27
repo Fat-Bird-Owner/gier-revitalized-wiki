@@ -426,7 +426,7 @@ function findSprite(name, sprites) {
         return sprites.get(name);
 
     const lower = name.toLowerCase();
-
+    
     for(const [spriteName, path] of sprites) {
         if(spriteName.toLowerCase() === lower)
             return path;
@@ -534,7 +534,7 @@ function openPage(name) {
     addStat(
         information,
         "Description",
-        content.description
+        content.stats.description || "..."
     );
     
     
