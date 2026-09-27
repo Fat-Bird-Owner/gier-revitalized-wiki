@@ -338,20 +338,9 @@ async function loadWiki() {
         subtitle.textContent =
             "Gier: Revitalized contents";
 
-        if(contents.size > 0) {
-            const first =
-                [...contents.values()]
-                    .sort((a, b) =>
-                        a.name.localeCompare(b.name)
-                    )[0];
-
-            openPage(first.name);
-        } else {
-            page.innerHTML =
-                "<div class='empty'>" +
-                "No content files found." +
-                "</div>";
-        }
+            if(contents.size > 0) {
+            openPage("main");
+            }
 
     } catch(error) {
         console.error(error);
@@ -364,12 +353,7 @@ async function loadWiki() {
         page.innerHTML =
             "<div class='error'>" +
             error.message +
-            "</div>";
-
-            if(contents.size > 0) {
-            openPage("main");
-            }
-        
+            "</div>";        
     }
 }
 
