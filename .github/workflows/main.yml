@@ -1,0 +1,95 @@
+# Name of the workflow
+name: Update Repository Copy
+
+# When the workflow runs
+on:
+
+  # Run automatically every 3 hours
+  schedule:
+    - cron: "0 */3 * * *"
+
+  # Allow manually running it too
+  workflow_dispatch:
+
+# Variables used by the workflow
+env:
+
+  # The folder where the copied repository will go
+  COPY: "repository"
+
+# The jobs the workflow performs
+jobs:
+
+  # Job name
+  update-copy:
+
+    # GitHub's computer used to run the job
+    runs-on: ubuntu-latest
+
+    # Allow the workflow to push changes
+    permissions:
+      contents: write
+
+    # Individual actions performed by the job
+    steps:
+
+      # Download the repository containing this workflow
+      - name: Get current repository
+        uses: actions/checkout@v4
+
+      # Delete the old copy
+      - name: Wipe old copy
+        shell: bash
+        run: |
+
+          # Delete the folder stored in the COPY variable
+          rm -rf "$COPY"
+
+          # Create the empty folder again
+          mkdir -p "$COPY"
+
+      # Clone and copy the other repository
+      - name: Copy other repository
+        shell: bash
+        run: |
+
+          # Clone the source repository temporarily
+          git clone https://github.com/OWNER/REPOSITORY.git temp-repo
+
+          # Remove its Git information
+          # This prevents it from becoming a Git repository inside ours
+          rm -rf temp-repo/.git
+
+          # Copy everything into the COPY folder
+          cp -r temp-repo/. "$COPY"/
+
+          # Delete the temporary repository
+          rm -rf temp-repo
+
+      # Save the new copy
+      - name: Commit and push changes
+        shell: bash
+        run: |
+
+          # Configure Git
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Add the COPY folder
+          git add "$COPY"/
+
+          # Only commit if something actually changed
+          if git diff --cached --quiet; then
+
+            # Nothing changed
+            echo "No changes detected."
+
+          else
+
+            # Create the commit
+            git commit -m "Update repository copy"
+
+            # Upload the commit
+            git push
+
+          fi
