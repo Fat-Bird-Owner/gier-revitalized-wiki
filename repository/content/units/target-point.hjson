@@ -1,0 +1,25 @@
+type: missile
+physics: false
+health: 250
+
+speed: 0
+hittable: false
+physics: false
+
+lifetime: 60
+drawSoftShadow: false
+lightRadius: 0
+
+hoverable: false
+drawBody: false
+drawCell: false
+drawMinimap: false
+
+useUnitCap: false
+createWreck: false
+
+createScorch: false
+deathSound: none
+deathExplosionEffect: none
+
+deathShake: 0

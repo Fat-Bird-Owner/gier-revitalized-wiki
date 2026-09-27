@@ -1,0 +1,59 @@
+type: PayloadRouter
+name: Fabricator
+acceptsPayload: false
+buildVisibility: sandboxOnly
+size: 1
+
+targetable: false
+underBullets: true
+description: "
+Fabricates a chosen unit or a 1x1 block and destroys itself.
+"
+
+customShadow: true
+category: units
+rotateDraw: false
+createRubble: false
+
+selectionRows: 6
+selectionColumns: 6
+logicConfigurable: false
+consumesTap: true
+envEnabled: -1
+rebuildable: false
+unitCapModifier: 1
+
+destroyEffect:{
+type: MultiEffect
+effects:[
+{
+type: WaveEffect
+colorFrom:  FFD37F
+colorTo: FFD37F
+sizeFrom: 4
+sizeTo: 6
+strokeFrom: 4
+strokeTo: 0
+
+sides: 4
+rotation: 44
+
+sizeInterp: sineOut
+}
+{
+type: ParticleEffect
+region: "gr-fabricator"
+length: 0
+cone: 1
+particles: 1
+
+sizeFrom: 4
+sizeTo: 4
+colorFrom: FFD37F
+colorTo: FFD37F00
+interp: sineIn
+layer: 122
+
+}
+]
+}

@@ -1,0 +1,180 @@
+type: PowerTurret
+size: 4
+name: Deviate
+
+research: trident
+coolantMultiplier: 1
+
+databaseTag: "adv-surge-alloy"
+shootY: 0
+envEnabled: -1
+shownPlanets: [kela, gier]
+description: "Fires a focused laser beam which frags into homing projectiles
+
+[green]- Anti-IFrame
+- Crowd-control
+- Fragments can hit the same unit multiple times
+[salmon]- Requires power to operate
+- Water is required to operate
+- Explosive
+"
+
+
+requirements:[lead/450,copper/275,silicon/250,surge-alloy/75,plastanium/25]
+
+consumes:{
+power: 1.5
+liquids:[water/0.16667]
+}
+
+rotateSpeed: 3.5
+range: 400
+health: 3500
+
+reload: 200
+baseExplosiveness: 105
+destroyBullet:{
+fragBullets: 12
+despawnHit: true
+instantDisappear: true
+fragBullet:{
+type: LightningBulletType
+lightningColor: FFD37F
+lightningLength: 12
+damage: 15
+}
+}
+shake: 5
+shootSound: shootForeshadow
+outlineRadius: 0
+category: turret
+cooldownTime: 140
+
+minWarmup: 0.9
+coolant:{
+type: ConsumeCoolant
+allowGas: false
+amount: 1
+}
+
+drawer:{
+type: DrawTurret
+basePrefix: "reinforced-"
+parts:[
+{
+type: HaloPart
+stroke: 0
+strokeTo: 4
+color: FFD37F
+x: 0
+y: -12
+haloRotateSpeed: 3.5
+triLength: 0
+triLengthTo: 1
+haloRadiusTo: 10
+haloRadius: 0
+radius: 0
+radiusTo: 3
+layer: 110.0
+}
+{
+type: ShapePart
+hollow: true
+stroke: 0
+strokeTo: 2
+radius: 0
+radiusTo: 5.5
+circle: true
+color: FFD37F
+x: 0
+y: -12
+layer: 110.0
+}
+{
+type: ShapePart
+hollow: true
+stroke: 0
+strokeTo: 2
+radius: 0
+radiusTo: 2.5
+sides: 4
+color: FFD37F
+x: 0
+y: -12
+layer: 110.0
+rotateSpeed: 3.5
+}
+]}
+
+shootType:{
+type: RailBulletType
+ammoMultiplier: 1
+
+pierceEffect: instHit
+lineEffect: railHit
+pointEffect: railTrail
+pointEffectSpace: 44
+length: 400
+
+fragOnDespawn: true
+fragVelocityMin: 1
+fragVelocityMax: 1
+
+damage: 150
+knockback: 15
+impact: true
+  
+fragBullets: 3
+fragRandomSpread: 0
+fragSpread: 15
+fragBullet:{
+accel: -0.05
+velocityScaleRandMin: 1
+velocityScaleRandMax: 1
+speed: 20
+lifetime: 300
+pierce: true
+
+frontColor: ffffff00
+backColor: ffffff00
+trailColor: FFD37F
+hitSize: 20
+damage: 2
+
+despawnHit: true
+collides: false
+
+bulletInterval: 1
+intervalBullet: {
+type: BasicBulletType
+instantDisappear: true
+despawnHit: true
+hitEffect: none
+despawnEffect: none
+splashDamageRadius: 16
+splashDamage: 12
+armorMultiplier: 0.25
+pierce: true
+status: iframe-kill
+}
+
+parts:[
+{
+type: FlarePart
+sides: 8
+followRotation: true
+color1: FFD37F
+color2: FFD37F
+radius: 3
+radiusTo: 0
+spinSpeed: 5
+}
+]
+
+trailWidth: 2
+trailLength: 10
+homingPower: 0.1
+homingRange: 800
+}
+  
+}

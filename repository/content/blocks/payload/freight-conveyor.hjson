@@ -1,0 +1,25 @@
+type: PayloadConveyor
+size: 3
+name: Freight Conveyor
+
+fullOverride: "gr-freight-conveyor-preview"
+databaseTag: "gier"
+moveTime: 40
+interp: sineOut
+
+research: freight-assembler
+researcCostMultiplier: 0.25
+databaseTag: "adv-depleted-thorium"
+
+envEnabled: -1
+researchCostMultiplier: 0.25 
+requirements: [lead/25, copper/25, silicon/15, depleted-thorium/15]
+
+customShadow: true
+category: units
+requirements:[
+lead/25
+copper/20
+graphite/15
+silicon/10
+]

@@ -1,0 +1,134 @@
+// file name very used in logic like template-block.
+name: "gr"
+
+displayName: "[sky[]]Gier: [salmon[]]Revitalized[[]]"
+repo: "Fat-Bird-Owner/gier-revitalized"
+
+author: "Fat Bird's Owner - Dev
+
+[grey[]]Other contributors: [[]]
+- Lu69159 (Space)
+- Watodoto (wato)
+- anupamme (Anupam Mediratta)
+- 黒板消し (kokubankesei)
+"
+
+description: "
+Makes gier a playable planet.
+
+Giving it procedural endless maps that refresh
+daily. plus a secondary challange planet.
+
+[accent[]]IOS Compatible
+
+[grey[]]More info in the repository's ReadMe.
+
+Download from the latest commits
+otherwise refer to the newest release if
+the current commit is bugged
+[[]]
+
+Report bugs on the repo or discord server
+and has partial chinese support
+
+[accent[]]Starring is greatly appreciated[[]]
+[grey[]](Our current goal is 40 stars)[[]]
+"
+
+iosCompatible: true
+version: "v5 - Gier"
+subtitle: "[#f4ba6e[]]v5 [grey[]]-[lightgrey[]] Gier"
+minGameVersion: "159"
+dependencies: []
+hidden: false
+
+contentOrder: [
+beryllium-attribute
+
+rail
+rail-router
+rail-overflow
+overhead-belt
+
+drone-facility
+facility-dropzone
+
+sand-strate
+dihydrogen-shaft
+
+drive-bay
+spark-bay
+barracade-bay
+disrupter-bay
+
+kela
+latos
+
+fledgling
+magnitude
+multitude
+equinox
+obitus
+
+drive
+operant
+
+spark
+ignition
+strafe
+
+barracade
+fort
+
+disrupter
+virulence
+
+electron
+arraign
+onus
+
+conceal
+covert
+
+hydro-drill
+ton-crusher
+heavy-excavator
+
+concord
+restoration
+garrison
+
+crusader
+ash
+
+tension
+trident
+launch-silo
+pulverize
+pressure
+disarray
+point
+blunt
+torrent
+deviate
+
+kela-metal-plating
+berric-spike
+char-rock-formation
+
+gier-copper-ore
+gier-lead-ore
+gier-graphite-ore
+
+char-wall
+tuff
+tuff-vent
+
+vacant
+gier-main
+aftermath
+fragmented-fix
+hedge
+intercept
+production-site
+]

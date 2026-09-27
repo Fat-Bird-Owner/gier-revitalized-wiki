@@ -1,0 +1,88 @@
+type: AttributeCrafter
+size: 3
+squareSprite: false
+
+description: "Bores out water from asteroids.
+
+[I] - Water could be used as coolant for turret
+and is required in certain production procceses.
+
+[sky]Priority[]: 1.5
+
+[green]- Bore out water
+[salmon]- Requires power
+- Requires graphite
+"
+
+name: Dihydrogen Shaft
+category: production
+attribute: carbon
+priority: 1.5
+
+outputLiquid: water/0.16667
+liquidCapacity: 100
+customShadow: true
+
+databaseTag: "gier"
+
+ambientSound: dihydrogen-shaft
+ambientSoundVolume: 0.2
+baseEfficiency: 0
+minEfficiency: 0.25
+
+updateEffectChance: 1
+updateEffectSpread: 1
+updateEffect: {
+type: ParticleEffect
+sizeFrom: 3
+particles: 1
+baseLength: 10
+sizeTo: 5
+length: 14.5
+layer: 61
+lifetime: 40
+colorFrom: 596ab866
+colorTo: ffffff00
+interp: sineOut
+}
+
+requirements:[
+lead/450
+copper/250
+metaglass/150
+graphite/125
+silicon/75
+]
+
+craftTime: 45
+consumes:{
+items:[graphite/1]
+power: 0.65
+}
+
+envEnabled: -1
+research: gier
+researchCostMultiplier: 0.34
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+drawLiquid: water
+padding: 2
+}
+{
+type: DrawBlurSpin
+rotateSpeed: 5
+suffix: "-rotator"
+}
+{
+type: DrawDefault
+}
+]
+}

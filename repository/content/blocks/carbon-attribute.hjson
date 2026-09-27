@@ -1,0 +1,3 @@
+type: ThermalGenerator
+attribute: carbon
+buildVisibility: debugOnly

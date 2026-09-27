@@ -1,0 +1,50 @@
+type: Drill
+# BrittleDrill
+
+size: 3
+name: Ton Crusher
+description: "
+A more advanced mineral drill, Can now be used to bore up beryllium and titanium.
+
+[green]- Can drill titanium and beryllium
+[grey]- Could be disabled by being tapped on
+[salmon]- Receives more damage when [green]active[]
+- Requires power
+- Highly Explosive
+"
+
+liquidBoostIntensity: 1.5
+consumes:{
+power: 0.5
+liquid: {
+liquid: water
+amount: 0.05
+optional: true
+booster: true
+}
+}
+
+drillMultipliers: {
+depleted-thorium: 0.2
+}
+
+health: 1350
+drillTime: 190
+tier: 3
+drawMineItem: true
+rotateSpeed: 5
+updateEffectChance: 0.25
+squareSprite: false
+category: production
+
+customShadow: true
+databaseTag: "gier"
+research: hydro-drill
+researchCostMultiplier: 0.25
+
+baseExplosiveness: 14.5
+explosivenessScale: 6
+flammabilityScale: 0.35
+
+
+requirements:[lead/150,copper/225,graphite/85,silicon/45]

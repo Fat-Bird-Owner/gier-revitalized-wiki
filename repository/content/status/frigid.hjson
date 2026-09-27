@@ -1,0 +1,17 @@
+name: Frigid
+damageMultiplier: 0.9
+healthMultiplier: 0.33
+speedMultiplier: 0.45
+reloadMultiplier: 0.6
+
+intervalDamage: 10
+intervalDamageTime: 60
+outline: false
+
+effect:{
+type: WrapEffect
+effect: mineWallSmall
+color: D3DEE4
+}
+
+opposites:[burning, melting]

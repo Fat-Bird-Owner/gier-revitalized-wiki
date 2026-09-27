@@ -1,0 +1,71 @@
+type: HeatCrafter
+size: 2
+name: "Boiler"
+heatRequirement: 8
+maxEfficiency: 1.5
+health: 450
+
+baseExplosiveness: 20
+
+description: "
+Boils water turning it into steam.
+
+While active over [accent]100%[]
+[salmon]damage is increased 50%[]
+
+[grey][I] - Steam: Used for 
+defrosting and as a non-voltatile
+heating solution
+
+[green]- Produces steam
+[red]- Explosive
+[salmon]- Requires power
+"
+
+research: dihydrogen-shaft
+researchCostMultiplier: 0.35
+
+databaseTag: "adv-oxide"
+envEnabled: -1
+
+customShadow: true
+requirements:[lead/175, copper/125, silicon/65, metaglass/75, oxide/35]
+
+category: crafting
+outputLiquids: [liquid-steam/0.16667]
+consumes:{
+power: 0.5
+liquids:[water/0.16667]
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+drawLiquid: water
+padding: 2.1
+}
+{
+type: DrawLiquidTile
+drawLiquid: liquid-steam
+alpha: 0.6
+padding: 2.1
+}
+{
+type: DrawDefault
+}
+{
+type: DrawRegion
+suffix: "-wire"
+}
+{
+type: DrawGlowRegion
+suffix: "-top"
+}
+]
+}

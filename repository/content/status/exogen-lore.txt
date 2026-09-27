@@ -1,0 +1,45 @@
+name: Exogen
+outline: false
+
+research: {
+parent: lore-3
+objectives:[
+{
+type: SectorComplete
+preset: gr-intercept
+}
+]
+}
+
+allDatabaseTabs: false
+databaseCategory: "lore-faction"
+details: "
+[lightgrey]
+I've treched far and wide
+discovering many wouldn't begin imagined
+
+Long ago this was of the last time we gazed 
+upon our birth place
+
+Soon it began to get farther and farther
+tempuratures declining at a rate so rapid
+
+It felt that the world itself was plummeting
+But it wasn't long till gazing upon a strange
+place quite different from what i've known
+
+Once we had arrived it didn't take long for us to
+recover building back up our strength
+
+Thriving as we were the world didn't let us go
+Soon creatures we've never seen before started
+laying waste to my homes leaving nothing but
+wreckages in sight
+
+As our strength dwindled, the muscle within me
+reingnited 
+
+seems as if the world itself wouldn’t not let us go
+I await the for the clutches of death as we can’t make it there ourselves
+
+"

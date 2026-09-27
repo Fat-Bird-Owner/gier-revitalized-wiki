@@ -1,0 +1,8 @@
+type: crawl
+flying: true
+speed: 1
+hidden: true
+name: "Test Crawler"
+
+segmentUnits: 5
+segmentSpacing: 6

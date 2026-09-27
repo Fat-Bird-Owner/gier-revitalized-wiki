@@ -1,0 +1,99 @@
+type: legs
+name: Covert
+  
+speed: 0.75
+drag: 0.15
+hitSize: 14
+rotateSpeed: 3
+health: 1250
+armor: 5
+stepShake: 0
+
+stepSound: walkerStepSmall
+outlineRadius: 0
+
+legCount: 6
+legLength: 20
+lockLegBase: true
+legContinuousMove: true
+legExtension: -3
+legBaseOffset: 5
+legMaxLength: 1.1
+legMinLength: 0.2
+legLengthScl: 0.95
+legForwardScl: 0.7
+
+legMoveSpace: 1
+hovering: true
+groundLayer: 109
+
+weapons: [
+  {
+  alwaysShooting: true
+  minShootVelocity: 0.5
+  controllable: false
+  aiControllable: false
+
+  shootSound: none
+  shootY: -8
+
+  xRand: 4
+  yRand: 4
+
+  reload: 120
+  bullet: {
+  spawnUnit: target-point
+  shootEffect: none
+  hitEffect: none
+  despawnEffect: none
+  smokeEffect: none
+  }
+    
+  }
+{
+
+reload: 60
+
+inaccuracy: 15
+shake: 7.5
+rotateSpeed: 3
+
+parts: [
+{
+type: RegionPart
+name: "gr-equinox-missile-weapon"
+outline: false
+}
+]
+
+top: false
+x: 0
+mirror: false
+y: -5.75
+alternate: false
+shootSound: shootCyclone
+inaccuracy: 5
+
+chargeSound: chargeVela
+rotate: true
+layerOffset: 0.01
+bullet: {
+spawnUnit: striker-missile
+inaccuracy: 10
+instantDisappear: true
+followAimSpeed: 5
+
+chargeEffect: {
+type: WaveEffect
+sizeFrom: 40
+sizeTo: 0
+lifetime: 60
+interp: sineOut
+colorFrom: f3e979
+colorTo: ffffff00
+}
+
+}
+  
+}
+]

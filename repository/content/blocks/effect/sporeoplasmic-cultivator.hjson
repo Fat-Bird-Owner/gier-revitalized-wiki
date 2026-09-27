@@ -1,0 +1,61 @@
+type: ConsumeGenerator
+size: 3
+name: "Sporeoplasmic Cultivator"
+customShadow: false
+
+description: "
+Produces tuntra and abit of power
+[green]
+- produces Tuntra[red]
+- tuntra is water absorbant
+- requires power
+- explodes if full
+"
+
+envEnabled: -1
+category: effect
+databaseTag: "gier"
+itemCapacity: 30
+
+requirements:[
+silicon/100
+metaglass/100
+titanium/250
+beryllium/100
+]
+
+researchCostMultiplier: 0.25
+research:{
+parent: sunder-furnace
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+padding: 5
+drawLiquid: water
+}
+{
+type: DrawBubbles
+}
+{
+type: DrawDefault
+}
+]
+}
+
+consumes:{
+liquids:[water/0.16667]
+items:[graphite/15]
+}
+
+powerProduction: 1
+outputLiquid: tuntra/0.166667
+liquidCapacity: 100
+explodeOnFull: true

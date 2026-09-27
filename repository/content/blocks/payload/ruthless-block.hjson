@@ -1,0 +1,56 @@
+type: PowerTurret
+name: Ruthless
+size: 2
+
+consumes:{
+power: 2
+}
+
+createRubble: false
+destroySound: none
+destroyEffect: none
+
+category: units
+databaseTag: "exogen"
+databaseCategory: "unit-spawn"
+
+buildTime: 180
+requirements:[lead/65,copper/35,graphite/20]
+reload: 30
+alwaysShooting: true
+shootCone: 180
+playerControllable: false
+rotateSpeed: 0
+fullOverride: gr-ruthless-full
+shootSound: none
+shootY: 0
+outlineIcon: false
+
+shoot:{
+firstShotDelay: 1500
+}
+
+drawer: [
+{
+type: DrawRegion
+name: "gr-ruthless"
+buildingRotate: true
+}
+]
+
+/*
+research:{
+parent: gier
+objectives:[ruthless-block]
+}
+*/
+
+shootType:{
+type: EmptyBulletType
+instantDisappear: true
+ammoMultiplier: 1
+showStats: false
+spawnUnit: ruthless
+speed: 0.25
+killShooter: true
+}

@@ -1,0 +1,247 @@
+type: ItemTurret
+size: 4
+name: Disarray
+range: 240
+
+description: "
+Fires a concentrated bullet that explodes
+
+[green]- Large-AOE damage
+[red]- Requires steam
+"
+
+research: trident
+researchCostMultiplier: 0.75
+shootSound: shoot-disarry
+
+envEnabled: -1
+category: turret
+shownPlanets:[kela, gier]
+
+databaseTag: "adv-plastanium"
+requirements: [lead/400, copper/350, silicon/200, plastanium/100]
+
+consumes:{
+liquids: [liquid-steam/0.16667]
+}
+
+drawer:{
+type: DrawTurret
+basePrefix: "reinforced-"
+parts:[
+{
+type: RegionPart
+suffix: -barrel
+moveY: -2.5
+progress: recoil
+mirror: false
+}
+]
+}
+
+outlineColor: 1f1f2f
+reload: 240
+cooldownTime: 120
+
+ammoTypes:{
+oxide:{
+type: BasicBulletType
+speed: 6
+lifetime: 40
+
+trailRotation: true
+trailInterval: 5
+trailEffect: {
+type: ParticleEffect
+particles: 1
+cone: 0
+region: "gr-shock-wave"
+sizeFrom: 4
+sizeTo: 16
+length: 0
+colorFrom: bad9ab
+colorTo: bad9ab00
+lifetime: 25
+}
+
+width: 7.5
+height: 11
+trailWidth: 2
+trailLength: 14
+
+collidesAir: true
+collides: true
+splashDamage: 200
+splashDamageRadius: 48
+
+status: corroded
+statusDuration: 140
+
+frontColor: e4ffd6
+backColor: bad9ab
+trailColor: e4ffd6
+  
+hitColor: e4ffd6
+hitEffect: titanSmokeSmall
+despawnEffect: bigShockwave
+hitSound: explosionArtilleryShockBig
+}
+
+tinted-slag-capsule:{
+type: BasicBulletType
+speed: 6
+lifetime: 40
+
+trailRotation: true
+trailInterval: 5
+trailEffect: {
+type: ParticleEffect
+particles: 1
+cone: 0
+region: "gr-shock-wave"
+sizeFrom: 4
+sizeTo: 16
+length: 0
+colorFrom: e37a54
+colorTo: e37a5400
+lifetime: 25
+}
+
+width: 7.5
+height: 11
+trailWidth: 2
+trailLength: 14
+
+collidesAir: true
+collides: true
+splashDamage: 200
+splashDamageRadius: 48
+
+status: melting
+statusDuration: 360
+
+frontColor: ffa166ff
+backColor: e37a54
+trailColor: ffa166ff
+  
+hitColor: ffa166ff
+hitEffect: titanSmokeSmall
+despawnEffect: bigShockwave
+hitSound: explosionArtilleryShockBig
+}
+
+depleted-thorium:{
+type: BasicBulletType
+speed: 7
+lifetime: 40
+
+trailRotation: true
+trailInterval: 5
+trailEffect: {
+type: ParticleEffect
+particles: 1
+cone: 0
+region: "gr-shock-wave"
+sizeFrom: 4
+sizeTo: 16
+length: 0
+colorFrom: 876081
+colorTo: 87608100
+lifetime: 25
+}
+
+width: 7.5
+height: 11
+trailWidth: 2
+trailLength: 14
+
+collidesAir: true
+collides: true
+splashDamage: 100
+splashDamageRadius: 48
+
+status: incendiary-depletion
+statusDuration: 240
+armorMultiplier: 0.7
+
+frontColor: B58DA5FF
+backColor: 876081FF
+trailColor: B58DA5FF
+
+reloadMultiplier: 0.65
+rangeChange: 40
+
+hitColor: B58DA5FF
+hitEffect: {
+type: WrapEffect
+color: B58DA5FF
+effect: scatheExplosionSmall
+}
+
+despawnEffect: bigShockwave
+hitSound: explosionArtilleryShockBig
+}
+
+decaying-matter:{
+type: BasicBulletType
+speed: 7
+lifetime: 40
+
+trailRotation: true
+trailInterval: 5
+trailEffect: {
+type: ParticleEffect
+particles: 1
+cone: 0
+region: "gr-shock-wave"
+sizeFrom: 4
+sizeTo: 16
+length: 0
+colorFrom: 5E988DFF
+colorTo: 5E988D00
+lifetime: 25
+}
+
+width: 7.5
+height: 11
+trailWidth: 2
+trailLength: 14
+
+collidesAir: true
+collides: true
+splashDamage: 100
+splashDamageRadius: 48
+
+status: rolling
+statusDuration: 90
+
+frontColor: 5E988DFF
+backColor: 4A6949FF
+trailColor: 5E988DFF
+
+reloadMultiplier: 0.5
+rangeChange: 40
+
+fragBullets: 1
+fragBullet: {
+type: BasicBulletType
+instantDisappear: true
+despawnHit: true
+splashDamageRadius: 48
+splashDamage: 1
+status: unmoving
+statusDuration: 60
+}
+
+hitColor: 5E988DFF
+hitEffect: {
+type: WrapEffect
+color: 5E988DFF
+effect: scatheExplosionSmall
+}
+
+despawnEffect: bigShockwave
+hitSound: explosionArtilleryShockBig
+}
+
+}

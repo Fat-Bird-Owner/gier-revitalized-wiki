@@ -1,0 +1,40 @@
+difficulty: 0
+outline: false
+
+sector: 0
+planet: kela
+
+rules: {
+bannedBlocks: [
+gr-crate
+gr-outpost
+gr-sunder-furnace
+gr-rail-router
+gr-photon-panel
+gr-rail-overflow
+gr-rail
+gr-hydro-drill
+gr-sand-strate
+gr-overhead-belt
+gr-button
+gr-industrial-trimmer
+]
+}
+
+research: {
+parent: techtree-kela
+objectives:[
+gr-crate
+gr-outpost
+gr-sunder-furnace
+gr-rail-router
+gr-photon-panel
+gr-rail-overflow
+gr-rail
+gr-hydro-drill
+gr-sand-strate
+gr-overhead-belt
+gr-button
+gr-industrial-trimmer
+]
+}

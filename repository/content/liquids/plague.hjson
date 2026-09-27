@@ -1,0 +1,25 @@
+type: CellLiquid
+name: Plague
+
+hidden: true
+colorFrom: 3a8f64
+colorTo: 3a8f64
+color: 3a8f64
+spreadTarget: water
+cells: 4
+maxSpread: 10
+spreadConversion: 1
+spreadDamage: 15
+removeScaling: 0.35
+
+vaporEffect: none
+#canStayOn: [water]
+
+viscosity: 5
+flammability: 0
+temperature: 1
+explosiveness: 5
+boilPoint: 0.5
+effect: unmoving
+
+coolant: false

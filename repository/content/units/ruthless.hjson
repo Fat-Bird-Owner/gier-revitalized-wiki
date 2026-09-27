@@ -1,0 +1,117 @@
+type: flying
+speed: 2.45
+flying: true
+name: Ruthless
+
+accel: 0.025
+drag: 0.02
+hitSize: 14
+armor: 2.5
+
+drawSoftShadow: false
+moveSound: loopThruster
+
+health: 250
+outlineColor: 2f2f3f
+
+rotateSpeed: 2.5
+engineSize: 0
+
+parts:[
+{
+type: HoverPart
+x: 0
+y: -6.5
+color: 8ca9e8
+radius: 6
+layerOffset: -0.1
+}
+]
+
+weapons:[
+{
+shootCone: 10
+reload: 120
+shoot:{
+firstShotDelay: 60
+}
+mirror: false
+x: 0
+
+chargeSound: chargeLancer
+shootSound: shootLancer
+
+bullet:{
+width: 10
+height: 14
+speed: 4.5
+drag: 0.045
+
+frontColor: 8ca9e8
+backColor: 8ca9e8
+
+damage: 25
+splashDamage: 45
+splashDamageRadius: 30
+scaledSplashDamage: true
+
+lifetime: 100
+
+fragBullet:{
+lifeScaleRandMin: 0.45
+lifetime: 45
+frontColor: 8ca9e8
+backColor: 8ca9e8
+spin: 4.5
+
+speed: 2.5
+drag: 0.035
+lifetime: 60
+
+damage: 15
+splashDamage: 7.5
+splashDamageRadius: 16
+scaledSplashDamage: true
+
+despawnHit: true
+despawnEffect: none
+hitSound: shieldHit
+hitEffect:{
+type: WrapEffect
+effect: hitBulletColor
+color: 8ca9e8
+}}
+fragBullets: 8
+
+recoil: 2.5
+hitShake: 6.5
+despawnHit: true
+despawnEffect: none
+hitSound: shootRipple
+hitEffect:{
+type: MultiEffect
+effects:[
+smokeCloud
+unitDrop
+instBomb
+shieldWave
+]
+}
+
+parts:[
+{
+type: FlarePart
+progress: life
+spinSpeed: 6.5
+
+width: 5
+widthTo: 0
+
+radius: 24
+radiusTo: 0
+}
+]
+
+}
+}
+]

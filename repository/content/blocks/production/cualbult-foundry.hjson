@@ -1,0 +1,91 @@
+type: HeatCrafter
+name: Cualbult Foundry
+size: 6
+
+description: "
+A massive bulky foundry required to produce cualbult. using surge alloy, copper, oxide and large amounts of heat.
+
+[grey][i] - Cualbult: Final advancement in the heat category for technology 
+[green]
+- Produces cualbult
+- It's efficiency could be boosted[red]
+- Uses many types of items
+- Uses alot of heat
+- Extremely explosive
+- Uses alot of power
+- Boosting over 100% requires double heat
+- Maxes out at 200% efficiency
+"
+
+customShadow: true
+heatRequirement: 30
+overheatScale: 2.0
+maxEfficiency: 2.0
+
+destroyBullet:{
+type: ExplosionBulletType
+splashDamage: 5000
+splashDamageRadius: 60
+
+despawnHit: true
+hitSound: blockExplodeElectric 
+hitShake: 15
+hitEffect: {
+type: MultiEffect
+effects:[
+launch
+launchPod
+]
+}
+}
+
+databaseTag: "adv-cualbult"
+baseExplosiveness: 500
+itemCapacity: 120
+
+requirements: [lead/3000, copper/2500, silicon/1500, beryllium/1000, surge-alloy/500, oxide/500, thorium/500]
+category: crafting
+research: fabricator-mill
+
+consumes: {
+items: [surge-alloy/20, copper/60, oxide/20]
+power: 30
+}
+
+outputItem: cualbult/10
+craftTime: 1200
+squareSprite: false
+drawer: [
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawGlowRegion
+suffix: "-heat-inside"
+color: f58349ff
+alpha: 0.4
+layer: 30 # none foundry-shader
+}
+{
+type: DrawGlowRegion
+suffix: "-heat-inside"
+color: f58349ff
+alpha: 0.8
+layer: 30.0012 #foundry shader
+}
+{
+type: DrawParticles
+color: f58349ff
+reverse: true
+}
+{
+type: DrawCrucibleFlame
+}
+{
+type: DrawDefault
+}
+{
+type: DrawHeatInput
+}
+]

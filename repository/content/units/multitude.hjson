@@ -1,0 +1,134 @@
+type: mech
+name: Multitude
+speed: 0.5
+
+outlineColor: 2f2f3f
+health: 3650
+armor: 15
+
+description: "
+An even bulkier verson of the previous iteration.
+Boast a high DPS and a turret reserved for taking
+down ariel targets.
+[salmon]
+Counter:
+- Higher DPS turrets are better suited in
+dealing with it
+- Laser turrets which ignore forcefields
+could also prove useful
+"
+
+research: {
+parent: magnitude
+objectives: [{
+type: SectorComplete
+preset: encampment
+}]
+}
+
+mechLegColor: 3f3f4f
+legForwardScl: 1
+hitSize: 25
+weapons: [
+{
+reload: 60
+
+shoot: {
+shots: 3
+shotDelay: 12
+}
+
+inaccuracy: 7.5
+rotateSpeed: 6
+
+parts: [
+{
+type: RegionPart
+name: "gr-multitude-anti-air"
+outline: false
+}
+]
+
+top: false
+x: -6
+y: -5
+mirror: false
+shootSound: shootCyclone
+
+rotate: true
+layerOffset: 0.01
+bullet: {
+lifetime: 60
+speed: 6
+range: 360
+maxRange: 360
+damage: 15
+collidesAir: true
+collidesGround: false
+trailLength: 4
+knockback: 0.75
+}
+
+}
+{
+name: "multitude-weapon"
+top: true
+x: 11.5
+y: -1.5
+reload: 60
+
+shake: 2.5
+recoilTime: 60
+inaccuracy: 2.5
+
+shoot: {
+shots: 3
+shotDelay: 7.5
+}
+
+top: false
+shootSound: blockExplode2Alt
+bullet: {
+type: BasicBulletType
+speed: 8
+damage: 60
+width: 11
+height: 20
+lifetime: 27
+shrinkX: 0.4
+shrinkY: 0
+
+shootEffect: shootBig
+hitEffect: blastExplosion
+trailParam: 0.5
+
+lightning: 2
+lightningLength: 6
+lightningColor: f3e979
+lightningDamage: 20
+
+despawnSound: shockBullet
+bulletInterval: 4
+
+intervalBullet: {
+  type: LightningBulletType
+  damage: 5
+  lightningLength: 4
+  lightningLengthRand: 4
+  lightningColor: f3e979
+  hitEffect: hitLancerLow
+}
+}
+
+# e
+}
+]
+
+abilities: [
+{
+type: ForceFieldAbility
+radius: 45
+regen: 4.15556
+max: 500
+}
+]

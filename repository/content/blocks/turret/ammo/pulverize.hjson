@@ -1,0 +1,187 @@
+type: ItemTurret
+name: Pulverize
+range: 180
+size: 4
+outlineColor: 2f2f3f
+
+shownPlanets: [gier, kela]
+shake: 2.5
+shootSound: payloadDrop1
+envEnabled: -1
+
+databaseTag: "adv-plastanium"
+requirements: [lead/375, graphite/105, silicon/75, titanium/115, beryllium/115]
+research: {
+parent: trident
+}
+
+category: turret
+drawer:{
+type: DrawTurret
+basePrefix: "reinforced-"
+}
+
+recoil: 3.45
+recoilTime: 22.5
+reload: 12
+
+coolant:{
+type: ConsumeCoolant
+allowGas: false
+amount: 0.33334
+}
+
+shoot: {
+type: ShootAlternate
+spread: 6.5
+}
+
+ammoTypes: {
+# Metaglass Ammo - Anti-air
+metaglass: {
+type: BasicBulletType
+frontColor: ffffff
+backColor: ffffff
+trailColor: ebeef5
+
+width: 12.5
+height: 17.5
+trailLength: 6.25
+knockback: 1.25
+
+lifetime: 22
+speed: 8
+damage: 30
+
+fragRandomSpread: 45
+fragBullets: 5
+fragBullet: {
+type: BasicBulletType
+frontColor: ffffff
+backColor: ffffff
+trailColor: ebeef5
+
+sprite: "gr-square"
+spin: 3.5
+speed: 6
+drag: 0.06666
+lifetime: 45
+
+sticky: true
+lightning: 4
+lightningColor: ebeef5
+damage: 1
+}
+  
+}
+
+# Plastanium Ammo - Anti-air but better
+plastanium: {
+type: BasicBulletType
+frontColor: d8d97f
+backColor: d8d97f
+trailColor: fffac6
+
+width: 12.5
+height: 17.5
+trailLength: 6.25
+knockback: 1.25
+
+lifetime: 22
+speed: 8
+damage: 25
+hitEffect: plasticExplosion
+
+splashDamage: 25
+splashDamageRadius: 23
+status: iframe-kill
+
+fragRandomSpread: 45
+fragBullets: 5
+fragBullet: {
+type: BasicBulletType
+frontColor: d8d97f
+backColor: d8d97f
+trailColor: fffac6
+
+sprite: "gr-triangle"
+speed: 6
+drag: 0.06666
+lifetime: 45
+spin: 3.5
+
+sticky: true
+lightning: 4
+lightningColor: 00000000
+damage: 2.2
+}
+  
+}
+
+# Oxide Ammo - AOE
+oxide: {
+type: BasicBulletType
+frontColor: e4ffd6
+backColor: e4ffd6
+trailColor: e4ffd6
+
+width: 12.5
+height: 17.5
+trailLength: 6.25
+knockback: 1.25
+
+lifetime: 33
+speed: 8
+damage: 25
+hitEffect: smeltsmoke
+hitColor: e4ffd6
+
+splashDamage: 45
+splashDamageRadius: 30
+status: corroded
+  
+}
+
+# Depleted thorium Ammo - Tank killer
+depleted-thorium: {
+type: BasicBulletType
+armorMultiplier: 0.4
+
+frontColor: B58DA5FF
+backColor: B58DA5FF
+trailColor: B58DA5FF
+
+width: 12.5
+
+height: 17.5
+trailLength: 6.25
+knockback: 0.45
+
+lifetime: 33
+speed: 8
+rangeChange: 84
+
+damage: 35
+hitEffect: titanExplosionFrag
+hitColor: B58DA5FF
+
+status: slow
+statusDuration: 45
+reloadMultiplier: 0.85
+
+fragBullets: 1
+fragBullet: {
+type: BasicBulletType
+damage: 0
+
+splashDamage: 50
+splashDamageRadius: 45
+instantDisappear: true
+despawnHit: true
+
+status: incendiary-depletion
+statusDuration: 180
+}
+
+}
+}

@@ -1,0 +1,131 @@
+type: flying
+flying: true
+name: Crusader
+description: "
+Extremely dangerous threat.
+a lightly armored assault vehicle.
+
+Able to rapidly fire shells [accent]forward[]
+Drops bombs [accent]below[] it
+and can call in an [accent]Ash[] as reinforcement
+"
+
+hitSize: 12
+speed: 2.5
+drag: 0.025
+armor: 5
+health: 500
+
+drawSoftShadow: false
+outlineColor: 2f2f3f
+autoDropBombs: true
+range: 160
+circleTarget: true
+omniMovement: false
+trailScl: 1
+trailLength: 10
+
+weapons:[
+{
+reload: 7.5
+shootCone: 15
+x: 2
+
+bullet:{
+type: BasicBulletType
+width: 7.5
+height: 10.5
+speed: 2.5
+damage: 40
+lifetime: 60
+}
+  
+}
+{
+reload: 2.5
+baseRotation: 45
+shootCone: 180
+  
+shoot:{
+shots: 1
+shotDelay: 0
+}
+
+bullet:{
+type: BombBulletType
+speed: 2.5
+drag: 0.0833333
+
+splashDamage: 15
+trailLength: 4
+trailWidth: 1
+
+splashDamageRadius: 47
+scaledSplashDamage: true
+lifetime: 60
+hitShake: 2
+
+hitEffect: missileTrailSmokeSmall
+hitColor: FFD37F
+
+}
+  
+}
+{
+reload: 2200
+alwaysShooting: true
+
+bullet:{
+type: BasicBulletType
+speed: 0.25
+keepVelocity: false
+lifetime: 180
+
+shrinkX: -0.1
+shrinkY: -0.2
+
+parts:[
+{
+type: FlarePart
+color1: FFD37F
+color2: FFD37F
+radius: 0
+radiusTo: 25
+spinSpeed: 3.5
+progress: life
+}
+{
+type: ShapePart
+color: FFD37F00
+colorTo: FFD37Fff
+radius: 40
+radiusTo: 0
+circle: true
+hollow: true
+stroke: 4
+strokeTo: 0
+progress: life
+}
+]
+
+shootEffect: none
+smokeEffect: none
+collides: false
+absorbable: false
+width: 0
+height: 0
+sprite: "empty"
+layer: 62
+despawnHit: true
+hitShake: 15
+
+hitEffect: dynamicSpikes
+splashDamageRadius: 24
+hitColor: FFD37F
+
+despawnUnit: gr-ash
+
+}
+
+}
+]

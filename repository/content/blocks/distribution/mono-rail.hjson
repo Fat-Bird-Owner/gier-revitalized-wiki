@@ -1,0 +1,32 @@
+type: StackConveyor
+name: Mono Rail
+description: "Transports items in stacks, Outputs like a router.
+Could be powered for additional speed
+[green]
+- Could be boosted with power
+- Armored
+"
+
+health: 85
+armor: 5
+requirements:[beryllium/1, surge-alloy/1]
+fullOverride: "gr-mono-rail"
+
+glowAlpha: 0.5
+consumes: {
+power: 0.016667
+}
+
+hasPower: true
+consumesPower: true
+conductivePower: true
+
+speed: 0.0333333
+baseEfficiency: 1.5
+customShadow: true
+  
+researchCostMultiplier: 0.5
+research: rail
+databaseTag: "adv-surge-alloy"
+shownPlanets: [gier]
+envEnabled: -1

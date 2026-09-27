@@ -1,0 +1,123 @@
+type: PowerTurret
+size: 4
+outlineRadius: 0
+range: 320
+name: Tension
+health: 2450
+shownPlanets: [gier]
+envEnabled: -1
+
+description: "Fires multiple homing missiles the the target."
+shootSound: shootScathe
+
+coolant:{
+type: ConsumeCoolant
+allowGas: false
+amount: 0.33334
+}
+
+shootWarmupSpeed: 0.05
+minWarmup: 0.9
+
+consumes:{
+power: 1
+}
+
+databaseTag: "gier"
+research: photon-panel
+rotateSpeed: 0
+recoil: 0
+outlineRadius: 0
+
+researchCostMultiplier: 0.025
+
+shootY: 0
+hasShadow: false
+customShadow: true
+category: turret
+reload: 95
+shake: 0.65
+
+shoot:{
+shots: 2
+shotDelay: 0
+}
+
+shootEffect:{
+type: RadialEffect
+effect: shootSmokeMissile
+rotationOffset: 45
+}
+
+requirements:[
+lead/400
+copper/350
+graphite/250
+]
+buildTime: 300
+
+rotate: false
+shootCone: 180
+inaccuracy: 0
+
+shootType:{
+type: BulletType
+speed: 30
+lifetime: 10
+damage: 0
+collides: false
+instantDisappear: true
+despawnHit: true
+fragBullets: 4
+fragSpread: 90
+fragRandomSpread: 0
+fragVelocityMin: 1
+fragVelocityMax: 1
+fragBullet:{
+type: MissileBulletType
+speed: 1
+trailEffect: none
+trailChance: 0.25
+trailWidth: 2
+trailLength: 24
+width: 10
+height: 17
+lifetime: 120
+homingPower: 0.1
+homingDelay: 20
+homingRange: 300
+impact: true
+knockback: 15
+
+damage: 25
+splashDamage: 20
+splashDamageRadius: 40
+scaledSplashDamage: true
+frontColor: 7d4c27
+accel: 0.045
+hitEffect: {
+type: WrapEffect
+effect: titanExplosionFrag
+color: 7d4c27
+}
+hitSound: unitExplode3
+despawnHit: true
+hitShake: 6.5
+}
+
+}
+
+elevation: 0
+drawer: {
+  type: DrawTurret
+  basePrefix: "-lid"
+parts:[
+{
+growX: -0.25
+growY: -0.25
+suffix: "-lid"
+color: ffffffff
+colorTo: 8f8f8f7f
+}
+]
+}

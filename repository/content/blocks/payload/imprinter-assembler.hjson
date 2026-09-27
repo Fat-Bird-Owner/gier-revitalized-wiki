@@ -1,0 +1,56 @@
+type: UnitAssembler
+size: 3
+name: Imprinter
+
+requirements:[lead/300, copper/275, graphite/150, silicon/125, depleted-thorium/50]
+category: units
+customShadow: true
+
+droneType: mechanic
+droneConstructTime: 300
+
+regionSuffix: "-gier"
+research: freight-conveyor
+researchCostMultiplier: 0.25
+databaseTag: "adv-depleted-thorium"
+
+plans: [
+{
+type: AssemblerUnitPlan
+unit: fledgling
+
+time: 1500
+requirements: [
+gr-modular-frame/1
+gr-basic-ammunition-crate/1
+gr-packed-graphite/3
+]
+
+}
+{
+type: AssemblerUnitPlan
+unit: dove 
+# placeholder unit
+
+time: 1800
+requirements: [
+gr-observer/3
+gr-packed-graphite/2
+gr-modular-frame/1
+]
+
+}
+{
+type: AssemblerUnitPlan
+unit: construct
+# placeholder unit
+
+time: 2100
+requirements: [
+gr-spare-cell/1
+gr-modular-frame/1
+gr-packed-beryllium/2
+]
+
+}
+]

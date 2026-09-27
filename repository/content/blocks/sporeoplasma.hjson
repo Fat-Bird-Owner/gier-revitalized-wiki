@@ -1,0 +1,83 @@
+type: PowerTurret
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawShape
+color: 7457ce55
+sides: 8
+radius: 9.5
+layer: 125
+}
+{
+type: DrawShape
+color: f803fc55
+sides: 8
+radius: 12.5
+layer: 125
+}
+]
+}
+
+destroyEffect: {
+type: WrapEffect
+effect: mineBig
+color: f803fc
+}
+destroySound: stepWater
+envEnabled: -1
+drawCracks: false
+
+flammabilityScale: 3.5
+health: 65
+enableDrawStatus: false
+solid: true
+
+rotateSpeed: 0
+reload: 60
+range: 40
+shootCone: 180
+shootType: {
+
+lightning: 1
+lightningColor: 7457ce55
+lightningLength: 5
+lengthRandLength: 4
+
+hitEffect: none
+despawnEffect: none
+collides: true
+collidesAir: true
+shootEffect: none
+smokeEffect: none
+splashDamage: 20
+splashDamageRadius: 44
+instantDisappear: true
+despawnHit: true
+scaledSplashDamage: true
+statusEffect: incendiary-depletion
+}
+
+destroyBullet:{
+fragBullets: 6
+instantDisappear: true
+despawnHit: true
+fragBullet:{
+type: LiquidBulletType
+liquid: tuntra
+liquidAmount: 15
+despawnHit: true
+speed: 0.5
+lifetime: 10
+damage: 0
+}
+}
+
+drawTeamOverlay: false
+createRubble: false
+fullOverride: "gr-sporeoplasma"
+
+requirements:[]
+buildVisibility: sandboxOnly
+name: Sporeoplasma

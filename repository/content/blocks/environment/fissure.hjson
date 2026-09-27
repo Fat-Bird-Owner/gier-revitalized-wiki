@@ -1,0 +1,13 @@
+type: OreBlock
+wallOre: true
+variants: 3
+
+name: Fissure
+
+drawEdgeIn: false
+drawEdgeOut: false
+itemDrop: fissure-item
+
+attributes:{
+beryllium: 1.25
+}

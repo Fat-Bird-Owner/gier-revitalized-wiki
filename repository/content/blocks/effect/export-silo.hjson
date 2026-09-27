@@ -1,0 +1,39 @@
+type: LaunchPad
+size: 3
+name: Export Silo
+
+baseExplosiveness: 15
+description: "
+Launches pods of resource into other nearby
+gier asteroids.
+
+Steam is used to prevent icing and for
+pod guidence
+[green]
+- Exports resources to other sectors[salmon]
+- Slightly explosive
+- Uses alot of power
+"
+
+detail: "Theres no landing pad of any kind at the moment so 
+
+the legacy function will be used inplace of it"
+
+requirements: [lead/275, copper/175, silicon/100, metaglass/40, depleted-thorium/15]
+category: effect
+databaseTag: "adv-depleted-thorium"
+
+research: rail-router
+researchCostMultiplier: 0.25
+envEnabled: -1
+
+itemCapacity: 50
+launchTime: 2700
+liquidCapacity: 40
+
+customShadow: true
+hasPower: true
+consumes: {
+  power: 4
+  liquids: [ liquid-steam/0.15 ]
+}

@@ -1,0 +1,48 @@
+type: AttributeCrafter
+size: 2
+name: Sand Strate
+description: "Scrapes sand particles from the ground, if there is any."
+
+customShadow: true
+research: hydro-drill
+researchCostMultiplier: 0.25
+attribute: sand
+databaseTag: "gier"
+shownPlanets: [gier]
+buildVisibility: shown
+envEnabled: -1
+
+category: crafting
+outputItem: sand/2
+baseEfficiency: 0
+customShadow: true
+
+buildVisibility: shown
+displayEfficiency: false
+requirements:[copper/35,lead/25]
+minEfficiency: 0.1
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawBlurSpin
+suffix: "-rotator1"
+x: -3.75
+y: 3.35
+blurThresh: 0
+rotateSpeed: 2.5
+}
+{
+type: DrawBlurSpin
+suffix: "-rotator2"
+blurThresh: 0
+x: 2
+y: -3
+rotateSpeed: 2.5
+}
+{
+type: DrawDefault
+}
+]
+}

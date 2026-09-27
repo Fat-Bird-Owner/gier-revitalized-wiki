@@ -1,0 +1,19 @@
+databaseCategory: "entries"
+name: "Directory: [white]IFrame[]"
+details: '''
+[lightgrey]IFrame traited units will receive 
+temporary invincibility upon receiving damage.
+
+This only applies if the damage isnt too
+little or too much.
+
+Applies to [accent]Barracade, Ash, Fort[]
+'''
+
+shownPlanets:[gier]
+databaseTag: "traits"
+outline: false
+
+research:{
+parent: entry-mineral-1
+}

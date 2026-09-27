@@ -1,0 +1,115 @@
+type: PowerTurret
+size: 4
+name: Siphon
+range: 300
+
+buildVisibility: sandboxOnly
+category: turret
+shootY: 0
+shootCone: 110
+
+shootWarmupSpeed: 0.0325
+linearWarmup: false
+minWarmup: 0.9
+inaccuracy: 150
+heatRequirement: 30
+warmupMaintainTime: 50
+
+drawer:{
+type: DrawTurret
+parts:[
+{
+x: 0
+y: 0
+moveX: -12
+}
+{
+x: 0
+y: 0
+moveX: 12
+}
+{
+type: ShapePart
+y: 0
+circle: true
+radius: 0
+radiusTo: 8
+layer: 110
+}
+{
+type: ShapePart
+y: 0
+circle: true
+radius: 0
+hollow: true
+color: 7457ce
+radiusTo: 14
+stroke: 0
+strokeTo: 4
+layer: 110
+}
+{
+type: FlarePart
+radius: 0
+radiusTo: 40
+color1: 7457ce
+color2: 7457ce
+
+layer: 110
+spinSpeed: 2.5
+}
+{
+type: FlarePart
+radius: 0
+radiusTo: 8
+color1: 7457ce
+color2: 7457ce
+layer: 110
+y: 80
+}
+]
+}
+
+recoilPow: 0
+shake: 2.5
+consumes:{
+power: 10
+}
+
+reload: 3
+rotateSpeed: 1.5
+shootSound: shootMalign
+
+shootType:{
+type: MissileBulletType
+frontColor: 7457ce
+backColor: 7457ce
+trailColor: 7457ce
+
+speed: 3.5
+lifetime: 60
+despawnHit: true
+hitShake: 4.5
+
+parts:[
+{
+type: FlarePart
+spinSpeed: 2.5
+radius: 0
+radiusTo: 12
+color1: 7457ce
+color2: 7457ce
+progress: life
+}
+]
+
+damage: 25
+fragBullets: 1
+fragRandomSpread: 0
+fragBullet:{
+type: SapBulletType
+color: 7457ce
+lifesteal: 0.5
+damage: 10
+}
+}

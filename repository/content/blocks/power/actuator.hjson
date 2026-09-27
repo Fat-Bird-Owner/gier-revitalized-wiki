@@ -1,0 +1,45 @@
+# PowerButton class extention of consume generator sadly the effect is constant
+
+type: PowerGenerator
+
+size: 2
+name: Actuator
+description: "Generates power whenever it's pressed."
+acceptsItems: false
+itemCapacity: 0
+consumesTap: true
+enableDrawStatus: false
+
+requirements:[lead/105,copper/75,graphite/65,silicon/45,titanium/65, surge-alloy/35]
+//customShadow: true
+
+powerProduction: 2.5
+envEnabled: -1
+databaseTag: "adv-surge-alloy"
+category: power
+
+consumes:{
+power: 0
+}
+
+explosionMinWarmup: 1.25
+explodeEffect: {
+type: MultiEffect
+effects :[
+{
+type: ParticleEffect
+region: "gr-actuator-button-clicked"
+length: 0
+lifetime: 15
+sizeFrom: 8
+sizeTo: 8
+layer: 30.05
+offset: 0
+colorFrom: ffffff
+colorTo: ffffff
+}
+]
+}
+
+research: button
+researchCostMultiplier: 0.5

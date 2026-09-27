@@ -1,0 +1,54 @@
+type: Battery
+name: Observer
+description: "
+Sends out a [accent]circuit pulse[] when a building
+is built or destroyed behind it
+"
+
+hasPower: true
+rotate: true
+update: true
+fullOverride: "gr-circuit-wire"
+
+consumes: {
+power: 0
+}
+
+blockGroup: none
+replaceable: false
+blockGroup: logic
+attributes:{
+circuitRange: 45
+}
+
+requirements:[lead/45, silicon/20, titanium/30]
+category: logic
+envEnabled: -1
+shownPlanets: [kela, gier]
+
+hasShadow: false
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+name: "gr-circuit-wire-shadow"
+layer: 10
+drawPlan: false
+}
+{
+type: DrawRegion
+}
+{
+type: DrawRegion
+name: "gr-circuit-wire-top1"
+buildingRotate: true
+}
+{
+type: DrawRegion
+suffix: "-top"
+buildingRotate: true
+rotation: -90
+}
+]
+}

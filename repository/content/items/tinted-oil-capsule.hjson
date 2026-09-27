@@ -1,0 +1,14 @@
+name: Tinted Oil Capsule
+description: "
+Like a regular oil capsule but more durable
+less prone to exploding.
+"
+  
+shownPlanets:[gier,kela]
+color: 3C3838FF
+
+databaseCategory: "gr-capsules"
+databaseTag: "gr-volatile"
+
+explosiveness: 0.25
+flammability: 0.5

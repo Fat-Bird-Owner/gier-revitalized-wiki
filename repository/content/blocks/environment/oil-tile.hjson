@@ -1,0 +1,9 @@
+type: Floor
+liquidDrop: oil
+name: Oil Tile
+
+variants: 0
+attributes:{
+geothermal-source: 0.0277778
+}
+

@@ -1,0 +1,19 @@
+show: false
+name: Dedroned
+
+description: "Drone facility and Facility dropzone will no longer be usable
+
+[salmon]Requirements:
+- Activated only on wave 1
+"
+  
+research: {
+parent: modifier
+
+objectives:[
+{
+type: SectorComplete
+preset: fragmented-fix
+}
+]
+}

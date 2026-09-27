@@ -1,0 +1,62 @@
+type: GenericCrafter
+size: 3
+name: Industrial Trimmer
+
+description: "
+Trims metaglass chunks into regular 
+metaglass
+[green]
+- Produces metaglass[red]
+- Explosive
+- Requires power
+"
+
+requirements: [lead/175, copper/100, graphite/75]
+category: crafting
+squareSprite: false
+
+fullOverride: "gr-industrial-trimmer-ui"
+research: sunder-furnace
+researcCostMultiplier: 0.15
+baseExplosiveness: 60
+
+envEnabled: -1
+shownPlanets: [gier, kela]
+databaseTag: "gier"
+
+itemCapacity: 60
+outputItem: metaglass/12
+craftTime: 60
+consumes: {
+power: 0.5
+items: [metaglass-chunk/12]
+}
+
+customShadow: true
+drawer: [
+{
+type: DrawRegion
+suffix: -bottom
+}
+{
+type: DrawPistons
+suffix: -piston-0
+sides: 1
+sinMag: 20
+sinScl: 6
+lenOffset: -18
+}
+{
+type: DrawPistons
+suffix: -piston-0
+angleOffset: 90
+sides: 1
+sinMag: 20
+sinScl: 6
+sinOffset: 60
+lenOffset: -18
+}
+{
+type: DrawDefault
+}
+]

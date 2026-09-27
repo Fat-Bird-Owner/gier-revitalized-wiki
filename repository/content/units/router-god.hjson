@@ -1,0 +1,361 @@
+type: flying
+flying: true
+name: "Router God"
+
+fullOverride: "gr-gren-router"
+hidden: true
+
+speed: 5
+rotateSpeed: 0
+
+drawBody: false
+drawCell: false
+engineSize: 0
+
+buildSpeed: 100
+mineSpeed: 100
+hitSize: 40
+physics: false
+bounded: false
+
+abilities:[
+{
+type: SuppressionFieldAbility
+reload: 180
+range: 800
+maxDelay: 60
+
+orbRadius: 0
+color: 53B56AFF
+particleColor: 53B56AFF
+effectColor: 53B56AFF
+}
+{
+type: ShieldArcAbility
+radius: 60
+angle: 360
+reflectVel: 0
+reflectTime: 3
+drawArc: false
+whenShooting: false
+max: 100000
+regen: 100000
+chanceDeflect: 1000
+}
+]
+
+health: 2000000000
+armor: 1500
+parts:[
+{
+name: "gr-gren-router"
+layer: 111
+xScl: 6
+yScl: 6
+}
+{
+type: FlarePart
+layer: 110
+color1: 53B56AFF
+color2: 53B56AFF
+sides: 4
+stroke: 12
+spinSpeed: 1.5
+}
+{
+type: FlarePart
+layer: 110
+color1: 53B56AFF
+color2: 53B56AFF
+sides: 4
+stroke: 12
+radius: 150
+spinSpeed: 1.5
+rotation: 45
+}
+{
+type: ShapePart
+layer: 110
+hollow: true
+circle: true
+color: 53B56AFF
+radius: 40
+stroke: 12
+}
+{
+type: EffectSpawnerPart
+x: 0
+y: 14.75
+effectInterval: 5
+effect:{
+type: ParticleEffect
+followParent: true
+particles: 3
+baseLength: -20
+length: 20
+sizeFrom: 8
+sizeTo: 0
+colorTo: 53B56A00
+colorFrom: 53B56AFF
+interp: sine
+}}
+{
+type: HoverPart
+stroke: 8
+sides: 125
+circles: 1
+layer: 110
+color: 53B56AFF
+radius: 140
+phase: 100
+x: 0
+y: 0
+}
+]
+
+weapons:[
+{
+name: "Anahilative Collider" 
+reload: 600
+chargeSound: chargeCorvus
+shootSound: shootOmura
+rotate: true
+
+mirror: false
+x: 0
+y: 0
+
+shoot:{
+firstShotDelay: 180
+}
+
+bullet:{
+type: BasicBulletType
+hitSize: 30
+damage: 4500
+
+pierce: true
+pierceBuilding: true
+
+parts:[
+{
+type: FlarePart
+sides: 4
+radius: 0
+radiusTo: 20
+progress: charge
+color1: 53B56AFF
+color2: 53B56AFF
+layer: 123.2
+progress: life
+}
+]
+
+shrinkY: 0
+shrinkX: 0
+width: 30
+height: 30
+sprite: "gr-gren-router"
+spin: 6.5
+layer: 123.1
+
+speed: 5
+lifetime: 300
+hitShake: 15
+
+bulletInterval: 1
+intervalBullet:{
+type: BasicBulletType
+hitSize: 15
+
+lifeScaleRandMin: 0.5
+lifeScaleRandMax: 1
+
+speed: 5
+lifetime: 180
+
+shrinkY: 0
+shrinkX: 0
+width: 15
+height: 15
+sprite: "gr-gren-router"
+spin: 6.5
+layer: 123.1
+
+hitSound: shootToxopidShotgun
+splashDamage: 250
+splashDamageRadius: 80
+
+hitShake: 25
+despawnHit: true
+hitEffect: {
+type: MultiEffect
+effects:[launch,launchPod]
+}
+
+}
+
+despawnHit: true
+hitEffect: reactorExplosion
+hitSound: shootConquer
+splashDamage: 25000
+splashDamageRadius: 160
+hitShake: 65
+
+chargeEffect:{
+type: WaveEffect
+colorFrom: 53B56AFF
+colorTo: 53B56AFF
+layer: 110
+sizeFrom: 160
+sizeTo: 0
+sizeInterp: sineIn
+lifetime: 150
+}
+  
+}
+
+}
+// W1
+{
+rotate: true
+reload: 1200
+x: 0
+y: 0
+shootSound: shootForeshadow
+shootEffect:{
+type: WrapEffect
+color: 53B56AFF
+effect: randLifeSpark
+}
+
+parts:[
+{
+type: FlarePart
+sides: 4
+radius: 0
+radiusTo: 25
+progress: charge
+color1: 53B56AFF
+color2: 53B56AFF
+layer: 111.1
+}
+]
+
+shake: 105
+shoot:{
+type: ShootSpread
+shots: 45
+spread: 2
+shotDelay: 0
+firstShotDelay: 180
+}
+
+bullet:{
+type: RailBulletType
+hitEffect: none
+lineEffect: none
+pointEffect: shootPayloadDriver
+pierceEffect: shootPayloadDriver
+pointEffectSpace: 20
+length: 1000
+
+maxDamageFraction: 0.25
+damage: 250
+splashDamage: 250
+splashDamageRadius: 40
+}
+
+}
+{
+reload: 450
+shootCone: 180
+x: 0
+y: 0
+
+shoot:{
+type: ShootSpread
+spread: 45
+shots: 8
+shotDelay: 0
+firstShotDelay: 180
+}
+
+parts:[
+{
+type: FlarePart
+sides: 4
+radius: 0
+radiusTo: 20
+rotation: 45
+progress: charge
+color1: ff795e
+color2: ff795e
+layer: 111.05
+}
+]
+
+chargeSound: chargeVela
+bullet:{
+type: BasicBulletType
+hitSize: 20
+
+speed: 5
+lifetime: 300
+
+trailChance: 0.33
+trailEffect:{
+type: ParticleEffect
+followParent: true
+particles: 3
+baseLength: -20
+length: 20
+sizeFrom: 6
+sizeTo: 0
+colorTo: 53B56A00
+colorFrom: 53B56AFF
+interp: sine
+}
+
+shrinkY: 0
+shrinkX: 0
+width: 20
+height: 20
+sprite: "gr-gren-router"
+spin: 6.5
+layer: 123.1
+
+homingPower: 0.025
+homingRange: 800
+
+chargeEffect:{
+type: ParticleEffect
+line: true
+lenFrom: 4
+lenTo: 12
+strokeFrom: 2
+strokeTo: 6
+colorFrom: 53B56A00
+colorTo: 53B56AFF
+interp: sineIn
+lifetime: 160
+length: 320
+baseLength: -320
+particles: 160
+layer: 110.99
+}
+
+hitSound: shootToxopidShotgun
+splashDamage: 1650
+scaledSplashDamage: true
+splashDamageRadius: 200
+hitEffect: greenBomb
+
+puddleLiquid: plague
+puddles: 165
+puddleAmount: 2350
+puddleRange: 60
+}
+
+}
+]

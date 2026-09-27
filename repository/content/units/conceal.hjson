@@ -1,0 +1,217 @@
+type: mech
+name: Conceal
+  
+speed: 1
+hitSize: 16
+health: 500
+
+mechSideSway: 0.1
+range: 40
+
+stepSound: walkerStepTiny
+stepSoundVolume: 0.2
+outlineRadius: 0
+
+weapons: [
+  {
+  alwaysShooting: true
+  minShootVelocity: 0.5
+  controllable: false
+  aiControllable: false
+
+  shootSound: none
+  shootY: -8
+
+  xRand: 4
+  yRand: 4
+
+  reload: 120
+  bullet: {
+  spawnUnit: target-point
+  shootEffect: none
+  hitEffect: none
+  despawnEffect: none
+  smokeEffect: none
+  }
+    
+  }
+  {
+    shootOnDeath: true
+
+    reload: 24
+    shootCone: 180
+
+    ejectEffect: none
+    shootSound: explosionCrawler
+    shootSoundVolume: 0.4
+
+    x: 0
+    shootY: 0
+    mirror: false
+
+    shootStatus: unmoving
+    shootStatusDuration: 200
+
+    shoot: {
+    firstShotDelay: 180
+    }
+
+    y: 0
+    parts: [
+# Top
+{
+type: RegionPart
+name: "gr-conceal-edge-top"
+moveY: 1.5
+
+outline: false
+
+progress: {
+type: charge
+ops: [
+{
+op: compress
+start: 0
+end: 0.2
+}
+{
+op: curve
+interp: circleIn
+}
+]
+
+}
+
+}
+# Left
+{
+type: RegionPart
+name: "gr-conceal-edge-left"
+moveX: -1.5
+
+outline: false
+
+progress: {
+type: charge
+ops: [
+{
+op: compress
+start: 0.2
+end: 0.4
+}
+{
+op: curve
+interp: circleIn
+}
+]
+
+}
+
+}
+# Right
+{
+type: RegionPart
+name: "gr-conceal-edge-right"
+moveX: 1.5
+
+outline: false
+
+progress: {
+type: charge
+ops: [
+{
+op: compress
+start: 0.4
+end: 0.6
+}
+{
+op: curve
+interp: circleIn
+}
+]
+
+}
+
+}
+# Bottom
+{
+type: RegionPart
+name: "gr-conceal-edge-bottom"
+moveY: -1.5
+
+outline: false
+
+progress: {
+type: charge
+ops: [
+{
+op: compress
+start: 0.6
+end: 0.8
+}
+{
+op: curve
+interp: circleIn
+}
+]
+
+}
+
+}
+]
+
+    bullet: {
+      type: BulletType
+
+      collidesTiles: false
+      collides: false
+
+      fragBullets: 6
+      fragBullet: {
+      type: BasicBulletType
+      collides: "false"
+      despawnEffect: none
+      trailEffect: {
+      type: WrapEffect
+      color: b8b8b8ff
+      effect: heatReactorSmoke
+      }
+      trailColor: b8b8b8ff
+      trailChance: 0.5
+      width: 0
+      height: 0
+      speed: 3
+      lifetime: 60
+      drag: 0.05
+      absorbable: "false"
+      hittable: "false"
+      }
+
+      rangeOverride: 40
+      hitEffect: {
+      type: WaveEffect
+      lifetime: 10
+      sizeFrom: 4
+      sizeTo: 60
+      strokeFrom: 3
+      strokeTo: 0
+      }
+
+      speed: 0
+      splashDamageRadius: 60
+      instantDisappear: true
+
+      absorbable: false
+      hitShake: 15
+      damage: 500
+
+      splashDamage: 650
+      buildingDamageMultiplier: 1.25
+
+      killShooter: true
+      hittable: false
+      collidesAir: true
+    }
+  
+  }
+]

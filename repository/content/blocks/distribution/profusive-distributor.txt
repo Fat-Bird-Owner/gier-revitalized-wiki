@@ -1,0 +1,13 @@
+type: GenericCrafter
+name: Profusive Distributor
+size: 2
+
+productionTime: 1
+consumes:{
+items:[copper/0]
+liquids:[water/0]
+}
+
+databaseTag: "gier"
+requirements:[lead/65,copper/35,silicon/25,beryllium/15]
+envEnabled: -1

@@ -1,0 +1,29 @@
+speedMultiplier: 0.5
+reloadMultiplier: 0.65
+outline: false
+
+name: Anchored
+applyEffect:{
+type: ParticleEffect
+region: "gr-anchored-borderless"
+cone: 0
+  
+sizeFrom: 8
+sizeTo: 20
+interp: sineOut
+
+colorFrom: ffffffff
+colorTo: ffffff00
+
+length: 0
+layer: 120
+particles: 1
+lifetime: 90
+}
+
+color: 9FA4C5FF
+effect:{
+type: WrapEffect
+effect: overdriven
+color: 9FA4C5FF
+}

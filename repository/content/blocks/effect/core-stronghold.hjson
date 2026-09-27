@@ -1,0 +1,38 @@
+type: CoreBlock
+size: 8
+name: "Core: [accent]Stronghold[]"
+description: "A more durable core foundation
+
+[accent]- Drone: Atlas
+
+[green]- Much more durable
+- Has much more storage space
+[grey]- 6x6
+"
+
+itemCapacity: 25000
+envEnabled: -1
+health: 25000
+unitType: gr-atlas
+isFirstTier: false
+incinerateNonBuildable: false
+customShadow: true
+squareSprite: false
+
+//research: gier
+//researchCostMultiplier: 0.15
+databaseTag: "gier"
+
+requirements: [
+lead/10000
+copper/7500
+graphite/7500
+titanium/6500
+beryllium/6500
+metaglass/4500
+silicon/3500
+thorium/2500
+phase-fabric/1000
+plastanium/1500
+]
+category: effect

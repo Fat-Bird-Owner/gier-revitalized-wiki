@@ -1,0 +1,44 @@
+type: Constructor
+size: 3
+name: Freight Assembler
+
+databaseTag: "adv-depleted-thorium"
+researchCostMultiplier: 0.5
+buildSpeed: 0.5
+regionSuffix: "-gier"
+
+description: "
+Constructs blocks using there
+requirements
+
+Payloads are constructed at 
+50% speed
+[green]
+- Constructs payload[red]
+- Explosive
+- Constructs at 50% speed
+"
+
+category: units
+requirements: [graphite/150, silicon/115, beryllium/75, depleted-thorium/25]
+baseExplosiveness: 25
+
+research: {
+parent: gr-gier
+}
+researchCostMultiplier: 0.25
+
+consumes: {
+power: 0.5
+}
+
+filter:[
+insulated-wall
+power-cell
+observer
+circuit-wire
+crate
+basic-ammunition-crate
+spare-cell
+modular-frame
+]

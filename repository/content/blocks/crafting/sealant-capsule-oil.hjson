@@ -1,0 +1,67 @@
+type: GenericCrafter
+size: 2
+name: Sealent Capsule
+squareSprite: false
+hideDatabase: true
+
+fullOverride: "gr-sealent-capsule"
+databaseTag: "gier"
+category: crafting
+requirements:[
+lead/150
+copper/100
+graphite/100
+silicon/75
+titanium/50
+]
+
+buildVisibility: hidden
+shownPlanets:[gier, kela]
+alwaysUnlocked: true
+envEnabled: -1
+
+consumes:{
+power: 0.5
+liquids:[oil/0.16667]
+}
+
+outputItem: oil-capsule/1
+customShadow: true
+placeablePlayer: false
+hasShadow: false
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+name: "gr-sealent-capsule-shadow"
+color: ffffffff
+layer: 10
+drawPlan: false
+}
+{
+type: DrawRegion
+name: "gr-sealent-capsule-bottom"
+}
+{
+type: DrawLiquidTile
+drawLiquid: oil
+padding: 1.75
+}
+{
+type: DrawRegion
+name: "gr-sealent-capsule"
+}
+{
+type: DrawRegion
+name: "gr-sealent-capsule-oil"
+}
+{
+type: DrawRegion
+name: "gr-sealent-capsule-capsule"
+spinSprite: true
+rotateSpeed: 3.5
+}
+]
+}

@@ -1,0 +1,13 @@
+permanent: true
+healthMultiplier: 1.25
+damageMultiplier: 1.25
+dragMultiplier: 1.25
+speedMultiplier: 1.25
+
+name: Unwavering
+description: "An excuse to not make stronger units"
+parentizeEffect: true
+
+outline: false
+effectChance: 0.33
+color: EA7186FF

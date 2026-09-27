@@ -1,0 +1,14 @@
+name: Tinted Slag Capsule
+description: "
+More durable capsule.
+Used to store molten slag.
+"
+  
+shownPlanets:[gier,kela]
+color: ffa166ff
+
+databaseCategory: "gr-capsules"
+databaseTag: "gr-volatile"
+
+explosiveness: 0.15
+flammability: 2.5

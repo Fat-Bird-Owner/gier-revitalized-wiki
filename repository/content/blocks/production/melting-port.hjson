@@ -1,0 +1,30 @@
+type: GenericCrafter
+name: Melting Port
+description: "Melts a varity of metals into liquids.
+Clicking on this building will change it's recipe.
+"
+
+category: crafting
+craftTime: 60
+consumes:{
+items:[copper/1]
+}
+
+outputLiquid: liquid-copper/0.05
+
+envEnabled: -1
+buildVisibility: sandboxOnly
+
+requirements:[copper/25,lead/15]
+  
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawDefault
+}
+{
+type: DrawCrucibleFlame
+}
+]
+}

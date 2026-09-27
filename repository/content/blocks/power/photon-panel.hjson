@@ -1,0 +1,31 @@
+type: SolarGenerator
+name: Photon Panel
+size: 2
+customShadow: true
+description: "
+Generates power from solar radiation.
+"
+
+requirements:[lead/25,copper/125,graphite/50]
+research: gier
+researchCostMultiplier: 0.15
+envEnabled: -1
+databaseTag: "gier"
+powerProduction: 0.166667
+category: power
+
+alwaysUnlocked: true
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawGlowRegion
+suffix: "-glow"
+color: 6f6f6f
+}
+{
+type: DrawDefault
+}
+]
+}

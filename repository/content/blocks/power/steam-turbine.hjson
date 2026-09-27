@@ -1,0 +1,146 @@
+type:  VariableReactor
+name: Steam Turbine
+size: 3
+
+description: "
+Produces power by condensing water into
+steam and turning it into usable power.
+
+[green]- Very reliable
+- Lesser maintance
+[red]- Explosive whilst active[]
+"
+
+requirements:[lead/235,copper/125,silicon/75,metaglass/75,oxide/45]
+category: power
+
+databaseTag: "adv-oxide"
+envEnabled: -1
+
+research: {
+parent: photon-panel
+research:[steam-turbine]
+}
+
+unstableSpeed: 0
+explosionMinWarmup: 0.65
+rebuildable: true
+
+explosionPuddles: 0
+explosionDamage: 500
+explosionRadius: 6
+explodeEffect: {
+type: MultiEffect
+effects:[
+{
+type: WrapEffect
+color: 9f9fff
+effect: missileTrailSmoke
+}
+{
+type: ParticleEffect
+spin: 2.25
+sozeFrom: 6
+sizeTo: 8
+colorFrom: 9f9fff
+colorTo: 9f9fff00
+length: 18
+particles: 8
+lifetime: 140
+region: "gr-gas"
+}
+{
+type: ParticleEffect
+spin: 2.25
+sozeFrom: 6
+sizeTo: 8
+colorFrom: 9f9fff
+colorTo: 9f9fff00
+length: 23
+particles: 13
+lifetime: 120
+region: "gr-gas"
+}
+{
+type: waveEffect
+sizeFrom: 0
+sizeTo: 36
+lifetime: 16
+strokeFrom: 6
+strokeTo: 0
+}
+]
+}
+
+explosionShake: 6
+customShadow: true
+
+powerProduction: 12.5
+maxHeat: 16
+effectChance: 1
+effect:{
+type: RadialEffect
+amount: 2
+rotationOffset: 57.5
+lengthOffset: 10
+rotationSpacing: 65
+effect:{
+type: ParticleEffect
+colorFrom: ffffff66
+colorTo: ffffff00
+length: 23
+interp: sineOut
+particles: 1
+lifetime: 85
+sizeFrom: 1
+sizeTo: 4
+cone: 20
+spin: 6.5
+region: "gr-gas"
+}
+}
+
+consumes:{
+liquids:[water/0.0833334]
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+padding: 2.1
+drawLiquid: water
+}
+{
+type: DrawBubble
+color: 596ab8
+}
+{
+type: DrawParticles
+color: ffffff88
+reverse: true
+}
+{
+type: DrawRegion
+suffix: "-extra"
+}
+{
+type: DrawFrames
+frames: 6
+sine: false
+interval: 3.5
+}
+{
+type: DrawDefault
+}
+{
+type: DrawRegion
+suffix: "-wire"
+}
+]
+}

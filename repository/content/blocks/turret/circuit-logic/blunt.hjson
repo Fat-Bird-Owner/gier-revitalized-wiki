@@ -1,0 +1,97 @@
+type: ItemTurret
+name: Blunt
+size: 2
+
+maxAmmo: 10
+ammoPerShot: 2
+envEnabled: -1
+
+description: "
+Shoots wave pulse at the target
+
+Capable of slowing down and dealing
+splash damage
+[green]
+- Circuit turret
+- Slows down targets
+- Splash damage[red]
+- Explosive
+"
+
+baseExplosiveness: 45
+attributes: {
+distanceIncrease: 10
+circuitHeatDamage: 20
+}
+
+rotateSpeed: 7.5
+acceptsItems: false
+alwaysAllowDeposit: false
+outlineRadius: 0
+range: 240
+
+requirements: [lead/250, copper/150, titanium/100, silicon/50, depleted-thorium/25]
+category: turret
+databaseTag: "adv-depleted-thorium"
+
+cooldownTime: 90
+reload: 60
+shootEffect: generate
+shootSound: shootArc
+  
+ammoTypes: {
+  signal-ammo: {
+type: BasicBulletType
+speed: 6
+lifetime: 40
+
+ammoMultiplier: 1
+displayAmmoMultiplier: false
+
+trailRotation: true
+trailInterval: 5
+trailEffect: {
+type: ParticleEffect
+particles: 1
+cone: 0
+region: "gr-shock-wave"
+sizeFrom: 4
+sizeTo: 8
+length: 0
+colorFrom: FFD37F
+colorTo: FFD37F00
+lifetime: 25
+}
+
+width: 0
+height: 0
+trailWidth: 0
+trailLength: 0
+
+collidesAir: true
+collides: true
+splashDamage: 40
+splashDamageRadius: 24
+
+status: slow
+statusDuration: 120
+
+despawnEffect: {
+type: WaveEffect
+sizeFrom: 4
+sizeTo: 30
+colorFrom: FFD37F
+colorTo: FFD37F00
+strokeFrom: 3
+strokeTo: 1
+lifetime: 30
+}
+
+hitSound: shootAfflict
+}
+}
+
+drawer: {
+type: DrawTurret
+basePrefix: "armored-"
+}

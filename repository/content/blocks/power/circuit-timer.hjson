@@ -1,0 +1,30 @@
+type: MessageBlock
+name: Circuit Timer
+description: "
+Waits for a set time[grey](In sec)[]
+
+But can't be under circuit rate
+"
+
+databaseTag: "gier"
+envEnabled: -1
+shownPlanets: [kela, gier]
+
+health: 85
+attributes:{
+# The speed of the circuit =1/circuitRate
+circuitRate: 20
+# Damage of heating
+circuitHeatDamage: 45
+}
+
+requirements:[titanium/5, copper/15, silicon/15, metaglass/15]
+category: logic
+consumes:{
+powerBuffered: 15
+}
+
+rotate: true
+customShadow: true
+rotateDraw: false
+  

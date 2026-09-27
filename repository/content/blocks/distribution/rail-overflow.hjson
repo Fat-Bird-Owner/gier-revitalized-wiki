@@ -1,0 +1,14 @@
+type: OverflowGate
+requirements:[copper/3,lead/2]
+name: Rail Overflow
+description: "Behaves like a normal Overflow Gate."
+
+research: rail-router
+researchCostMultiplier: 0.25
+customShadow: true
+
+alwaysUnlocked: true
+
+databaseTag: "gier"
+envEnabled: -1
+squareSprite: false

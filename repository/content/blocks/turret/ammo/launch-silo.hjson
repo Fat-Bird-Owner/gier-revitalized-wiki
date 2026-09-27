@@ -1,0 +1,125 @@
+type: ItemTurret
+# LaunchSilo
+
+name: Launch Silo
+description: "Launches flaks of bullets in all direction, Could also shoot manually by being clicked.
+
+[green]- Omni Directional
+- Anti IFrame
+- Could be manually operated
+- Bullets at mid-range are homing
+[salmon]- Range is smaller than bullet travel distance
+- Consumes alot of ammo
+- Explosive
+- Consumes Power
+"
+
+researchCostMultiplier: 0.25
+research: tension
+
+size: 2
+range: 150
+playerControllable: false
+
+envEnabled: -1
+databaseTag: "gier"
+drawer:{
+type: DrawRegion
+}
+
+shootEffect: blastsmoke
+category: turret
+requirements:[
+lead/225
+copper/150
+graphite/150
+beryllium/100
+silicon/200
+]
+
+baseExplosiveness: 25
+consumes:{
+power: 1.5
+}
+
+shootEffect: none
+shootSound: shootScatter
+reload: 4.5
+shoot:{
+type: ShootSpread
+shots: 72
+spread: 5
+}
+
+ammoPerShot: 5
+maxAmmo: 45
+shootCone: 180
+rotateSpeed: 0
+outlineRadius: 0
+customShadow: true
+shootY: 0
+ammoTypes:{
+lead:{
+type: BasicBulletType
+speed: 5
+lifetime: 60
+smokeEffect: none
+
+homingPower: 0.05
+homingDelay: 30
+
+velocityScaleRandMin: 0.95
+velocityScaleRandMax: 1.05
+
+lifeScaleRandMin: 0.95
+lifeScaleRandMax: 1.05  
+
+width: 8.5
+height: 15
+
+despawnHit: true
+hitSound: shootDuo
+hitEffect: hitBulletBig
+
+damage: 5
+status: iframe-kill
+knockback: 1.5
+impact: true
+}
+// Sili
+
+silicon:{
+type: BasicBulletType
+speed: 5
+lifetime: 60
+smokeEffect: none
+
+frontColor: 53565c
+backColor: 707594
+trailColor: 707594
+trailWidth: 1.5
+trailLength: 4
+
+homingPower: 0.1
+homingDelay: 15
+
+velocityScaleRandMin: 0.95
+velocityScaleRandMax: 1.05
+
+lifeScaleRandMin: 0.95
+lifeScaleRandMax: 1.05  
+
+width: 8.5
+height: 15
+
+despawnHit: true
+hitSound: shootDuo
+hitEffect: hitBulletBig
+
+damage: 7.5
+armorMultiplier: -2
+status: iframe-kill
+knockback: 3
+impact: true
+}
+}

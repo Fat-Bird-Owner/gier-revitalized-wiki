@@ -1,0 +1,38 @@
+databaseCategory: "lore"
+name: "Datachip: [grey]Exhaustion[]"
+details: '''
+[sky]Year: 127[] - [accent]Third generation[]
+
+A short period of peace after the
+first eradication. Only lasted for
+5 years.
+
+The most of the remaining factions
+had to further secure there sectors
+and scrap from destroyed units.
+
+Other small factions eventually died
+off, either from the lack of resources
+or other larger factions.
+
+This allowed small factions to pick
+each other out. Further allowing
+them to solidify themselves.
+
+[grey][Remaining details unimportant...]
+'''
+
+show: true
+shownPlanets:[gier]
+fullOverride: "gr-lore-1"
+
+outline: false
+research:{
+parent: gr-lore-2
+objectives:[
+{
+type: SectorComplete
+preset: aftermath
+}
+]
+}

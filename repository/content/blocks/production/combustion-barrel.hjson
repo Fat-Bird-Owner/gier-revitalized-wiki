@@ -1,0 +1,124 @@
+type: PowerTurret
+name: Explosive Barrel
+armor: 5
+health: 220
+
+range: 40
+minRange: 80
+elevation: 0
+
+
+researchCostMultiplier: 0.65
+research: {
+parent: hydro-drill
+objectives:[core-facility]
+}
+
+category: production
+description: "
+when this building is destroyed,
+it causes an explosion.
+
+Will automatically explode after a
+short while after be placed.
+
+Will mine ores and put them into a
+nearby storage within the outer ring.
+
+[green]- Mines ore depots
+[red]- Explosive
+- Explosive damages allied structure
+"
+
+drawMinRange: true
+attributes:{
+blastPower: 15
+blastTier: 2
+}
+
+requirements: [lead/10, copper/10, graphite/5, silicon/3]
+alwaysShooting: true
+
+createRubble: false
+reload: 60
+outlineRadius: 0
+
+rotate: false
+rotateSpeed: 0
+
+shoot:{
+firstShotDelay: 180
+}
+
+shownPlanets: [kela, gier]
+databaseTag: "gier"
+  
+shootType:{
+instantDisappear: true
+killShooter: true
+}
+  
+destroyBullet:{
+instantDisappear: true
+despawnHit: true
+despawnEffect: shockwave
+splashDamageRadius: 40
+splashDamage: 150
+scaledSplashDamage: true
+hitShake: 7.5
+}
+
+customShadow: true
+
+drawer:{
+type: DrawTurret
+parts:[
+{
+suffix: "-glow"
+color: D1545400
+colorTo: D15454FF
+
+progress:{
+type: charge
+ops:[
+{
+op: compress
+start: 0.2
+end: 1
+}
+]
+}
+
+}
+{
+type: ShapePart
+sides: 8
+hollow: true
+color: D15454FF
+
+stroke: 0
+strokeTo: 1
+
+radius: 4
+radiusTo: 0
+
+rotation: 22.5
+
+progress: {
+type: charge
+ops:[
+{
+op: curve
+interp: sineIn
+}
+{
+op: compress
+start: 0.2
+end: 1
+}
+]
+}
+  
+}
+]
+}

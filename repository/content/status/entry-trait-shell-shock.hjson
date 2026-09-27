@@ -1,0 +1,15 @@
+databaseCategory: "entries"
+name: "Directory: [sky]Shell Shock[]"
+details: '''[lightgrey]
+Shell shocked units releases
+tendrils of lightning upon
+getting damaged.
+
+Applies to[accent] Electron, Arraign[]
+'''
+
+shownPlanets:[gier]
+databaseTag: "traits"
+
+outline: false
+research: entry-trait-iframe

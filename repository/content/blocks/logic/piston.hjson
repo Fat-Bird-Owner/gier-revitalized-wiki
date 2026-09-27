@@ -1,0 +1,53 @@
+type: Battery
+hasPower: true
+name: Piston
+description: "
+Pushes blocks away from it's face.
+can push multiple blocks.
+
+[green]- Doesn't need power
+[red]- Explosive
+"
+
+category: logic
+envEnabled: -1
+databaseTag: "circuit-logic"
+fullOverride: "gr-piston"
+
+consumes: {
+power: 0
+}
+
+blockGroup: logic
+attributes: {
+# Max number of multiple blocks it can push
+pistonPushLength: 3
+}
+
+shownPlanets: [kela,gier]
+
+baseExplosiveness: 25
+hadShadow: true
+
+requirements:[lead/50,copper/35,silicon/20, titanium/15]
+rotate: true
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+name: "gr-command-block-shadow"
+layer: 10
+drawPlan: false
+}
+{
+type: DrawRegion
+}
+{
+type: DrawRegion
+suffix: "-top1"
+buildingRotate: true
+}
+]
+}

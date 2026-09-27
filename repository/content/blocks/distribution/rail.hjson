@@ -1,0 +1,20 @@
+type: StackConveyor
+name: Rail
+description: "Transports items in stacks, Outputs like a router.
+
+[grey]- Is a Stack Belt
+[grey]- Outputs like a router
+"
+requirements:[lead/1]
+alwaysUnlocked: true
+
+customShadow: true
+
+speed: 0.01667
+baseEfficiency: 1
+
+researchCostMultiplier: 0.45
+research: gier
+databaseTag: "gier"
+shownPlanets: [gier]
+envEnabled: -1

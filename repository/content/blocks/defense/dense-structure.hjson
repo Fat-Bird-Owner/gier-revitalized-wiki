@@ -1,0 +1,35 @@
+type: RegenProjector
+# StructureBlock
+
+name: Dense Structure
+size: 2
+
+description: "
+Quite similar to reinforced structure
+But with a greater multiplier
+"
+
+blockGroup: walls
+category: defense
+#customShadow: true
+priority: 0
+hasPower: false
+
+group: walls
+research: reinforced-structure
+health: 3000
+
+envEnabled: -1
+databaseTag: "adv-dense-alloy"
+shownPlanets: [gr-gier, kela]
+
+requirements: [copper/60, silicon/30, dense-alloy/30]
+baseColor: C9A58FFF
+range: 6
+effectChance: 0
+
+healPercent: 0
+
+attributes:{
+healPerc: 0.6
+}

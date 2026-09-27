@@ -1,0 +1,84 @@
+type: ItemTurret
+name: Scar
+size: 3
+clipSize: 9999
+buildVisibility: sandboxOnly
+
+category: turret
+requirements:[
+copper/500
+lead/450
+graphite/350
+titanium/300
+silicon/200
+]
+  
+reload: 75
+inaccuracy: 7.5
+range: 360
+
+shoot:{
+shots: 3
+shotDelay: 15
+firstShotDelay: 30
+}
+
+ammoTypes:{
+metaglass: {
+type: BasicBulletType
+
+speed: 8
+lifetime: 45
+
+width: 7.5
+height: 10.5
+
+frontColor: ebeef5
+backColor: ebeef5
+  
+damage: 20
+impact: true
+knockback: 1.5
+}
+}
+
+drawer:{
+type: DrawTurret
+parts:[
+{
+suffix: "-barrel"
+y: -2.5
+x: 0
+under: true
+
+moves:[
+{
+y: 3.5
+progress: {
+type: warmup
+ops:[
+{
+op: compress
+start: 0
+end: 0.5
+}
+]
+}
+
+}
+{
+y: -1.5
+progress: {
+type: recoil
+ops:[
+{
+op: compress
+end: 0.25
+start: 0
+}
+]
+
+
+}}]
+  
+}]}

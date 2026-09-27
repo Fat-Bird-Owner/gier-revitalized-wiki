@@ -1,0 +1,23 @@
+type: ForceProjector
+name: Barrier Emitter
+category: defense
+size: 2
+
+requirements:[lead/175,copper/65,silicon/45]
+
+consumes:{
+liquids:[liquid-copper/0.016667]
+}
+
+sides: 4	
+shieldRotation: 44
+radius: 200.5
+
+buildVisibility: sandboxOnly
+customShadow: true
+
+shieldHealth: 1000
+
+cooldownNormal: 0.4
+cooldownLiquid: 0.4
+cooldownBrokenBase: 0.15

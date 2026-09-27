@@ -1,0 +1,134 @@
+type: missile
+lifetime: 3000
+range: 120
+
+hitSize: 24
+flying: false
+name: "Tumor: Slinger"
+
+health: 300
+drawBody: false
+drawCell: false
+
+speed: 0
+rotateSpeed: 0
+hidden: false
+outlineRadius: 0
+physics: false
+
+createScorch: false
+drag: 99999
+groundLayer: 75
+
+deathShake: 2
+deathExplosionEffect: none
+isEnemy: false
+
+abilities: [
+{
+type: LiquidExplodeAbility
+liquid: gr-tuntra
+}
+]
+
+parts: [
+{
+name: "gr-hive-tendril"
+xScl: 0.5
+yScl: 0.5
+layer: 22
+rotation: 15
+}
+{
+type: RegionPart
+name: "gr-tumor"
+xScl: 1.75
+yScl: 1.75
+  
+}
+]
+
+weapons: [
+{
+x: 0
+y: 0
+rotate: true
+mirror: false
+
+reload: 180
+layerOffset: 0.1
+rotateSpeed: 3
+
+shootSound: shoot-disarry
+parts: [
+{
+name: "gr-slinger"
+under: false
+
+xScl: 0.66
+yScl: 0.66
+
+}
+{
+name: "gr-slinger-barrel"
+under: false
+progress: {
+type: reload
+ops: [{
+op: compress
+start: 0
+end: 0.8
+}]
+
+}
+
+xScl: 0.66
+yScl: 0.66
+cooldownTime: 150
+
+moveY: -2
+}
+]
+
+bullet:{
+type: BasicBulletType
+speed: 12
+lifetime: 20
+
+trailRotation: true
+trailInterval: 5
+trailEffect: {
+type: ParticleEffect
+particles: 1
+cone: 0
+region: "gr-shock-wave"
+sizeFrom: 4
+sizeTo: 8
+length: 0
+colorFrom: 89769a
+colorTo: 89769a00
+lifetime: 25
+}
+
+width: 7.5
+height: 11
+trailWidth: 2
+trailLength: 14
+
+collidesAir: true
+collides: true
+splashDamage: 45
+splashDamageRadius: 35
+
+frontColor: 89769a
+backColor: 89769a
+trailColor: 89769a
+  
+hitColor: 89769a
+hitEffect: none
+despawnEffect: bigShockwave
+hitSound: explosionArtilleryShockBig
+}
+  
+}
+]

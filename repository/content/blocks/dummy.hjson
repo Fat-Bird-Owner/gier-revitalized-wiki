@@ -1,0 +1,11 @@
+type: Wall
+name: Dummy
+category: defense
+description: "A wall to release your anger on, Very primitive.
+
+[red]Click to change teams[]
+"
+
+health: 10000
+buildVisibility: sandboxOnly
+consumesTap: true

@@ -1,0 +1,143 @@
+type: PowerTurret
+size: 4
+name: Pressure
+description: "
+Charges up an EMP
+
+EMP burns targets and repairs
+allied structures
+
+[green]- AOE
+- Heals small amount
+- Melts enemy target
+[red]- Requires Power
+- Explosive
+"
+
+envEnabled: -1
+research: tension
+researchCostMultiplier: 0.5
+
+shownPlanets: [kela, gier]
+databaseTag: "adv-plastanium"
+
+baseExplosiveness: 75
+requirements: [lead/375, copper/225, beryllium/125, plastanium/75]
+category: turret
+
+rotateSpeed: 0
+rotate: false
+shootCone: 180
+
+reloadWhileCharging: false
+reload: 60
+shootY: 0
+shoot: {
+firstShotDelay: 90
+}
+
+shootSound: explosionQuad
+chargeSound: chargeVela
+outlineRadius: 0
+consumes: {
+power: 3
+}
+
+range: 200
+shootType: {
+instantDisappear: true
+despawnHit: true
+splashDamageRadius: 200
+splashDamage: 40
+scaledSplashDamage: true
+
+collidesTeam: true
+healPercent: 1.5
+healColor: ffaa5f
+
+ammoMultiplier: 1
+status: corrupted
+statusDuration: 90
+
+chargeEffect: {
+type: WaveEffect
+sizeFrom: 200
+sizeTo: 0
+strokeFrom: 4
+strokeTo: 1 
+interp: sineOut
+colorFrom: ffffff
+colorTo: ffaa5f
+lifetime: 80
+}}
+# shootType end
+
+customShadow: true
+drawer: [
+{
+type: DrawRegion
+}
+{
+type: DrawGlowRegion
+suffix: "-glow"
+color: ffaa5f
+alpha: 0.9
+}
+{
+type: DrawGlowRegion
+suffix: "-glow-2"
+color: ffaa5f
+alpha: 0.75
+}
+]
+
+shootEffect: [
+{
+type: WaveEffect
+sizeFrom: 20
+sizeTo: 200
+strokeFrom: 4
+strokeTo: 0
+interp: sineOut
+colorFrom: ffaa5f
+lifetime: 40
+}
+{
+type: WaveEffect
+sizeFrom: 200
+sizeTo: 208
+strokeFrom: 4
+strokeTo: 0
+interp: sineOut
+colorFrom: ffaa5f
+lifetime: 55
+}
+{
+type: ParticleEffect
+particles: 17
+length: 275
+colorFrom: ffaa5f
+colorTo: ffffff00
+strokeFrom: 3
+strokeTo: 0
+lenFrom: 12
+lenTo: 16
+line: true
+lifetime: 90
+interp: sineOut
+}
+{
+type: ParticleEffect
+particles: 8
+length: 200
+colorFrom: ffaa5f
+colorTo: ffffff00
+strokeFrom: 2.5
+strokeTo: 0
+lenFrom: 12
+lenTo: 16
+line: true
+lifetime: 110
+interp: sineOut
+}
+]

@@ -1,0 +1,213 @@
+type: mech
+name: Equinox
+speed: 0.35
+
+outlineColor: 2f2f3f
+health: 7500
+armor: 15
+
+singleTarget: false
+forceMultiTarget: true
+
+rotateSpeed: 3
+
+description: "
+Far more durable than even the previous version.
+Boast even greater destructive capabilities, and
+a shield arc as well
+[salmon]
+Counter:
+- Multitude counters are still effective
+- Missiles could cause alot of destruction
+if they're shot at a blindspot
+"
+
+research: {
+parent: multitude
+objectives: [{
+type: SectorComplete
+preset: encampment
+}]
+}
+
+
+mechLegColor: 3f3f4f
+legForwardScl: 1
+hitSize: 30
+weapons: [
+{
+
+reload: 280
+
+shoot: {
+shots: 6
+shotDelay: 18
+firstShotDelay: 120
+}
+
+inaccuracy: 15
+shake: 7.5
+rotateSpeed: 2
+predictTarget: false
+
+parts: [
+{
+type: RegionPart
+name: "gr-equinox-missile-weapon"
+outline: false
+}
+]
+
+top: false
+x: 7.5
+y: -6
+mirror: true
+alternate: false
+shootSound: shootCyclone
+inaccuracy: 5
+
+chargeSound: chargeVela
+rotate: true
+layerOffset: 0.01
+bullet: {
+spawnUnit: striker-missile
+inaccuracy: 10
+instantDisappear: true
+followAimSpeed: 5
+
+chargeEffect: {
+type: WaveEffect
+sizeFrom: 40
+sizeTo: 0
+lifetime: 60
+interp: sineOut
+colorFrom: f3e979
+colorTo: ffffff00
+}
+
+}
+  
+}
+{
+reload: 60
+
+shoot: {
+shots: 3
+shotDelay: 12
+}
+
+inaccuracy: 7.5
+rotateSpeed: 6
+
+parts: [
+{
+type: RegionPart
+name: "gr-multitude-anti-air"
+outline: false
+}
+]
+
+top: false
+x: 0
+y: -8
+mirror: false
+shootSound: shootCyclone
+
+rotate: true
+layerOffset: 0.01
+bullet: {
+lifetime: 60
+speed: 6
+range: 360
+maxRange: 360
+damage: 15
+collidesAir: true
+collidesGround: false
+trailLength: 4
+knockback: 1.5
+}
+
+}
+{
+name: "equinox-weapon"
+top: true
+x: 14.75
+y: 1.75
+reload: 60
+
+shake: 5
+recoilTime: 60
+inaccuracy: 2.5
+
+shootY: 12
+shoot: {
+shots: 3
+shotDelay: 7.5
+}
+
+top: false
+shootSound: blockExplode2Alt
+bullet: {
+  type: BasicBulletType
+
+  speed: 13
+  damage: 80
+
+  pierce: true
+  pierceCap: 10
+
+  width: 14
+  height: 33
+  lifetime: 15
+
+  shootEffect: shootBig
+
+  fragVelocityMin: 0.4
+
+  hitEffect: blastExplosion
+
+  splashDamage: 18
+  splashDamageRadius: 13
+
+  fragBullets: 3
+  fragLifeMin: 0
+  fragRandomSpread: 30
+
+  despawnSound: explosion
+
+  fragBullet: {
+    type: BasicBulletType
+
+    speed: 9
+    damage: 20
+
+    width: 10
+    height: 10
+
+    pierce: true
+    pierceBuilding: true
+    pierceCap: 3
+
+    lifetime: 20
+
+    hitEffect: flakExplosion
+
+    splashDamage: 15
+    splashDamageRadius: 10
+  }
+}
+
+# e
+}
+]
+
+abilities: [
+{
+type: ShieldArcAbility
+radius: 35
+max: 750
+regen: 5
+pushUnits: true
+cooldown: 1000
+}
+]

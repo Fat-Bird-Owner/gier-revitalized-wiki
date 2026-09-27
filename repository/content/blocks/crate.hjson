@@ -1,0 +1,28 @@
+type: StorageBlock
+name: Crate
+size: 2
+
+researchCostMultiplier: 0.45
+research: rail
+databaseTag: "gier"
+shownPlanets: [gier]
+envEnabled: -1
+
+solid: true
+customShadow: true
+category: effect
+
+itemCapacity: 50
+requirements:[lead/135,copper/65,graphite/50]
+squareSprite: false
+
+baseExplosiveness: 2.5
+explosivenessScale: 5
+flammabilityScale: 1.5
+
+description: "Stores items, unloadable with an output port.
+
+[green]- Expands core capacity
+[salmon]- Explosive
+- Flammable
+"

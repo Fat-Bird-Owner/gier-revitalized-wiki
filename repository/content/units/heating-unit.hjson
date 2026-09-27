@@ -1,0 +1,58 @@
+template: MissileUnitType
+hitSize: 0
+flying: false
+drawSoftShadow: false
+speed: 0
+rotateSpeed: 0
+lifetime: 1
+speed: 0
+drawBody: false
+drawCell: false
+hittable: false
+targetable: false
+physics: false
+fallSpeed: 0.5
+deathShake: 0
+weapons: [
+  {
+    controllable: false
+    alwaysShooting: true
+    x: 0
+    reload: 5
+    shootCone: 360
+    shootSound: none
+    bullet: {
+      keepVelocity: false
+      lifetime: 1
+      hitEffect: none
+      despawnEffect: none
+      shootEffect: [
+        {
+          type: WaveEffect
+          lifetime: 30
+          layer: 122
+          sizeFrom: 75
+          sizeTo: 75
+          strokeFrom: 3
+          strokeTo: 3
+          colorTo: ffaa5f
+          colorFrom: ffaa5f
+        }
+      ]
+      despawnHit: true
+    }
+  }
+]
+abilities: [
+  {
+    type: StatusFieldAbility
+    effect: burning
+    range: 75
+    reload: 1
+    duration: 120
+    parentizeEffects: false
+    activeEffect: none
+  }
+]
+deathSound: none
+deathExplosionEffect: none

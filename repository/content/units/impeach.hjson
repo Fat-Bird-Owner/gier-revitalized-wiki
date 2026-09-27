@@ -1,0 +1,68 @@
+type: legs
+health: 650
+name: Impeach
+armor: 15
+drag: 0.14
+
+speed: 1.2
+hitSize: 12
+shadowElevation: 0.36
+
+legCount: 6
+legMoveSpace: 2.25
+legLength: 25
+legMaxLength: 1.25
+legMinLength: 0.75
+
+outlineRadius: 0
+outlineColor: 00000000
+range: 80
+
+weapons:[
+{
+reload: 12.5
+rotate: true
+rotateSpeed: 7.5
+
+shootSound: shootFlame
+x: -3
+y: -2.75
+mirror: false
+name: "impeach-weapon"
+
+parts:[
+{
+type: FlarePart
+color1: f9c27aff
+radius: 0
+radiusTo: 8
+spinSpeed: 4
+strokeTo: 2
+progress: charge
+}
+{
+under: true
+outline: false
+name: "gr-F0D5FFFF-weapon-shadow"
+}
+]
+
+shootStatus: slow
+shootStatusDuration: 60
+bullet: {
+type: ContinuousFlameBulletType
+lifetime: 20
+drawFlare: false
+hitColor: ffc9a2
+damage: 22
+knockback: 0
+pierce: true
+pierceArmor: false
+length: 80
+width: 1.5
+colors: [F0D5FFFF, F4E0FFFF, F8EAFFFF, FBF4FFFF, ffffff]
+range: 80
+}
+
+}
+]

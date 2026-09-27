@@ -1,0 +1,94 @@
+type: PowerTurret
+name: "Core: [accent]Gateway[]"
+fullOverride: "gr-core-gateway"
+description: "Build a compacted core.
+This core is very destructive and doesnt increase Item Capacity.
+
+[green]- Small
+- Placable Anywhere
+- Could be upgraded
+- Could be quick travelled to (via clicking on it)
+[salmon]- [scarlet]Very[salmon] Explosive
+- Requires power to calibrate
+- There may only be a limit of [#D3DEE4FF]2[] on the map at all times
+"
+
+databaseTag: "gier"
+researchCostMultiplier: 0.25
+envEnabled: -1
+
+research: core-facility
+
+hasShadow: true
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+name: "gr-core-gateway"
+layer: 60
+color: 8f8f8f
+}
+{
+type: DrawRegion
+name: "gr-core-gateway-calibrate"
+layer: 122
+color: D3DEE4ff
+}
+]
+}
+
+customShadow: true
+reload: 10
+category: effect
+requirements:[
+lead/750
+copper/450
+graphite/200
+silicon/150
+titanium/100
+beryllium/100
+]
+
+shootWarmupSpeed: 0.05
+minWarmup: 0.9
+consumes:{
+power: 5
+}
+
+destroyEffect:{
+type: MultiEffect
+effects:[
+{
+type: WaveEffect
+rotation: 44
+sizeFrom: 6
+sizeTo: 8
+sides: 4
+strokeTo: 0
+colorFrom: D3DEE4FF
+colorTo: D3DEE4FF
+}
+{
+type: ParticleEffect
+length: 0
+region: "gr-core-gateway"
+sizeFrom: 4
+sizeTo: 4
+colorFrom: D3DEE4FF
+colorTo: D3DEE400
+layer: 61
+}
+]
+}
+
+alwaysShooting: true
+shootCone: 180
+baseShake: 1.5
+range: 0
+shootType:{
+type: EmptyBulletType
+instantDisappear: true
+despawnEffect: none
+killShooter: true
+}

@@ -1,0 +1,122 @@
+type: ThermalGenerator
+name: "Thermal Engine [sky]<Special>"
+size: 4
+
+health: 1200
+description: "
+[sky]Special Tech[]
+Produces decent quantities of
+power
+
+Though it's cost out weight of
+benefits quite heavily
+[green]
+- Produces power[red]
+- Extremely explosive
+- Requires heat tiles
+- Quite fragile
+- Expensive
+"
+
+explosionShake: 4
+explosionShakeDuration: 16
+explosionDamage: 1900
+explosionMinWarmup: 0.3
+explodeEffect: impactReactorExplosion
+explodeSound: explosionReactor2
+
+minEfficiency: 0.1
+displayEfficiencyScale: 0.125
+category: power
+
+requirements: [lead/350, copper/200, silicon/200, graphite/150]
+buildVisibility: sandboxOnly
+databaseTag: "gier"
+
+alwaysUnlocked: true
+buildVisibility: sandboxOnly
+envEnabled: -1
+
+shownPlanets: [kela]
+
+powerProduction: 0.25
+customShadow: true
+drawer: [
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawRegion
+rotateSpeed: -6
+buildingRotate: true
+suffix: "-rotator"
+rotation: 0
+spinSprite: true
+}
+{
+type: DrawRegion
+rotateSpeed: -6
+buildingRotate: true
+rotation: 45
+suffix: "-rotator"
+spinSprite: true
+}
+{
+type: DrawRegion
+rotateSpeed: -6
+buildingRotate: true
+suffix: "-rotator"
+rotation: 22.5
+spinSprite: true
+}
+{
+type: DrawRegion
+rotateSpeed: -6
+buildingRotate: true
+suffix: "-rotator"
+rotation: -22.5
+spinSprite: true
+}
+# Blur spin
+{
+type: DrawRegion
+rotateSpeed: 6
+buildingRotate: true
+suffix: "-rotator-blur"
+rotation: 0
+spinSprite: true
+color: ffffff66
+}
+{
+type: DrawRegion
+rotateSpeed: 6
+buildingRotate: true
+rotation: 45
+suffix: "-rotator-blur"
+spinSprite: true
+color: ffffff66
+}
+{
+type: DrawRegion
+rotateSpeed: 6
+buildingRotate: true
+suffix: "-rotator-blur"
+rotation: 22.5
+spinSprite: true
+color: ffffff66
+}
+{
+type: DrawRegion
+rotateSpeed: 6
+buildingRotate: true
+suffix: "-rotator-blur"
+rotation: -22.5
+spinSprite: true
+color: ffffff66
+}
+# End
+{
+type: DrawDefault
+}
+]

@@ -1,0 +1,7 @@
+type: DroneCenter
+size: 2
+name: Unit Radar
+requirements:[]
+droneType: effect-drone-test
+droneRange: 300
+unitsSpawned: -1

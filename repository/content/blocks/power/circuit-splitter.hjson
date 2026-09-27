@@ -1,0 +1,47 @@
+type: Battery
+size: 1
+name: Circuit Splitter
+description: "
+Splits the [accent]circuit pulse[] into multiple
+directions
+
+the split pulses also has a shared travel distance
+"
+
+solid: false
+health: 105
+armor: -2
+
+attributes:{
+# The speed of the circuit =1/circuitRate
+circuitRate: 10
+# Damage of heating
+circuitHeatDamage: 35
+}
+
+category: logic
+databaseTag: "gier"
+envEnabled: -1
+shownPlanets: [kela, gier]
+
+requirements:[titanium/4, copper/8, silicon/4]
+consumes:{
+powerBuffered: 20
+}
+
+customShadow: true
+rotate: true
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+name: "gr-circuit-splitter"
+}
+{
+type: DrawRegion
+name: "gr-circuit-wire-top1"
+buildingRotate: true
+}
+]
+}

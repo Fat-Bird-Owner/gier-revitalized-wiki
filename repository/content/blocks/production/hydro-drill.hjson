@@ -1,0 +1,39 @@
+type: Drill
+size: 2
+name: Hydro Drill
+description: "Drills the ground for any possible extract.
+
+[salmon]- Explosive
+[green]- Reliable
+[green]- Cheap
+"
+requirements:[lead/10,copper/20]
+customShadow: true
+
+alwaysUnlocked: true
+consumes:{
+liquids: {
+liquids:[
+water/0.016667
+]
+
+optional: true
+booster: true
+}
+}
+
+tier: 2
+drawRim: false
+drawSpinSprite: true
+drawMineItem: true
+squareSprite: false
+drillTime: 187.5
+
+baseExplosiveness: 2.5
+
+databaseTag: "gier"
+shownPlanets: [gier]
+
+category: production
+research: gier
+researchCostMultiplier: 0.25

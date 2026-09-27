@@ -1,0 +1,8 @@
+type: StaticWall
+variants: 4
+name: Tuff wall
+
+attributes: {
+carbon: 0.5
+beryllium: 1
+}

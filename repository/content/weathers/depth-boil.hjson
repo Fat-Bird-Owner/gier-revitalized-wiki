@@ -1,0 +1,10 @@
+type: ParticleWeather
+color: ffffff00
+noiseScale: 3500
+baseSpeed: 2
+
+noiseColor: fc5e4233
+drawNoise: true
+drawParticles: false
+noiseLayers: 1
+

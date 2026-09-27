@@ -1,0 +1,51 @@
+type: GenericCrafter
+size: 2
+name: Sealent Capsule
+squareSprite: false
+
+databaseTag: "gier"
+category: crafting
+requirements:[
+lead/150
+copper/100
+graphite/100
+silicon/75
+titanium/50
+]
+
+description: "Seals liquids into capsules. Capsules could then be transported and released."
+envEnabled: -1
+research: dihydrogen-shaft
+researchCostMultiplier: 0.25
+
+consumes:{
+power: 0.5
+liquids:[water/0.16667]
+}
+
+outputItem: water-capsule/1
+customShadow: true
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+drawLiquid: water
+padding: 1.75
+}
+{
+type: DrawDefault
+}
+{
+type: DrawBlurSpin
+suffix: "-capsule"
+blurThresh: 1
+rotateSpeed: 3.5
+}
+]
+}

@@ -1,0 +1,73 @@
+type: flying
+# IframeUnit
+databaseCategory: "threats"
+
+// IFrame Duration (frames)
+crushDamage: 25
+
+description: "
+Whenever this unit takes damage it becomes invincible for a short duration.
+
+[sky]Priority[]: 5
+[blue]IFrame Duration[]: 0.416 [grey]sec[]
+[salmon]Damage Threshold[]: (10-65)
+
+[green]- Big hitbox
+- Cannot be retriggered while invincible
+- Cant be triggered by explosions
+
+[red]Hard counter: Since this unit is high priority using [#8c7fa9][Tensions][red] can knock it away.
+- Avoid letting it tank damage for other units.
+
+[sky]Affiliations:[lightgrey] SBDC, PTC - Epsilon
+"
+
+speed: 2
+name: Barracade
+flying: true
+outlineColor: 2f2f3f
+accel: 0.071667
+drag: 0.05
+faceTarget: true
+drawSoftShadow: false
+isEnemy: false
+health: 650
+targetPriority: 5
+
+targetFlags: [turret, core]
+crashDamageMultiplier: 3
+
+weapons:[
+{
+noAttack: true
+display: false
+shootCone: 0
+controllable: false
+aiControllable: false
+}
+]
+
+range: 5
+engineSize: 0
+hitSize: 12
+armor: 2.5
+
+research:{
+parent: techtree-kela
+objectives:[
+{
+type: SectorComplete
+preset: fragmented-fix
+}
+]
+}
+
+parts:[
+{
+type: HoverPart
+color: FFD37F
+radius: 8
+layerOffset: -0.1
+y: -2
+}
+]

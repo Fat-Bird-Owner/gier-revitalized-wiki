@@ -1,0 +1,38 @@
+type: PowerTurret
+size: 2
+name: Triad
+outlineRadius: 0
+customShadow: true
+shownPlanets: [gier]
+databaseTag: "gier"
+
+consumes:{
+power: 0.5
+}
+
+drawer:{
+type: DrawTurret
+parts:[
+{
+suffix: "-barrel"
+under: true
+moveY: -2
+progress: recoil
+}]}
+  
+range: 300
+reload: 65
+shake: 6.5
+shootType:{
+type: RailBulletType
+length: 300
+pointEffect: instTrail
+pierceDamageFactor: 1
+damage: 65
+impact: true
+knockBack: 35
+hitEffect: casing4
+status: melting
+
+pointEffectSpace: 30
+}

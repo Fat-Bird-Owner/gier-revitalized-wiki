@@ -1,0 +1,101 @@
+type: mech
+name: Magnitude
+speed: 0.75
+
+outlineColor: 2f2f3f
+health: 1450
+armor: 7.5
+
+description: "
+A bulkier variation of the fledgling.
+It now mainly shoots a single deadly bullet 
+as opposed to the fledgling's three
+[salmon]
+Counter:
+- Multiple layers of walls are needed to
+block it's piercing bullet
+- Forcefields can also block the bullet
+ignoring the pierce altogether
+"
+
+research: {
+parent: fledgling
+objectives: [{
+type: SectorComplete
+preset: encampment
+}]
+}
+
+mechLegColor: 3f3f4f
+legForwardScl: 0.75
+hitSize: 16
+weapons: [
+{
+name: "magnitude-weapon"
+top: false
+x: 7.75
+y: 0
+reload: 60
+
+shake: 2.5
+recoilTime: 75
+inaccuracy: 6
+
+shootSound: blockExplode2
+
+bullet: {
+type: BasicBulletType
+trailLength: 7
+trailWidth: 2
+
+speed: 5
+lifetime: 30
+damage: 75
+  
+width: 10
+height: 14
+hitSound: acceleratorLightning1
+
+fragLifeMin: 1
+fragRandomSpread: 0
+fragBullets: 1
+fragVelocityMin: 1
+fragBullet: {
+type: BasicBulletType
+trailLength: 4
+trailWidth: 1 
+speed: 5
+lifetime: 25
+pierce: true
+damage: 20
+pierceCap: 4
+pierceBuilding: true
+
+hitSound: acceleratorLightning2
+
+fragBullets: 3
+fragBullet: {
+type: LightningBulletType
+damage: 7.5
+lightningColor: FFD37F
+lightningLength: 2
+lightningLengthRand: 2
+}
+
+}
+  
+}
+
+}
+]
+
+abilities: [
+{
+type: ShieldArcAbility
+radius: 18
+max: 350
+regen: 5.83333
+pushUnits: false
+cooldown: 750
+}
+]

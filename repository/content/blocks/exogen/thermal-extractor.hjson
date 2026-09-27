@@ -1,0 +1,35 @@
+type: AttributeCrafter
+name: Thermal Extractor
+attribute: steam
+
+category: production
+buildVisibility: sandboxOnly
+requirements: [lead/50, copper/50, silicon/25]
+
+size: 3
+baseEfficiency: 0
+boostScale: 0.1112
+  
+minEfficiency: 9
+displayEfficiency: false
+outputLiquid: liquid-silicon/0.33334
+
+customShadow: true
+drawer: [
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+padding: 2.75
+drawLiquid: liquid-silicon
+}
+{
+type: DrawBubbles
+color: 53565c
+}
+{
+type: DrawDefault
+}
+]

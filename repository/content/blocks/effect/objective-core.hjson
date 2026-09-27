@@ -1,0 +1,9 @@
+type: CoreBlock
+name: Objective Core
+description: "Core used outside of attack mode for other objectives like on production site"
+  
+allowSpawn: false
+  
+forceDark: true
+targetable: false
+underBullets: true

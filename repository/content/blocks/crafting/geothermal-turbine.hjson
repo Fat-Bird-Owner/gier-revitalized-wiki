@@ -1,0 +1,81 @@
+type: ThermalGenerator
+size: 3
+name: Geothermal Turbine
+
+ambientSound: loopThruster
+ambientSoundVolume: 0.15
+
+description: "
+Alternative to steam turbine.
+Could be placed on hot rocks to produce power.
+[accent]
+- Water is a byproduct
+
+[green]- Produces power off of hot rocks
+[red]- Explosive
+[salmon]- Requires both surge and oxide tech
+"
+
+databaseTag: "adv-surge-alloy"
+shownPlanets: [kela, gier]
+research: steam-turbine
+baseExplosiveness: 40
+
+liquidCpacity: 100
+outputLiquid: water/0.00925941
+
+category: power
+envEnabled: -1
+requirements: [
+lead/175,
+copper/100,
+silicon/55,
+metaglass/25,
+oxide/25,
+surge-alloy/20
+]
+
+displayEfficiencyScale: 0.22223
+minEfficiency: 0.1
+customShadow: true
+
+attribute: geothermal-source
+
+powerProduction: 1.5
+drawer: {
+type: DrawMulti
+drawers: [
+{
+type: DrawDefault
+}
+{
+type: DrawRegion
+spinSprite: true
+suffix: "-rotator"
+rotateSpeed: 7.5
+}
+{
+type: DrawRegion
+spinSprite: true
+suffix: "-rotator"
+rotation: 45
+rotateSpeed: 7.5
+}
+{
+type: DrawRegion
+suffix: "-top"
+}
+{
+type: DrawGlowRegion
+suffix: "-glow"
+color: f3e97955
+alpha: 0.105
+}
+{
+type: DrawGlowRegion
+suffix: "-light"
+color: E3AE6F44
+alpha: 0.185
+}
+]
+}

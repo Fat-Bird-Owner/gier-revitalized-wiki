@@ -1,0 +1,28 @@
+type: flying
+name: Dove
+flying: true
+
+drawSoftShadow: false
+hittable: true
+targetable: false
+
+armor: 5
+speed: 2.5
+engineOffset: 6
+
+trailScl: 1
+trailLength: 6
+hitSize: 10
+
+defaultCommand: mine
+health: 450
+outlineColor: 2f2f3f
+
+range: 50
+isEnemy: false
+controlSelectGlobal: false
+wreckSoundVolume: 0.75
+deathSoundVolume: 0.75
+
+mineTier: 1
+mineSpeed: 2.5

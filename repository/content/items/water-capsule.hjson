@@ -1,0 +1,6 @@
+name: Water Capsule
+shownPlanets:[gier,kela]
+color: 596ab8ff
+
+databaseCategory: "gr-capsules"
+databaseTag: "gr-non-volatile"

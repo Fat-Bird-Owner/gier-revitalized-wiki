@@ -1,0 +1,28 @@
+type: GenericCrafter
+name: Melting Port
+
+category: production
+craftTime: 60
+consumes:{
+items:[lead/1]
+}
+
+outputLiquid: liquid-lead/0.05
+
+envEnabled: -1
+buildVisibility: debugOnly
+
+requirements:[copper/25,lead/15]
+  
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+name: "gr-melting-port"
+}
+{
+type: DrawCrucibleFlame
+}
+]
+}

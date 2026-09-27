@@ -1,0 +1,13 @@
+type: PowerNode
+laserRange: 100
+laserScale: 9
+forceDark: true
+
+health: 999999999
+targetable: false
+underBullets: false
+sameBlockConnection: true
+
+maxNodes: 99
+autolink: false
+powerLayer: 80

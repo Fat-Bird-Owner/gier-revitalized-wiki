@@ -1,0 +1,135 @@
+type: ItemTurret
+size: 4
+name: "Leviathan"
+
+description: "
+Shoots long-ranged ballistic missiles capable of shreding apart crowds
+[green]
+"
+
+databaseTag: "adv-dense-alloy"
+rotateSpeed: 5
+predictTarget: false
+unitSort: grouped
+
+outlineColor: 2f2f3f
+reload: 420
+range: 800 
+cooldownTime: 160
+
+requirements: [lead/1500, titanium/1500, beryllium/1000, silicon/750, thorium/500]
+category: turret
+shownPlanets: [kela, gier]
+
+buildVisibility: sandboxOnly
+//research: disarray
+researchCostMultiplier: 0.25
+
+shootSound: shootFuse
+shoot: {
+firstShotDelay: 120
+}
+
+shootEffect: {
+type: ParticleEffect
+lenFrom: 4
+lenTo: 8
+interp: sineOut
+particles: 22
+lifetime: 60
+length: 160
+cone: 33
+colorFrom: FFD280FF
+colorTo: FFD28000
+strokeFrom: 2
+strokeTo: 3
+}
+
+maxAmmo: 20
+ammoPerShot: 10
+ammoTypes: {
+dense-alloy: {
+spawnUnit: leviathan-missile-dense-alloy
+ammoMultiplier: 1
+}
+cualbult: {
+spawnUnit: leviathan-missile-cualbult
+ammoMultiplier: 1
+}
+surge-alloy: {
+spawnUnit: leviathan-missile-surge-alloy
+ammoMultiplier: 1
+}
+decaying-matter: {
+spawnUnit: leviathan-missile-decaying-matter
+ammoMultiplier: 1
+}
+}
+
+shootY: 6
+drawer: {
+type: DrawTurret
+basePrefix: "reinforced-"
+parts: [
+  {
+  type: RegionPart
+  suffix: "-arm-r"
+  moveRot: -30
+  progress: warmup
+  }
+  {
+  type: RegionPart
+  suffix: "-arm-l"
+  moveRot: 30
+  progress: warmup
+  }
+  {
+  type: RegionPart
+  suffix: "-plate"
+  }
+]
+
+ammoParts: {
+  dense-alloy: [
+    {
+      type: RegionPart
+      name: "gr-leviathan-missile-dense-alloy"
+      outline: false
+      layerOffset: -0.1
+      progress: charge
+      moveY: 6
+    }
+  ]
+  cualbult: [
+    {
+      type: RegionPart
+      name: "gr-leviathan-missile-cualbult"
+      outline: false
+      layerOffset: -0.1
+      progress: charge
+      moveY: 6
+    }
+  ]
+  surge-alloy: [
+    {
+      type: RegionPart
+      name: "gr-leviathan-missile-surge-alloy"
+      outline: false
+      layerOffset: -0.1
+      progress: charge
+      moveY: 6
+    }
+  ]
+  decaying-matter: [
+    {
+      type: RegionPart
+      name: "gr-leviathan-missile-decaying-matter"
+      outline: false
+      layerOffset: -0.1
+      progress: charge
+      moveY: 6
+    }
+  ]
+}
+
+}

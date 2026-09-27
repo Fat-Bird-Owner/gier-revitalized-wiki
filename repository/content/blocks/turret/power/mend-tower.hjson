@@ -1,0 +1,99 @@
+type: PowerTurret
+name: Mend Tower
+size: 2
+
+description: "
+[red]Very angry repair point beware[]
+Able to shoot at damaged buildings.
+[green]
+- Bullet heals damaged buildings
+- Bullet pulls in flying targets[salmon]
+- Units are higher priority than buildings
+"
+
+coolantMultiplier: 10
+databaseTag: "adv-plastanium"
+envEnabled: -1
+category: turret
+
+outlineColor: 2f2f3f
+#research: mend-pylon
+researchCostMultiplier: 0.15
+
+requirements: [lead/50, copper/40, silicon/35, plastanium/25, oxide/15]
+heatRequirement: 8
+maxHeatEfficiency: 1.5
+
+range: 195
+reload: 60
+targetHealing: true
+
+buildVisibility: sandboxOnly
+shownPlanets: [gr-gier, kela]
+
+coolant:{
+type: ConsumeCoolant
+allowGas: false
+amount: 0.03334
+}
+
+consumes:{
+power: 0.5
+}
+
+shootType: {
+type: ArtilleryBulletType
+speed: 4.5
+lifetime: 45
+healAmount: 45
+splashDamageRadius: 22
+status: incendiary-depletion
+splashDamage: 15
+
+collides: true
+collidesAir: true
+collidesTeam: true
+healColor: FEB380FF
+despawnEffect: hitMeltdown
+
+hitEffect: [
+{
+type: WaveEffect
+colorFrom: BC5452FF
+colorTo: BC5452FF
+strokeFrom: 3
+strokeTo: 0
+sizeFrom: 18
+sizeTo: 22
+sizeInterp: sineOut
+lifetime: 65
+}
+{
+type: WaveEffect
+colorFrom: BC5452FF
+colorTo: BC5452FF
+strokeFrom: 3
+strokeTo: 0
+sizeFrom: 0
+sizeTo: 22
+}
+]
+
+trailEffect: missileTrail
+trailChance: 0.25
+
+despawnHit: true
+hitSound: explosionNavanax
+
+width: 7.5
+height: 14
+
+frontColor: FEB380FF
+backColor: BC5452FF
+trailColor: BC5452FF
+}
+
+drawer: {
+type: DrawTurret
+basePrefix: "reinforced-"
+}

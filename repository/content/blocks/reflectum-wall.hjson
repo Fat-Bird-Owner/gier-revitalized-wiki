@@ -1,0 +1,25 @@
+type: Wall
+name: Deflector Wall
+category: defense
+health: 3000
+
+size: 2
+requirements:[phase-fabric/25, silicon/25]
+flashHit: true
+
+flashColor: F8C4ACFF
+chanceDeflect: 7500
+baseExplosiveness: 6
+
+databaseTag: "adv-phase-fabric"
+
+research: insulated-wall
+researchCostMultiplier: 0.75
+description: "
+Hardened form of phase fabric shaped into a defensive barracade. Will almost always deflect the bullets that hits it
+[green]
+- Deflects bullets
+- Durable[red]
+- Unarmored
+- Slightly explosive
+"

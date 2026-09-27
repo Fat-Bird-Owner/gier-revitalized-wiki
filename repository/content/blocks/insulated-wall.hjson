@@ -1,0 +1,22 @@
+type: Wall
+size: 2
+name: Insulated Wall
+description: "The classic. Protects from enemy projectiles and can also stop lasers and eletric bullets."
+variants: 4
+
+// absorb laser a d eletric
+health: 3600
+absorbLasers: true
+insulated: false
+customShadow: false
+
+databaseTag: "gier"
+research: alloy-barracade
+researchCostMultiplier: 0.25
+  
+category: defense
+requirements:[
+lead/45
+titanium/10
+silicon/25
+]

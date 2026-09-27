@@ -1,0 +1,156 @@
+type: tether
+flying: true
+name: Hull
+
+hitSize: 25
+health: 150
+armor: 5
+
+payloadCapacity: 625
+hittable: false
+targetable: false
+vulnerableWithPayloads: true
+
+outlineRadius: 0
+engineSize: 0
+useUnitCap: false
+
+speed: 1.5
+accel: 0.1
+drag: 0.05
+
+parts: [
+{
+type: RegionPart
+outline: false
+x: -7.5
+y: 7.5
+
+layerOffset: -0.75
+xScl: 0.75
+yScl: 0.75
+
+mirror: true
+suffix: "-rotators"
+
+moveRot: 360
+progress: {
+type: time
+op: loop
+time: 40
+}
+
+}
+{
+type: RegionPart
+outline: false
+x: -7.5
+y: -7.5
+
+layerOffset: -0.75
+xScl: 0.75
+yScl: 0.75
+
+mirror: true
+suffix: "-rotators"
+
+moveRot: -360
+progress: {
+type: time
+op: loop
+time: 40
+}
+
+}
+]
+
+/*
+engines: [
+{
+x: 10
+y: -10
+radius: 2
+rotation: 135
+}
+{
+x: -10
+y: -10
+radius: 2
+rotation: 45
+}
+{
+x: -10
+y: 10
+radius: 2
+rotation: -45
+}
+{
+x: 10
+y: 10
+radius: 2
+rotation: -135
+}
+]
+*/
+
+drawSoftShadow: false
+buildSpeed: 1.5
+mineSpeed: 15
+
+/*
+weapons: [
+{
+x: 0
+y: 0
+mirror: false
+
+rotate: true
+reload: 90
+
+shoot: {
+shots: 3
+shotDelay: 10
+}
+
+bullet: {
+
+type: LaserBoltBulletType
+trailLength: 5
+trailWidth: 1
+
+frontColor: FFD37F
+backColor: FFD37F
+healColor: FFD37F
+
+trailColor: FFD37F
+speed: 5
+lifetime: 30
+
+collidesTeam: true
+inaccuracy: 15
+
+weaveScale: 3
+weaveMag: 2
+healPercent: 1
+
+damage: 10
+splashDamage: 5
+splashDamageRadius: 20
+
+buildingDamageMultiplier: 0
+scaledSplashDamage: true
+
+}
+
+}
+]
+*/
+
+healColor: 9f9f9f
+abilities: [
+{
+type: RegenAbility
+percentAmount: 0.166667
+}
+]
+

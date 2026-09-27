@@ -1,0 +1,145 @@
+type: flying
+hitSize: 22
+health: 1250
+armor: 10
+
+speed: 0.75
+accel: 0.1
+drag: 0.075
+flying: true
+range: 350
+rotateSpeed: 1
+
+drawSoftShadow: false
+lowAltitude: true
+
+engineSize: 0
+parts:[
+{
+type: HoverPart
+radius: 10
+layerOffset: -0.1
+color: FFD37F 
+y: -11.5
+mirror: false
+}
+
+{
+type: HoverPart
+radius: 6
+layerOffset: -0.1
+color: FFD37F 
+x: 11
+mirror: true
+}
+]
+  
+name: Cruiser
+outlineRadius: 0
+weapons:[
+{
+x: 0
+y: 0
+mirror: false
+shootY: 10
+  
+reload: 300
+shootSound: shootForeshadow
+
+parts:[
+{
+type: FlarePart
+sides: 4
+color1: FFD37F
+radius: 0
+radiusTo: 12
+stroke: 1.5
+spinSpeed: 0
+progress: charge
+
+y: 8.5
+x: 0
+}
+]
+
+shootStatus: unmoving
+shootStatusDuration: 60
+shoot: {
+firstShotDelay: 60
+}
+
+ejectEffect: {
+type: ParticleEffect
+colorFrom: 4f4f4f88
+colorTo: 6f6f6f00
+sizeFrom: 2
+sizeTo: 4
+particles: 24
+length: 40
+cone: 50
+lifetime: 45
+layer: 120
+}
+
+
+bullet:{
+
+type: RailBulletType
+pierceEffect: instHit
+lineEffect: railHit
+pointEffect: railTrail
+pointEffectSpace: 44
+length: 350
+
+recoil: 12.5
+fragOnDespawn: false
+fragVelocityMin: 1
+fragVelocityMax: 1
+
+damage: 150
+maxDamageFraction: 0.75
+
+knockback: 15
+impact: true
+  
+fragBullets: 6
+fragRandomSpread: 0
+fragSpread: 15
+fragBullet:{
+accel: 0.05
+velocityScaleRandMin: 1
+velocityScaleRandMax: 1
+speed: 5
+lifetime: 300
+pierce: true
+
+frontColor: ffffff00
+backColor: ffffff00
+trailColor: FFD37F
+hitSize: 20
+damage: 2
+
+lightning: 3
+lightningDamage: 4.5
+lightningColor: FFD37F
+
+despawnHit: true
+
+}
+
+trailWidth: 2
+trailLength: 10
+homingPower: 0.075
+homingRange: 800
+}
+
+}
+]
+
+// Researches
+
+description: "
+Fires a piercing beam at extreme range
+And suffers from low durability 
+"
+

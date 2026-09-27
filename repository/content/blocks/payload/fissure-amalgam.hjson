@@ -1,0 +1,46 @@
+type: Constructor
+configurable: false
+# AttributeConstructor
+
+name: Fissure Alamgam
+description: "
+Drains the hardened carbon from the wall
+behind it. And mixes it with silicon.
+
+[grey][i] - Outputted blocks are used for
+payload purposes.
+[green]
+- Produces packed carbon: [sky]Carbon related[]
+- Produces packed beryllium: [#3a8f64]Beryllic and stone[]
+- Doesn't require power
+[red]- Needs a required tile behind it
+- Explosive
+"
+
+research: freight-assembler
+category: units
+size: 2
+canOverdrive: false
+
+//result: gr-packed-graphite
+requirements:[lead/125, copper/50, silicon/25, depleted-thorium/25]
+buildVisibility: shown
+
+shownPlanets: [kela, gier]
+canOverdrive: true
+researchCostMultiplier: 0.25
+databaseTag: "adv-depleted-thorium"
+
+privileged: true
+buildSpeed: 0.1
+fullOverride: "gr-fissure-amalgam-icon"
+
+destroyBullet:{
+type: ExplosionBulletType
+splashDamage: 200
+splashDamageRadius: 60
+scaledSplashDamage: true
+despawnHit: true
+hitShake: 15
+hitEffect: plasticExplosionFlak
+}

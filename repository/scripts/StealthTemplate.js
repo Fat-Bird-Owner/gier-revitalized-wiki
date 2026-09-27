@@ -1,0 +1,47 @@
+const effects = require("effects");
+const units = [
+"gr-conceal",
+"gr-covert"
+];
+
+Events.on(ClientLoadEvent, () => {
+try {
+
+const exposed = Vars.content.statusEffect("gr-exposed")
+let effect = new MultiEffect(exposed.effect, effects.targetPointEffect);  
+exposed.effect = effect;
+
+let applyEffect = new MultiEffect(exposed.effect, effects.targetPointEffect);
+exposed.applyEffect = applyEffect;
+  
+for (let i = 0; i < units.length; i++){
+
+const unit = Vars.content.unit(units[i]);
+
+if (units[i] == "gr-covert"){
+Object.assign(unit, {
+legBaseRegion: UnitTypes.cleroi.legBaseRegion,
+legRegion: UnitTypes.cleroi.legRegion
+});
+}
+  
+Object.assign(unit, {
+flyingLayer: 123.5,
+groundLayer: 123.5,
+drawSoftShadow: false,
+drawMinimap: false,
+targetable: false,
+drawShields: false,
+stepSound: Sounds.none,
+tankMoveSound: Sounds.none,
+lightRadius: 1.0,
+lightOpacity: 0.0,
+mechStepParticles: false,
+shadowRegion: Core.atlas.find("window-empty")
+});
+
+}
+
+} catch(e){
+Log.err("[red]StealthTemplate - []" + e);
+}});

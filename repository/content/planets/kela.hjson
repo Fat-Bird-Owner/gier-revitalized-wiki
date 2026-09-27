@@ -1,0 +1,91 @@
+generator: SerpuloPlanetGenerator
+
+radius: 0.85
+statParent: gier
+#name: Kela
+iconColor: 596ab8ff
+alwaysUnlocked: true
+accessible: true
+bloom: true
+
+orbitRadius: 50
+sectorSize: 2
+startSector: 24
+allowSectorInvasion: true
+allowLaunchToNumbered: false
+allowSelfSectorLaunch: false
+
+atmosphereColor: 1d214ec3
+orbitSpacing: 12
+orbitRadius: 120
+
+clearSectorOnLose: true
+campaignRuleDefaults: {
+	sectorInvasion: false
+	fog: false
+}
+
+prebuildBase: true
+parent: sun
+defaultCore: core-satellite
+solarSystem: sun
+updateLighting: false
+
+mesh: [
+{
+type: NoiseMesh
+planet: kela
+radius: 1
+}
+]
+
+
+cloudMesh: [
+ {
+   type: HexSkyMesh
+   planet: kela
+   speed: 1.01
+   radius: 0.15
+   divisions: 5
+   color: a7a9c4
+
+# a7a9c4
+
+   octaves: 2
+   persistence: 0.6
+   scl: 0.9
+   thresh: 0.25
+# 0.25
+
+   seed: 2
+  }
+  {
+   type: HexSkyMesh
+   planet: kela
+   speed: 1.01
+   radius: 0.1
+   divisions: 5
+   color: 767aa6bd
+# 767aa6bd
+
+   octaves: 2
+   persistence: 0.6
+   scl: 0.9
+   thresh: 0.45
+# 0.45
+
+   seed: 2
+  }
+  {
+   type: HexSkyMesh
+   planet: kela
+   speed: 2.3
+   radius: 0.01
+   divisions: 5
+   color: a7a9c477
+   octaves: 3
+   persistence: 0.3
+   scl: 1
+   thresh: 0
+  }
+]

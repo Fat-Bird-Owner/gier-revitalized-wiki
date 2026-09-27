@@ -1,0 +1,112 @@
+type: PowerTurret
+size: 2
+name: Reinforced Thorium Wall
+databaseTag: "adv-thorium"
+
+health: 2500
+description: "
+Able to release a burst of radiation
+temporarily depleting nearby enemies
+[green]
++ Able to burst out radiation
+- Depleting enemies
+- And dealing small amounts of damage
+"  
+
+customShadow: true
+range: 40
+buildVisibility: shown
+  
+research: insulated-wall
+researchCostMultiplier: 0.25
+category: defense
+
+cone: 0
+recoil: 0
+rotateSpeed: 0
+
+rotate: false
+group: walls
+fogRadiusMultiplier: 0
+
+requirements: [thorium/25, titanium/10]
+
+priority: 0
+shootY: 0
+elevation: 4
+
+playerControllable: false
+shootCone: 180
+reload: 80
+
+drawer: {
+type: DrawRegion
+}
+
+
+shootType: {
+type: BulletType
+splashDamage: 20
+splashDamageRadius: 40
+scaledSplashDamage: true
+status: incendiary-depletion
+statusDuration: 60
+despawnEffect: none
+hitEffect: none
+instantDisappear: true
+despawnHit: true
+}
+
+shootEffect: [
+{
+type: WaveEffect
+sizeFrom: 0
+sizeTo: 10
+colorFrom: f9a3c7
+colorTo: f9a3c7
+strokeFrom: 3
+strokeTo: 0
+}
+{
+type: ParticleEffect
+baseLength: 8
+colorFrom: f9a3c7
+colorTo: ffaa5f
+lenFrom: 30
+lenTo: 30
+strokeFrom: 3
+strokeTo: 0
+particles: 3
+lifetime: 23
+length: 0
+line: true
+}
+{
+type: ParticleEffect
+baseLength: 6
+colorFrom: f9a3c7
+colorTo: ffaa5f
+lenFrom: 15
+lenTo: 15
+strokeFrom: 3
+strokeTo: 0
+particles: 4
+lifetime: 46
+line: true
+length: 0
+}
+{
+type: ParticleEffect
+baseLength: 4
+length: 0
+colorFrom: f9a3c7
+colorTo: ffaa5f
+lenFrom: 10
+lenTo: 10
+strokeFrom: 3
+strokeTo: 0
+particles: 5
+lifetime: 70
+line: true
+}
+]

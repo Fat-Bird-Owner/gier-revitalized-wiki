@@ -1,0 +1,16 @@
+color: EA8878FF
+name: Overdrive Fluid
+flammability: 1.5
+explosiveness: 5
+temperature: 1
+viscosity: 0
+
+description: "
+Fluids with [#f4ba6e]phase bound[] properties.
+Has accelerated heating properties.
+
+Used to overdrive certain blocks.
+Prominently used for [#f4ba6e]overdrive healing.
+
+[red]Extremely explosive[]
+"

@@ -1,0 +1,13 @@
+type: BuildTurret
+size: 2
+name: "Build Pylon"
+outlineColor: 00000000
+
+requirements:[lead/250,copper/175,graphite/75,silicon/125,beryllium/75]
+category: effect
+outlineRadius: 0
+
+#research: core-facility
+
+buildVisibility: sandboxOnly
+databaseTag: "gier"

@@ -1,0 +1,50 @@
+type: flying
+name: Virulence
+  
+envDisabled: 0
+lowAltitude: false
+flying: true
+
+drag: 0.07
+speed: 1
+rotateSpeed: 2
+accel: 0.1
+
+health: 5000
+armor: 9
+hitSize: 37.5
+
+payloadCapacity: 2304
+targetAir: false
+outlineRadius: 0
+
+engineSize: 4
+engineOffset: 18.75
+drawSoftShadow: false
+
+loopSound: loopHover
+weapons: [
+{
+x: 13.5
+y: -6
+rotationLimit: 30
+
+rotate: true
+rotateSpeed: 4
+shootCone: 15
+shootSound: mechStep
+
+reload: 60
+shoot: {
+type: ShootSpread
+spread: 5
+shots: 3
+shotDelay: 10
+}
+
+bullet: {
+spawnUnit: virulence-missile
+}
+
+}
+]

@@ -1,0 +1,52 @@
+type: Battery
+// damageBattery
+health: 450
+name: Power Cell
+
+description: "Behaves as a battery.
+[grey]what you expect?[]
+
+[green]- Durable
+- Releases lightning arcs upon damage
+- Could be manually activated via circuit logic
+[salmon]- Consumes power to produce a lightning arc
+
+[grey]- Damage is proportional to damage taken
+- battery drain ratio damage to drain [1 : 1.75]
+
+[accent]- Lighting is team colored
+"
+
+attributes:{
+circuitHeatDamage: 125
+}
+
+databaseTag: "gier"
+requirements:[lead/45,copper/30,metaglass/15,silicon/10]
+category: power
+envEnabled: -1
+
+research: button
+researchCostMultiplier: 0.15
+
+research: button
+customShadow: true
+configureSound: shootArc
+
+consumes:{
+powerBuffered: 450
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawDefault
+}
+{
+type: DrawPower
+suffix: "-top"
+emptyLightColor: ffffff00
+}
+]
+}

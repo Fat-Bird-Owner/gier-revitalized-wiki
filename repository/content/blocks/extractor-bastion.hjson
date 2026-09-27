@@ -1,0 +1,29 @@
+type: UnitCargoLoader
+size: 2
+name: Eluminate Bastion
+category: effect
+description: "
+Constructs [accent]eluminates[] to rebuild and assist the player.
+
+[red]- Limit 1 (per building)
+[red]- Requires power
+[green]- Eluminates help rebuild
+"  
+
+unitType: eluminate
+unitBuildTime: 300
+
+configurable: false
+customShadow: true
+databaseTag: "gier"
+
+consumes:{
+power: 1
+}
+//buildVisibility: sandboxOnly
+
+requirements:[lead/100,copper/75, graphite/50, metaglass/50, silicon/35, titanium/50]
+
+research: mend-pylon
+researchCostMultiplier: 0.15
+envEnabled: -1

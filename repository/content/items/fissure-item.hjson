@@ -1,0 +1,5 @@
+hardness: 10
+buildable: false
+hidden: true
+lowPriority: true
+name: Fissure

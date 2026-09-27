@@ -1,0 +1,25 @@
+planet: gr-gier
+sector: 0
+outline: false
+
+details: "[lightgrey]Gier is an asteroid sector, Expect a completely random map since its an asteroid sector.
+
+Version: 0.1.1
+"
+
+overrideLaunchDefaults: true
+allowLaunchSchematics: false
+allowLaunchLoadout: false
+research: {
+parent: gier
+objectives:[
+{
+type: Produce
+content: metaglass
+}
+{
+type: Produce
+content: silicon
+}
+]
+}

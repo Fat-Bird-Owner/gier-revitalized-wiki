@@ -1,0 +1,54 @@
+type: AttributeCrafter
+size: 2
+name: Incineration Rig
+
+databaseTag: "adv-scrap"
+
+maxBoost: 1.5
+boostScale: 0.25
+description: "
+Incinerates items rapidly
+Produces slag as a byproduct
+
+Cant incinerate any items that are 
+unflammable
+[green]
+- Incinerates items
+- Scale with heat from tile
+- produces slag[red]
+- Explosive
+- Cant incinerate unflammable items
+- requires power
+"
+
+category: production
+requirements: [lead/175, copper/150, graphite/75, silicon/40, metaglass/40]
+outputLiquid: slag/0.16667
+liquidCapacity: 30
+
+research: "gr-fluid-cracker"
+researchCostMultiplier: 0.25
+envEnabled: -1
+
+ignoreLiquidFullness: true
+baseExplosiveness: 75
+craftTime: 5
+consumes: {
+power: 1.5
+itemFlammable: {
+minFlammability: 0
+}
+}
+
+itemCapacity: 40
+customShadow: true
+drawer: [
+{
+type: DrawDefault
+}
+{
+type: DrawGlowRegion
+suffix: "-top"
+color: f3e979
+}
+]

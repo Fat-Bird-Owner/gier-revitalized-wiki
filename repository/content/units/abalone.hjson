@@ -1,0 +1,102 @@
+type: flying
+name: Abalone
+description: "
+Quite durable but has a short range
+
+Is able to shoot sharp shrapnel using it's
+fuse cannon.
+
+And is enragable.
+
+[salmon]Counter: Knock-back, Insulation
+"
+
+hitSize: 22
+health: 1500
+armor: 5
+
+outlineColor: 2f2f3f
+drawSoftShadow: false
+lowAltitude: true
+
+speed: 1.25
+accel: 0.15
+drag: 0.05
+flying: true
+rotateSpeed: 2.5
+
+abilities:[
+{
+type: StatusFieldAbility
+range: 0
+reload: 600 
+duration: 180
+effect: overclock
+onShoot: true
+range: 160
+}
+]
+
+engineSize: 0
+parts:[
+{
+type: HoverPart
+radius: 8
+color: f3e979
+y: -6.5
+layerOffset: -0.1
+}
+]
+
+weapons: [
+{
+name: "cr-weapon"
+reload: 12.5
+x: 6
+y: -4
+
+rotate: true
+rotateSpeed: 2.5
+shake: 2
+
+shootSound: shootFuse
+shoot:{
+type: ShootSpread
+shots: 3
+spread: 15
+}
+
+bullet: {
+type: ShrapnelBulletType
+serrations: 0
+fromColor: f3e979
+toColor: f3e979
+length: 75
+width: 12
+
+damage: 30
+shootEffect: none
+smokeEffect: none
+hitColor: f3e979
+hitEffect: hitBeam
+
+smokeEffect: {
+type: ParticleEffect
+particles: 4
+cone: 45
+colorFrom: f3e979
+colorTo: f3e979
+lenFrom: 4
+lenTo: 6
+strokeFrom: 3
+strokeTo: 0
+length: 40
+line: true
+lifetime: 12
+}
+
+
+}
+  
+}
+]

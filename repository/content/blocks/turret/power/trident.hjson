@@ -1,0 +1,236 @@
+type: ItemTurret
+size: 4
+name: Volley
+category: turret
+outlineColor: 2f2f3f
+
+coolant:{
+type: ConsumeCoolant
+allowGas: false
+amount: 0.33334
+}
+
+shake: 1.75
+maxAmmo: 20
+consumeAmmoOnce: false
+ammoPerShot: 1
+description: "
+Expensive turret, Able rapidly fire high-velocity rounds.
+
+[green]- Fast bullet speed
+[salmon]- Quite inaccurate
+- Explosive[accent]
+- Poccesses anti-iframe capabilities
+- Able to inflict melting
+- Able to inflict incendiary depletion
+"
+
+requirements:[lead/500,copper/450,graphite/200]
+research: tension
+researchCostMultiplier: 0.25
+
+destroyBullet:{
+type: ExplosionBulletType
+splashDamage: 450
+splashDamageRadius: 60
+
+despawnHit: true
+hitSound: blockExplodeElectric 
+hitShake: 15
+hitEffect: {
+type: MultiEffect
+effects:[
+launch
+launchPod
+]
+}
+}
+
+reload: 17.5
+inaccuracy: 15
+range: 400
+rotateSpeed: 4.5
+shootSound: unitCreateBig
+
+databaseTag: "gier"
+envEnabled: -1
+shoot:{
+shots: 3
+shotDelay: 30
+}
+
+drawer:{
+type: DrawTurret
+basePrefix: "reinforced-"
+parts:[
+{
+suffix: "-barrel"
+moveY: -4
+progress: recoil
+under: true
+}
+]
+}
+
+ammoTypes:{
+copper:{
+width: 7.5
+height: 10.5
+
+hitSound: trident-bullet-impact
+
+despawnHit: true
+
+speed: 10
+lifetime: 40
+
+trailLength: 0
+trailWidth: 3
+
+damage: 37.5
+
+knockback: 15
+impact: true
+homingPower: 0.005
+status: iframe-kill
+
+hitEffect: {
+type: ParticleEffect
+particles: 6
+cone: 40
+lifetime: 22
+length: 16
+layer: 44
+colorFrom: d99d73
+colorTo: d99d73
+}
+
+}
+
+lead:{
+width: 7.5
+height: 10.5
+
+hitSound: trident-bullet-impact
+
+despawnHit: true
+
+speed: 10
+lifetime: 40
+
+trailLength: 0
+trailWidth: 3
+reloadMultiplier: 1.25
+
+frontColor: 8c7fa9
+backColor: 8c7fa9
+damage: 15
+layer: 77
+
+knockback: 15
+impact: true
+homingPower: 0.005
+status: melting
+statusDuration: 300
+
+hitEffect: {
+type: ParticleEffect
+particles: 6
+cone: 40
+lifetime: 22
+length: 11
+layer: 44
+colorFrom: 8c7fa9
+colorTo: 8c7fa9
+}
+
+
+}
+
+depleted-thorium: {
+width: 7.5
+height: 10.5
+
+hitSound: trident-bullet-impact
+hitEffect: {
+type: MultiEffect
+effects:[
+{
+type: WaveEffect
+lifetime: 12
+sizeFrom: 4
+sizeTo: 24
+strokeFrom: 1
+strokeTo: 0
+}
+{
+type: ParticleEffect
+sizeFrom: 6
+sizeTo: 0
+interp: pow10Out
+particles: 9
+length: 30
+colorFrom: B58DA5
+colorTo: B58DA5
+lifetime: 40
+layer: 44
+}
+{
+type: ParticleEffect
+sizeFrom: 3
+sizeTo: 0
+interp: sineOut
+particles: 9
+length: 54
+colorFrom: B58DA5
+colorTo: B58DA5
+line: true
+lenFrom: 4
+lenTo: 8
+cone: 45
+lifetime: 45
+}
+]
+}
+
+despawnHit: true
+
+speed: 10
+lifetime: 40
+
+trailLength: 0
+trailWidth: 3
+
+frontColor: B58DA5
+backColor: B58DA5
+damage: 25
+splashDamage: 15
+splashDamageRadius: 24
+
+layer: 77
+
+knockback: 15
+impact: true
+homingPower: 0.005
+
+status: incendiary-depletion
+statusDuration: 60
+
+armorMultiplier: 0.8
+
+trailInterval: 3
+trailEffect: {
+type: ParticleEffect
+sizeFrom: 3
+sizeTo: 0
+interp: pow10Out
+particles: 1
+length: 0
+colorFrom: B58DA5
+colorTo: B58DA5
+}
+
+}
+}
+
+

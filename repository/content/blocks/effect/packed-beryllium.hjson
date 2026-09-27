@@ -1,0 +1,6 @@
+type: Wall
+requirements:[silicon/10,beryllium/25]
+name: Packed Beryllium
+
+placeablePlayer: true
+buildVisibility: sandboxOnly

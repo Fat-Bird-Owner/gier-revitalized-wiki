@@ -1,0 +1,69 @@
+type: GenericCrafter
+size: 3
+name: "Scrap Compressor"
+
+description: "
+Separates a minerals from the slag and 
+crushes down unusable ones into scrap
+
+[I] - Scrap: Mainly used for desposable
+defenses
+
+[lightgrey]
+- Outputs scrap[green]
+- Produces other common minerals[red]
+- Explosive
+- Requires power
+- Manual mineral filteration required
+"
+
+research: incineration-rig
+databaseTag: "adv-scrap"
+envEnabled: -1
+
+itemCapacity: 30
+baseExplosiveness: 50
+craftTime: 300
+outputItems: [scrap/15, copper/10, lead/10, graphite/5, titanium/5, beryllium/5]
+consumes: {
+power: 1.5
+liquids: [slag/0.125]
+}
+
+requirements: [lead/125, copper/50, titanium/50, metaglass/50, silicon/100]
+researchCostMultiplier: 0.25
+
+sqaureSprite: false
+category: crafting
+customShadow: true
+drawer: [
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+padding: 4
+drawLiquid: slag
+alpha: 0.85
+}
+{
+type: DrawBlurSpin
+suffix: "-rotator"
+x: 6
+y: -5.75
+rotateSpeed: 6
+blurThresh: 1
+}
+{
+type: DrawBlurSpin
+suffix: "-rotator"
+x: -6
+y: 5.75
+rotateSpeed: 6
+blurThresh: 1
+}
+{
+type: DrawDefault
+}
+]

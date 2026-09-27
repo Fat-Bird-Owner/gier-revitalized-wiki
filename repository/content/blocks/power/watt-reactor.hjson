@@ -1,0 +1,111 @@
+type: NuclearReactor
+description: "
+Generates power by burning graphite.
+A variety of coolants could be used.
+
+[green]- Not expensive
+- Low maintance
+[red]- Extremely explosive
+[salmon]- Requires active cooling
+"
+
+// overrides
+fuelItem: graphite
+heating: 0.065
+
+name: Watt Reactor
+size: 4
+health: 3500
+itemCapacity: 100
+armor: 5
+baseExplosiveness: 15
+priority: 35
+
+databaseTag: "gier"
+shownPlanets: [gier]
+envEnabled: -1
+
+customShadow: true
+
+
+itemDuration: 180
+requirements: [
+lead/465
+copper/375
+silicon/225
+metaglass/175
+beryllium/45
+titanium/75
+]
+
+powerProduction: 16.66667
+explosionRadius: 13.125
+explosionDamage: 4750
+category: power
+
+databaseTag: "gier"
+research: photon-panel
+researchCostMultiplier: 0.15
+
+generateEffectRange: 0.1
+effectChance: 0.225
+generateEffect:{
+type: RadialEffect
+lengthOffset: 11.5
+rotationOffset: 45
+layer: 111
+effect:{
+type: ParticleEffect
+particles: 3
+cone: 40
+sizeFrom: 3
+sizeTo: 6
+lifetime: 90
+colorFrom: 5f5f5f55
+colorTo: 9f9f9f00
+layer: 111
+interp: sineOut
+length: 28
+}
+}
+
+explodeEffect: reactorExplosion
+explodeSound: explosionCore
+
+consumes:{
+items:[graphite/10]
+
+coolant:{
+amount: 0.166667
+maxTemp: 0.75
+maxFlammability: 0.2
+allowGas: false
+}
+//liquids:[water/1.66667]
+
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawArcSmelt
+drawCenter: false
+}
+{
+type: DrawCrucibleFlame
+particleInterp: sineOut
+}
+{
+type: DrawRegion
+suffix: "-internals"
+}
+{
+type: DrawDefault
+}
+]
+}

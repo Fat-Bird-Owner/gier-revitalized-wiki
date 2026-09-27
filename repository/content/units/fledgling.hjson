@@ -1,0 +1,80 @@
+type: mech
+name: Fledgling
+speed: 0.82
+
+outlineColor: 2f2f3f
+health: 650
+armor: 7.5
+
+description: "
+Unlike other exogen units, This one is adapted to
+ground-based combat.Being a mirrored counterpart
+to the dagger
+[salmon]
+Counters: 
+- Fledglings are relativly weak and could be
+destroyed easily
+- Copper fort forcefields could be destroyed
+rather easily
+"
+
+research: {
+parent: techtree-kela
+objectives: [{
+type: SectorComplete
+preset: aftermath
+}]
+}
+
+hitSize: 12
+mechLegColor: 3f3f4f
+weapons: [
+{
+name: "fledgling-weapon"
+top: false
+x: 7.5
+y: -1.5
+reload: 75
+shootSound: shootPayload
+
+recoilTime: 75
+inaccuracy: 6
+shoot: {
+shots: 3
+shotDelay: 15
+}
+
+bullet: {
+type: BasicBulletType
+trailLength: 1
+trailWidth: 1 
+
+speed: 5
+lifetime: 25
+damage: 50
+
+trailInterval: 0.2
+trailRotation: true
+trailEffect: {
+type: ParticleEffect
+region: circle-shadow
+colorFrom: ffd27d8c
+colorTo: ff874500
+lightColor: ff8846ff
+heightTo: 1
+heightFrom: 0.25
+sizeFrom: 6
+particles: 1
+length: 16
+randLength: "false"
+cone: 0
+interp: sineOut
+sizeTo: 2.5
+lifetime: 20
+}
+
+shieldDamageMultiplier: 0.75
+}
+
+}
+]

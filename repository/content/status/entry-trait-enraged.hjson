@@ -1,0 +1,22 @@
+databaseCategory: "entries"
+name: "Directory: [salmon]Enraged[]"
+details: '''[lightgrey]
+Certain units when reaching
+half health will get enraged.
+
+Enraged units move and
+reload faster.
+
+Applies to[accent] Ash, Arraign, Abalone[]
+'''
+
+outline: falsw
+shownPlanets:[gier]
+databaseTag: "traits"
+
+research:{
+parent: entry-trait-iframe
+objectives:[
+entry-trait-iframe
+]
+}

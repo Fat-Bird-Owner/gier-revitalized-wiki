@@ -1,0 +1,25 @@
+type: UnitCargoLoader
+#MechPad
+
+size: 2
+name: Mechanical Pad
+description: "[red]<Test block>[]
+Fabricates a unit with the required resources.
+"
+
+polyRadius: 0
+polyStroke: 0
+
+category: effect
+requirements:[lead/275,copper/200,silicon/125]
+unitType: incite
+
+#hasItems: false
+itemCapacity: 0
+
+consumes:{
+power: 1.5
+liquids:[
+gallium/0.16667
+]
+}

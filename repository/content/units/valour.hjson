@@ -1,0 +1,123 @@
+type: flying
+name: Valour
+
+health: 1500
+speed: 2
+accel: 0.1
+drag: 0.05
+
+armor: 15
+faceTarget: false
+forceMultiTarget: true
+engineOffset: 14
+engineSize: 2.5
+
+outlineColor: 2f2f3f
+lowAltitude: true
+flying: true
+range: 200
+hitSize: 20
+
+weapons: [
+{
+name: "valour-weapon"
+x: 0
+y: 4.75
+mirror: false
+rotate: true
+reload: 45
+
+shootSound: blockExplode2
+shoot: {
+shots: 3
+shotDelay: 5
+}
+
+bullet: {
+type: BasicBulletType
+speed: 8
+damage: 70
+width: 11
+height: 20
+lifetime: 27
+shrinkX: 0.4
+shrinkY: 0
+shootEffect: shootBig
+hitEffect: blastExplosion
+trailParam: 0.5
+despawnSound: shockBullet
+hitSound: shootCleroi
+}
+
+parts: [
+{
+type: RegionPart
+suffix: "-wing"
+mirror: false
+moveRot: -25
+moveX: -1
+progress: recoil
+}
+{
+type: RegionPart
+suffix: "-wing"
+mirror: false
+moveRot: 25
+moveX: 1
+progress: recoil
+xScl: -1
+}
+]
+  
+}
+{
+name: "valour-weapon"
+x: 8.25
+y: -5.25
+rotate: true
+reload: 30
+
+shootSound: blockExplode2
+shoot: {
+shots: 3
+shotDelay: 5
+}
+
+bullet: {
+type: BasicBulletType
+speed: 8
+damage: 70
+width: 11
+height: 20
+lifetime: 27
+shrinkX: 0.4
+shrinkY: 0
+shootEffect: shootBig
+hitEffect: blastExplosion
+trailParam: 0.5
+despawnSound: shockBullet
+hitSound: shootCleroi
+}
+
+parts: [
+{
+type: RegionPart
+suffix: "-wing"
+mirror: false
+moveRot: -25
+moveX: -1
+progress: recoil
+}
+{
+type: RegionPart
+suffix: "-wing"
+mirror: false
+moveRot: 25
+moveX: 1
+progress: recoil
+xScl: -1
+}
+]
+  
+}
+]

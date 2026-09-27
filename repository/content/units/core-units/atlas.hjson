@@ -1,0 +1,62 @@
+type: tether
+speed: 5
+name: Atlas
+
+flying: true
+outlineRadius: 0
+accel: 0.13
+
+drag: 0.02
+faceTarget: false
+drawSoftShadow: false
+isEnemy: false
+itemCapacity: 500
+targetable: false
+rotateSpeed: 4.5
+
+//research: drone-facility
+
+controller: CargoAI
+playerControllable: false
+logicControllable: false
+
+itemOffsetY: 0
+engineSize: 0
+hitSize: 18
+
+health: 500
+armor: 10
+
+description: "
+[sky]Priority:[] Untargeted
+  
+A better variant of the carrier drone
+Is armored, untargetable and moves faster
+"
+
+engines:[
+{
+x: 7
+y: 0
+rotation: 180
+radius: 2.5
+}
+{
+x: -7
+y: 0
+rotation: 0
+radius: 2.5
+}
+{
+x: 0
+y: 8
+rotation: -90
+radius: 2.5
+}
+{
+x: 0
+y: -7
+rotation: 90
+radius: 2.5
+}
+]

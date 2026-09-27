@@ -1,0 +1,96 @@
+type: flying
+flying: true
+name: Strafe
+
+circleTarget: true
+
+speed: 2
+drag: 0.05
+faceTarget: false
+
+accel: 0.075
+
+armor: 5
+health: 1500
+outlineRadius: 0
+
+engineOffset: 14
+hitSize: 28
+
+range: 120
+
+weapons:[
+{
+reload: 120
+mirror: false
+x: 0
+y: 0
+
+rotate: false
+rotateSpeed: 4
+shootCone: 180
+
+shoot: {
+type: ShootSpread
+spread: 45 
+shotDelay: 10
+shots: 3
+}
+
+shootSound: shootLancer
+minShootVelocity: 1
+
+bullet:{
+width: 10
+height: 14
+speed: 4.5
+drag: 0.045
+
+frontColor: FFD37F
+backColor: FFD37F
+lightning: 7
+
+lightningLength: 5
+lightningDamage: 15
+lightningColor: FFD37F
+
+damage: 25
+splashDamage: 45
+splashDamageRadius: 30
+scaledSplashDamage: true
+
+pierce: true
+
+lifetime: 100
+homingPower: 0.075
+
+hitShake: 6.5
+despawnHit: true
+despawnEffect: none
+hitSound: shootRipple
+hitEffect:{
+type: MultiEffect
+effects:[
+unitDrop
+instBomb
+shieldWave
+]
+}
+
+parts:[
+{
+type: FlarePart
+progress: life
+spinSpeed: 6.5
+
+radius: 24
+radiusTo: 0
+
+color1: FFD37F
+}
+]
+
+}
+
+}
+]

@@ -1,0 +1,63 @@
+type: flying
+name: Electron
+# ZapUnit
+
+research: {
+parent: spark
+objectives:[electron]
+}
+flying: true
+
+speed: 3.5
+range: 200
+accel: 0.035
+drag: 0.015
+engineSize: 0
+hitSize: 20.25
+rotateSpeed: 1.5
+
+weapons:[
+{
+noAttack: true
+display: false
+shootCone: 0
+controllable: false
+aiControllable: false
+}
+]
+
+outlineColor: 2f2f3f
+drawSoftShadow: false
+
+health: 1250
+armor: -2.5
+immunities:[overclock]
+
+abilities:[
+{
+type: StatusFieldAbility
+effect: overclock
+activeEffect: none
+reload: 5
+duration: 10
+range: 200
+}
+{
+type: MoveEffectAbility
+color: bccae0ff
+}
+{
+type: EnergyFieldAbility
+range: 200
+reload: 30
+
+damage: 10
+statusDuration: 60
+maxTargets: 6
+
+sectors: 25
+effectRadius: 2.5
+color: bccae0ff
+sectorRad: 0.0225
+}
+]

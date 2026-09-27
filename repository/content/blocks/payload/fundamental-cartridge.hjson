@@ -1,0 +1,33 @@
+type: UnitAssemblerModule
+size: 3
+name: "Fundamental Cartridge"
+description: "
+When placed adjacent to an
+assembler's bounding box
+
+The assembler's unit tier will
+be increased
+
+Given theres a module for the
+previous lower tier
+[green]
+- Increases assembler tier
+- Optionally takes payload input[salmon]
+- Yep its explosive
+"
+
+requirements:[lead/450, copper/350, graphite/250, silicon/150, depleted-thorium/75]
+category: units
+buildVisibility: sandboxOnly
+regionSuffix: "-gier"
+
+research: imprinter-assembler
+researchCostMultiplier: 0.25
+baseExplosiveness: 15
+
+databaseTag: "adv-depleted-thorium"
+
+tier: 1
+consumes: {
+power: 0.5
+}

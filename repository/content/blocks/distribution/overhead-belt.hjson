@@ -1,0 +1,23 @@
+type: ItemBridge
+name: "Overhead Belt"
+description: "
+Transports item above normal buildings.
+
+[green]- Bridge range: 5
+[red]- Explosive
+"
+
+baseExplosiveness: 15
+hasPower: false
+customShadow: true
+
+databaseTag: "gier"
+
+research: rail-router
+
+range: 5
+transportTime: 1
+envEnabled: -1
+
+requirements:[lead/25,copper/10,silicon/5]
+

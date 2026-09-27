@@ -1,0 +1,46 @@
+# PowerButton class extention of consume generator sadly the effect is constant
+
+type: PowerGenerator
+
+size: 1
+name: Button
+description: "Generates power whenever it's pressed."
+acceptsItems: false
+itemCapacity: 0
+consumesTap: true
+enableDrawStatus: false
+
+requirements:[lead/45,copper/30,graphite/25,silicon/15,titanium/10]
+
+customShadow: true
+
+consumes:{
+power: 0
+}
+
+powerProduction: 0.5
+envEnabled: -1
+databaseTag: "gier"
+category: power
+
+explosionMinWarmup: 1.25
+explodeEffect: {
+type: MultiEffect
+effects :[
+{
+type: ParticleEffect
+region: "gr-button-close"
+length: 0
+lifetime: 15
+sizeFrom: 4
+sizeTo: 4
+layer: 30.05
+offset: 0
+colorFrom: ffffff
+colorTo: ffffff
+}
+]
+}
+
+research: photon-panel
+researchCostMultiplier: 0.5

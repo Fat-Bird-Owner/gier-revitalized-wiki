@@ -1,0 +1,69 @@
+type: missile
+lifetime: 900
+speed: 4.5
+rotateSpeed: 3.5
+health: 35
+armor: 5
+name: Eluminate
+omniMovement: false
+
+flying: true
+accel: 0.0225
+drag: 0.0205
+
+engineOffset: 6
+engineSize: 2.5
+
+trailScl: 1
+trailLength: 14
+
+playerControllable: true
+logicControllable: false
+priority: 0.25
+
+buildSpeed: 0.45
+buildRange: 80
+
+outlineColor: 2f2f3f
+drawCell: false
+createWreck: false
+drawSoftShadow: false
+createScorch: false
+
+deathExplosionEffect: none
+deathSound: healWave
+defaultCommand: rebuild
+controller: BuilderAI
+
+commands: [rebuild]
+
+weapons:[
+{
+controllable: false
+aiControllable: false
+shootOnDeath: true
+shootCone: 180
+x: 0
+y: 0
+mirror: false
+display: false
+
+bullet:{
+type: EmptyBulletType
+instantDisappear: true
+despawnHit: true
+hitEffect: {
+type: ParticleEffect
+region: "gr-eluminate-glow"
+sizeFrom: 8
+sizeTo: 0
+cone: 0
+offset: -90
+length: 0
+parrticles: 1
+lifetime: 120
+}
+}
+
+}
+]

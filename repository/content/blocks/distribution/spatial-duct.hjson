@@ -1,0 +1,25 @@
+type: Duct
+name: Spatial Duct
+databaseTag: "adv-thorium"
+
+requirements: [beryllium/1, thorium/1, metaglass/1]
+health: 150  
+description: "
+Transports items at extreme speeds
+As well as being extra durable
+[green]
+- Rapidly transports items
+- Extra durable[lightgrey]
+- Unarmored[red]
+- Stores less items
+"
+
+research: mono-rail
+researchCostMultiplier: 0.5
+envEnabled: -1
+
+speed: 2
+itemCapacity: 2
+
+bridgeReplacement: overhead-belt
+junctionReplacement: spatial-junction

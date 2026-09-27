@@ -1,0 +1,67 @@
+const blocks = [
+"gr-sunder-furnace",
+"gr-oxidization-reactor",
+"gr-steam-turbine",
+"gr-button",
+"gr-actuator",
+"gr-sealent-chamber",
+"gr-sealent-chamber-oil",
+"gr-plastanium-crusher",
+"gr-freight-assembler",
+"gr-incineration-rig",
+"gr-surge-furnace",
+"gr-scrap-compressor",
+"gr-thermal-forge",
+"gr-fabricator-mill",
+"gr-thermoelectric-generator",
+"gr-cualbult-foundry"
+]
+
+Events.on(ClientLoadEvent, () => {
+try{
+
+function giveBar(string){
+const block = Vars.content.block(string);
+if (!block) return;
+if (block instanceof VariableReactor){
+block.removeBar("instability");
+return;
+}
+
+if (block instanceof PowerGenerator){
+block.removeBar("power");
+return;
+}
+
+if (block instanceof Constructor){
+
+Vars.ui.content.show(block);
+Vars.ui.content.hide();
+block.stats.replace(Stat.output, StatValues.content(block.filter));
+  
+return;
+}
+
+if (string == "gr-incineration-rig"){
+
+Vars.ui.content.show(block);
+Vars.ui.content.hide();
+block.stats.remove(Stat.input);
+block.stats.remove(Stat.productionTime);
+
+return;
+}
+  
+block.addBar("progress", e => new Bar(
+"Process", 
+Pal.lightOrange,
+() => e && e.progress > 0 ? e.progress : 0));
+}
+
+for (let i = 0; i < blocks.length; i++){
+giveBar(blocks[i]);
+}
+  
+} catch(e){
+Vars.ui.showText("G:R - AddBar", e);
+}});

@@ -1,0 +1,41 @@
+databaseCategory: "lore"
+name: "Datachip: [sky]First eradication[]"
+details: '''
+[sky]Year: 75 - Second generation[]
+
+After the end of the genesis era,
+More defect cores started appearing
+on serpulo. So much so it started
+the event known as the first 
+eradication.
+
+A skirmish endured on as many
+factions rised and fell. At its
+peak, the war ran by 3 big 
+factions and a number of
+small factions.
+
+These factions include:
+- [red]Terra[]
+- [purple]Mala[]
+- [sky]Extelus[]
+- [lightgrey]Proto, Cellus and Gillar[]
+
+The war ended after the exhaustion
+of resources on serpulo.
+'''
+
+outline: false
+show: true
+shownPlanets:[gier]
+fullOverride: "gr-lore-1"
+
+research:{
+parent: gr-lore-1
+objectives:[
+{
+type: SectorComplete
+preset: fragmented-fix
+}
+]
+}

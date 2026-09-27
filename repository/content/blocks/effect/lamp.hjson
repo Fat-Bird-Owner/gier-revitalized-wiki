@@ -1,0 +1,23 @@
+type: LightBlock
+size: 1
+name: Lamp
+
+deacription: "
+Illuminates the area with light
+at the cost of a tiny amount of power
+"
+
+category: effect
+requirements: [lead/175, copper/100, titanium/75, silicon/25]
+  
+research: extractor-bastion
+researchCostMultiplier: 0.25
+shownPlanets: [kela, gier]
+
+radius: 100
+databaseTag: "gier"
+customShadow: true
+
+consumes: {
+power: 0.15
+}

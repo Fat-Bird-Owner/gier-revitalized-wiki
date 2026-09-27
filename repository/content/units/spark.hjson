@@ -1,0 +1,127 @@
+type: flying
+flying: true
+outlineColor: 2f2f3f
+name: Spark
+speed: 2
+accel: 0.04
+drag: 0.02
+
+targetFlags:[shield, drill, core]
+
+hitSize: 7
+omniMovement: false
+rotateSpeed: 3.5
+health: 135
+engineOffset: 6
+engineSize: 0
+circleTarget: true
+range: 300
+drawSoftShadow: false
+parts:[
+{
+type: HoverPart
+radius: 6
+color: ffd37fff
+layerOffset: -0.1
+y: -6
+x: 0
+}
+]
+
+
+targetFlags:[
+reactor
+core
+generator
+factory
+storage
+turret
+]
+
+weapons:[
+{
+shootCone: 180
+x: 3.15
+y: 0.5
+shootSound: blockExplode1
+reload: 25
+shoot:{
+shots: 2
+shotDelay: 0
+}
+inaccuracy: 15
+
+bullet:{
+type: MissileBulletType
+homingPower: 0.075
+speed: 1.5
+trailColor: 44d2f0
+weaveScale: 2
+weaveMag: 1
+keepVelocity: false
+accel: 0.03334
+layer: 69
+
+backColor: ffd37fff
+frontColor: ffd37fff
+trailInterval: 6
+trailRotation: true
+trailEffect: {
+type: ParticleEffect
+baseLength: 0
+length: 0
+particles: 2
+cone: 20
+length: 0.1
+lenFrom: 4
+lenTo: 6
+strokeFrom: 2
+strokeTo: 0
+line: true
+colorFrom: ffd37fff
+colorTo: ffd37fff
+offset: 180
+}
+
+lifetime: 120
+layer: 65
+scaledSplashDamage: true
+splashDamage: 15
+splashDamageRadius: 20
+damage: 10
+shieldDamageMultiplier: 0.65
+hitEffect: explosion
+hitSound: explosionCleroi
+despawnHit: false
+}
+
+}
+// trails
+  {
+    alwaysShooting: true
+    alwaysContinuous: true
+    alternate: false
+    shootY: 0
+    recoil: 0
+    y: -1.5
+    x: -3.125
+    shootSound: none
+    bullet: {
+      type: BulletType
+      keepVelocity: false
+      speed: 0
+      collides: false
+      hittable: false
+      absorbable: false
+      shootEffect: none
+      smokeEffect: none
+      hitEffect: none
+      despawnEffect: none
+      trailLength: 20
+      trailWidth: 0.5
+      trailColor: ffd37fff
+      layer: 92
+      lightOpacity: 0
+    }
+  }
+]

@@ -1,0 +1,17 @@
+type: Drill
+name: Jet Rig
+size: 2
+customShadow: true
+
+category: production
+envEnabled: -1
+buildVisibility: sandboxOnly
+
+drawRim: false
+drawSpinSprite: false
+drawMineItem: false
+
+requirements:[lead/35,copper/20,silicon/15]
+tier: 2
+liquidBoostIntensity: 1
+drillTime: 90

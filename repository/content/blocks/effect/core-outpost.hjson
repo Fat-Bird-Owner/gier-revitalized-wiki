@@ -1,0 +1,39 @@
+type: CoreBlock
+size: 5
+name: "Core: Outpost"
+health: 8500
+armor: 25
+
+researchCostMultiplier: 0.25
+description: "
+A more advanced iteration of the
+previous [accent]Facility core[]
+
+Poccesses greater item capacity 
+as well as durability
+
+Advanced proccessing system
+allows more units to be active
+at one time
+"
+
+databaseTag: "adv-depleted-thorium"
+envEnabled: -1
+itemCapacity: 9500
+category: effect
+
+unitCapModifier: 20
+requirements: [
+lead/2500, 
+copper/2000, 
+graphite/1250, 
+titanium/450, 
+beryllium/450, 
+depleted-thorium/350
+]
+
+research: "core-facility"
+
+customShadow: true
+isFirstTier: false
+unitType: garrison

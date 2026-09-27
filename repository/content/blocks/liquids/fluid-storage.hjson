@@ -1,0 +1,9 @@
+type: LiquidRouter
+name: Fluid Storage
+size: 2
+
+category: liquid
+buildVisibility: sandboxOnly
+
+requirements:[lead/175,copper/65,silicon/45,metaglass/50]
+liquidCapacity: 200

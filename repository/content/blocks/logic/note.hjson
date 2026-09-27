@@ -1,0 +1,9 @@
+type: MessageBlock
+name: Note
+buildVisibility: worldProcessorOnly
+category: logic
+customShadow: true
+privileged: true
+
+breakable: false
+drawTeamOverlay: false

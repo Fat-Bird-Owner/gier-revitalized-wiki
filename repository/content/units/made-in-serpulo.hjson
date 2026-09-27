@@ -1,0 +1,85 @@
+type: mech
+name: "Made in serpulo"
+hidden: true
+range: 5
+
+health: 650
+armor: 45
+hitSize: 8
+rotateSpeed: 17.5
+stepSoundVolume: 0.4
+
+speed: 11.5
+accel: 0.085
+drag: 0.06
+flying: true
+
+engineSize: 0
+trailScl: 1
+trailLength: 12.5
+
+circleTarget: true
+circleTargetRadius: 1
+
+drawCell: false
+weapons: [
+{
+name: "large-weapon"
+x: 4
+y: 2
+controllable: false
+aiControllable: false
+top: false
+}
+]
+
+abilities: [
+{
+type: MoveLightningAbility
+chance: 0
+maxSpeed: 0
+minSpeed: 0
+heatRegion: "gr-made-in-serpulo"
+}
+{
+type: MoveLightningAbility
+chance: 1
+heatRegion: "gr-made-in-serpulo"
+length: 0
+shootEffect: {
+type: ParticleEffect
+particles: 1
+length: 0
+cone: 0
+region: "gr-made-in-serpulo"
+colorFrom: ffffffff
+colorTo: ffffff00
+sizeFrom: 6
+sizeTo: 6
+offset: -90
+layer: 122
+}
+
+shootSound: none
+bullet:{
+type: BasicBulletType
+speed: 0
+lifetime: 1
+keepVelocity: false
+despawnHit: true
+width: 0
+height: 0
+hitSize: 22
+damage: 2200
+despawnEffect: none
+hitEffect: none
+shootEffect: none
+recoil: -0.5
+}
+
+}
+{
+type: RegenAbility
+percentAmount: 0.25
+}
+]

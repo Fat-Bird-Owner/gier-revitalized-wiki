@@ -1,0 +1,26 @@
+type: UnitCargoLoader
+size: 2
+name: Drone Facility
+health: 475
+
+description: "Builds a drone which delivers items."
+
+customShadow: true
+itemCapacity: 300
+envEnabled: -1
+unitType: carrier
+
+polyRadius: 5.5
+
+requirements:[
+copper/115
+lead/105
+graphite/30
+]
+
+research: rail
+researchCostMultiplier: 0.05
+databaseTag: "gier"
+#shownPlanets:[gier]
+
+alwaysUnlocked: true

@@ -1,0 +1,53 @@
+type: ForceProjector
+size: 3
+name: "Fusion Dome"
+description: "Very durable defensive barrier, able to reliably tank constant damage.
+
+[green]- High shield durability
+[salmon]- Requires heavy powering
+[red]- Extremely explosive
+"
+
+baseExplosiveness: 105
+destroyBullet:{
+type: ExplosionBulletType
+instantDisappear: true
+despawnHit: true
+splashDamage: 1500
+scaledSplashDamage: true
+splashDamageRadius: 120
+hitEffect: reactorExplosion
+hitShake: 45
+}
+
+radius: 160
+sides: 4
+itemCapacity: 0
+envEnabled: -1
+health: 4750
+customShadow: true
+squareSprite: false
+
+research: copper-fort
+researchCostMultiplier: 0.15
+
+researchCostMultiplier: 0.35
+databaseTag: "gier"
+shieldHealth: 4500
+cooldownNormal: 15
+
+shieldRotation: 45
+cooldownBrokenBase: 6.3
+
+consumes:{
+power: 4.5
+}
+
+requirements: [
+lead/1050
+copper/875
+graphite/775
+metaglass/445
+silicon/325
+]
+category: defense

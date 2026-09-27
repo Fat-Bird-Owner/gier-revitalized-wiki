@@ -1,0 +1,126 @@
+type: GenericCrafter
+size: 3
+name: Plastanium Crusher
+
+requirements:[lead/375, copper/225, silicon/125, metaglass/75, titanium/45]
+category: crafting
+baseExplosiveness: 25
+squareSprite: false
+
+databaseTag: "adv-plastanium"
+envEnabled: -1
+
+description: "
+Compresses titanium with graphite turning it
+into [#cbd97f]plastanium[]
+[grey]
+[I] - Plastanium: Used for advanced
+defenses
+[green]
+- Produces plastanium
+[red]- Explosive
+[salmon]- Requires power
+- Long crafting proccess
+"
+
+itemCapacity: 100
+liquidCapacity: 100
+consumes:{
+power: 3.66667
+items:[titanium/40, graphite/50]
+}
+
+outputItem: plastanium/20
+craftTime: 1500
+research: sunder-furnace
+researchCostMultiplier: 0.5
+
+craftEffect:{
+type: MultiEffect
+effects:[
+coalSmeltsmoke
+
+// sound
+{
+type: SoundEffect
+effect: none
+sound: shootSpectre
+}
+
+// Puddles
+{
+type: ParticleEffect
+particles: 16
+colorFrom: 4f4f4f
+colorTo: 6f6f6f
+baseLength: 10
+sizeFrom: 12
+length: 0
+sizeTo: 0
+interp: sineOut
+layer: 22
+lifetime: 300
+}
+
+// Dush
+{
+type: ParticleEffect
+particles: 32
+colorFrom: 4f4f4f
+colorTo: 6f6f6f
+length: 34
+sizeFrom: 4
+sizeTo: 0
+interp: sineOut
+layer: 29
+}
+
+// Bottom
+{
+type: ParticleEffect
+particles: 1
+length: 0
+region: "gr-plastanium-crusher-bottom"
+lifetime: 180
+layer: 30.025
+sizeTo: 12
+sizeFrom: 12
+lightScl: 0
+}
+
+// Crusher
+{
+type: SeqEffect
+layer: 30.05
+effects:[
+{
+type: ParticleEffect
+particles: 1
+length: 0
+region: "gr-plastanium-crusher-crusher"
+lifetime: 30
+sizeTo: 8
+sizeFrom: 12
+clipSize: 10
+colorTo: 8f8f8f
+interp: bounceOut
+}
+{
+type: ParticleEffect
+particles: 1
+length: 0
+region: "gr-plastanium-crusher-crusher"
+lifetime: 150
+sizeTo: 12
+sizeFrom: 8
+clipSize: 10
+colorFrom: 8f8f8f
+colorTo: ffffff
+interp: bounceOut
+}
+]
+}
+// end
+
+]
+}

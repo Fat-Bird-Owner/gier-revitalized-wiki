@@ -1,0 +1,44 @@
+type: UnitFactory
+name: Imprinter
+size: 3
+
+databaseTag: "gier"
+customShadow: true
+category: units
+
+health: 138388283838
+armor: 138388283838
+buildVisibility: sandboxOnly
+
+underBullets: true
+targetable: false
+
+requirements:[
+lead/350
+copper/275
+graphite/200
+silicon/150
+titanium/100
+metaglass/50
+]
+
+consumes:{
+power: 1
+}
+
+configurable: true
+plans:[
+{
+unit: fledgling
+
+requirements:[
+silicon/50
+lead/150
+copper/100
+graphite/100
+]
+
+time: 2000
+}
+
+]

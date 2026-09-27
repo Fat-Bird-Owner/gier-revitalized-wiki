@@ -1,0 +1,82 @@
+type: GenericCrafter
+size: 4
+name: "Oxidation Reactor"
+description: "Consumes water and beryllium to produce oxide.
+Hydrogen is made as a byproduct.
+
+[grey][i] - Oxide: Used for most heat based buildings and as ammo.
+
+[green]- Produce oxide
+- Produce hydrogen
+- Hydrogen doesn't need to be emptied
+[salmon]- Requires power
+- Explosive
+"
+
+squareSprite: false
+customShadow: true
+
+health: 1250
+armor: 5
+
+category: crafting
+baseExplosiveness: 105
+
+outputItem: oxide/15
+outputLiquid: hydrogen/0.08334
+ignoreLiquidFullness: true
+
+itemCapacity: 70
+liquidCapacity: 10
+  
+consumes:{
+power: 4.5
+items:[beryllium/35]
+liquids:[water/0.16667]
+}
+
+craftTime: 300
+requirements:[lead/450,copper/365,graphite/150,silicon/250,metaglass/75,titanium/75]
+databaseTag: "adv-oxide"
+envEnabled: -1
+
+research: {
+parent: sunder-furnace
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+padding: 5
+drawLiquid: water
+}
+{
+type: DrawBubbles
+color: 596ab8ff
+}
+{
+type: DrawCrucibleFlame
+}
+{
+type: DrawLiquidTile
+padding: 5
+drawLiquid: hydrogen
+alpha: 0.5
+}
+{
+type: DrawDefault
+}
+{
+type: DrawGlowRegion
+suffix: "-heat"
+color: ff795e
+glowScale: 12.5
+}
+]
+}

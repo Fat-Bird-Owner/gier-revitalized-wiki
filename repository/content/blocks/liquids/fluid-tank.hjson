@@ -1,0 +1,18 @@
+type: LiquidRouter
+size: 3
+name: Fluid Tank
+
+description: "A larger variant of the fluid silo, Capable of holding a massiv volume of liquid at once."
+
+liquidPadding: 2
+liquidCapacity: 1250
+customShadow: true
+
+requirements: [titanium/100, silicon/150, metaglass/300]
+category: liquid
+research: fluid-silo
+researcCostMultiplier: 0.25
+  
+shownPlanets: [kela, gier]
+databaseTag: "gier"
+squareSprite: false

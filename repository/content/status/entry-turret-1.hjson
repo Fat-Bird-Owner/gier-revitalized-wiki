@@ -1,0 +1,18 @@
+databaseCategory: "entries"
+name: "Directory: [sky]Turrets[]"
+details: '''
+[lightgrey]Turrets on gier are much bulkier and have high maintenance requirements.
+Most turrets can only target air units.
+'''
+
+shownPlanets:[gier]
+databaseTag: "turrets"
+outline: false
+
+
+research:{
+parent: entry-mineral-1
+objectives:[
+tension
+]
+}

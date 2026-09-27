@@ -1,0 +1,17 @@
+type: StaticWall
+name: Embankment Formation
+description: "
+Nearly indestructable barrier
+could be broken by destroying it's
+Embankment Seal
+"
+
+underBullets: true
+destructible: true
+update: true
+solid: true
+armor: 1000000
+health: 1000000
+targetable: false
+
+buildVisiblity: editorOnly

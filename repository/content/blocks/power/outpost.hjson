@@ -1,0 +1,51 @@
+type: PowerNode
+sameBlockConnection: true
+laserScale: 0.65
+name: Outpost
+configurable: false
+
+description: "
+Transfer power from one outpost to another.
+
+[green]- Large radius
+[salmon]- Cant be reconfigured
+- Same type connection only
+- Explosive[]
+"
+
+baseExplosiveness: 30
+size: 2
+requirements:[lead/50,copper/65,graphite/35]
+laserRange: 60
+category: power
+researchCostMultiplier: 0.06
+
+#buildVisibility: sandboxOnly
+
+placeEffect:{
+type: MultiEffect
+effects:[
+placeBlock
+{
+type: ParticleEffect
+length: 0
+particles: 1
+sizeFrom: 480
+sizeTo: 480
+layer: 122
+colorFrom: FFD37FFF
+colorTo: FFD37F00
+lifetime: 120
+interp: sineOut
+}
+]
+}
+
+databaseTag: "gier"
+research: photon-panel
+customShadow: true
+
+outputsPower: true
+envEnabled: -1
+laserColor2: 9f7f7f
+maxNodes: 2

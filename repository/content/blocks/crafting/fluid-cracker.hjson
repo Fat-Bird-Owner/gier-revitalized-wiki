@@ -1,0 +1,44 @@
+type: GenericCrafter
+size: 2
+name: Fluid Cracker
+
+category: crafting
+research: sealent-capsule
+researchCostMultiplier: 0.45
+customShadow: true
+
+requirements:[lead/175,copper/100,graphite/75,metaglass/50,silicon/25]
+outputLiquid: water/0.16667
+
+craftEffect:{
+type: WrapEffect
+color: 596ab8ff
+effect: mineWallSmall
+}
+
+productionTime: 60
+consumes:{
+items:[water-capsule/1]
+}
+
+databaseTag: "gier"
+envEnabled: -1 
+
+drawer:{
+type: DrawMulti
+drawers:[
+
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+drawLiquid: water
+padding: 2.5
+}
+{
+type: DrawDefault
+}
+]
+}

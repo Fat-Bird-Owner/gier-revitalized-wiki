@@ -1,0 +1,6 @@
+type: Wall
+size: 3
+name: Embankment Seal
+
+buildVisibility: editorOnly
+health: 2250

@@ -1,0 +1,29 @@
+type: CoreBlock
+name: "Core: [accent]Gateway[]"
+
+itemCapacity: 0
+buildVisibility: sandboxOnly
+allowSpawn: false
+buildTime: 2500
+
+breakable: true
+customShadow: true
+
+destroyBullet:{
+type: ExplosionBulletType
+splashDamage: 2500
+splashDamageRadius: 150
+
+despawnHit: true
+hitSound: blockExplodeElectric 
+hitShake: 50
+hitEffect: {
+type: MultiEffect
+effects:[
+launch
+launchPod
+instHit
+impactReactorExplosion
+]
+}
+}

@@ -1,0 +1,127 @@
+const stats = require("Stats");
+const blocks = [
+"gr-combustion-barrel"
+];
+
+Events.on(EventType.ClientLoadEvent, event => {
+try{
+for(let i = 0; i < blocks.length; i++){
+const block = Vars.content.block(blocks[i]);
+if(!block) continue;
+
+Vars.ui.content.show(block);
+Vars.ui.content.hide();
+
+block.stats.add(
+stats.blastPower,
+block.attributes.get(Attribute.get("blastPower")),
+StatUnit.items
+);
+
+block.stats.add(
+stats.blastTier,
+block.attributes.get(Attribute.get("blastTier"))
+);
+
+block.stats.remove(Stat.ammo);
+block.stats.remove(Stat.inaccuracy);
+block.stats.remove(Stat.reload);
+block.stats.remove(Stat.targetsAir);
+block.stats.remove(Stat.targetsGround);
+  
+}
+}catch(e){
+Vars.ui.showInfoToast(e + "[red] - CombustionBarrel", 5);
+}
+});
+
+Events.on(EventType.BlockDestroyEvent, event => {
+try{
+const tile = event.tile;
+if(!tile) return;
+
+let found = false;
+let block = null;
+
+for(let i = 0; i < blocks.length; i++){
+const current = Vars.content.block(blocks[i]);
+
+if(tile.block() == current){
+found = true;
+block = current;
+break;
+}
+}
+
+if(!found || !block) return;
+if(tile.overlay() == null || tile.overlay().itemDrop == null) return;
+if(!tile.build) return;
+
+const itemDrop = tile.overlay().itemDrop;
+const core = Vars.indexer.findTile(
+tile.team(), 
+tile.worldx(),
+tile.worldy(),
+block.minRange,
+b => b.block instanceof StorageBlock
+);
+
+if(!core) return;
+
+let oreHardness = itemDrop.hardness;
+if(oreHardness <= 0) oreHardness = 1;
+
+const blastPower = block.attributes.get(Attribute.get("blastPower"));
+const blastTier = block.attributes.get(Attribute.get("blastTier"));
+
+if (oreHardness > blastTier) return;
+  
+const amount = blastPower / Math.max(
+oreHardness - 1,
+oreHardness
+);
+
+let offset = 0;
+let len = 0;
+core.items.add(itemDrop, Mathf.round(amount));
+
+for (let i = 0; i < amount; i++){
+Time.runTask((0.05 * (i + 1)) * 60, () => {
+Fx.itemTransfer.at(
+tile.worldx(),
+tile.worldy(),
+0,
+Items.copper.color,
+core
+);
+});
+}
+  
+for(let i = 0; i < 3; i++){
+
+const fx = Object.assign(new ParticleEffect(), {
+sizeFrom: 3,
+sizeTo: 0,
+region: itemDrop.uiIcon,
+particles: Math.max(1, Mathf.round((amount - i) / 4)),
+lifetime: 130,
+length: 12 + len,
+layer: 21,
+spin: Mathf.random(0.05, 0.1),
+colorTo: Color.valueOf("ffffff"),
+colorFrom: Color.valueOf("ffffff"),
+offset: offset,
+sizeInterp: Interp.pow10In,
+interp: Interp.pow10Out
+});
+
+fx.at(tile.worldx(), tile.worldy());
+
+offset += Mathf.random(25, 35);
+len += Mathf.random(4, 10);
+}
+
+}catch(e){
+Vars.ui.showInfoToast(e + "[red] - CombustionBarrel", 5);
+}
+});

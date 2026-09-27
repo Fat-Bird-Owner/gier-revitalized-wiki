@@ -1,0 +1,29 @@
+type: StorageBlock
+name: Spatial Container
+size: 2
+
+researchCostMultiplier: 0.5
+research: crate
+databaseTag: "adv-phase-fabric"
+shownPlanets: [gr-gier, kela]
+envEnabled: -1
+
+solid: true
+category: effect
+update: true
+
+itemCapacity: 50
+requirements:[lead/400, copper/350, titanium/250, thorium/150, phase-fabric/50]
+buildTime: 1500
+squareSprite: true
+
+baseExplosiveness: 50
+
+description: "
+Acts as a direct-input to the core
+[green]
+- Direct-core input[red]
+- Explosive
+- Can't support a core
+- Can't be unloaded from
+"

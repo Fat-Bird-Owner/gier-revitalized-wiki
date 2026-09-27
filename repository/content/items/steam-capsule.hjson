@@ -1,0 +1,6 @@
+name: Steam Capsule
+shownPlanets:[gier,kela]
+color: D3DEE4FF
+
+databaseCategory: "gr-capsules"
+databaseTag: "gr-non-volatile"

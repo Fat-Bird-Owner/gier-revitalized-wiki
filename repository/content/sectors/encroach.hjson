@@ -1,0 +1,30 @@
+planet: gr-gier
+sector: 6
+outline: false
+
+# will be changed in the future
+localizedName: Encroach
+
+description: "
+An enemy point of interest
+
+The remains of a sharded extraction
+site, situated among a few resource rich
+asteroids
+"
+
+#overrideLaunchDefaults: true
+allowLaunchSchematics: false
+research: {
+parent: gier-main
+objectives:[
+{
+type: Produce
+content: metaglass
+}
+{
+type: Produce
+content: silicon
+}
+]
+}

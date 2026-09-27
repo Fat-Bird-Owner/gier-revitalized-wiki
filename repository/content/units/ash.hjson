@@ -1,0 +1,228 @@
+type: flying
+// IFrameUnit
+databaseCategory: "threats"
+flowfieldPathType: 3
+
+description: "
+A fast durable and very dangerous unit.
+
+[sky]Priority[]: 3.5
+[blue]IFrame Duration[]: 0.2 [grey]sec[]
+[salmon]IFrame Damage Threshold[]: 10-75
+[red]Enrages[lightgrey]: 50%[]
+
+[red]Counter: A very dangerous assault unit push back or fatally damage it.
+
+[sky]Affiliation:[lightgrey] BGP, SBDC, PTC - Epsilon
+"
+
+targetFlags:[factory,battery,core]
+
+targetPriority: 3.5
+flying: true
+outlineColor: 2f2f3f
+name: Ash
+speed: 2.5
+accel: 0.15
+drag: 0.05
+armor: 5
+range: 200
+
+// Uses crush damage for invinciblity frames
+crushDamage: 12
+
+hitSize: 12.5
+omniMovement: false
+rotateSpeed: 3.5
+health: 750
+engineOffset: 6
+engineSize: 0
+drawSoftShadow: false
+faceTarget: true
+circleTarget: true
+circleTargetRadius: 100
+
+parts:[
+{
+type: HoverPart
+radius: 6
+color: ffd37fff
+layerOffset: -0.1
+y: -8
+x: 0
+}
+  {
+type: HoverPart
+radius: 4
+color: ffd37fff
+layerOffset: -0.1
+y: 2.5
+x: 4
+}
+{
+type: HoverPart
+radius: 4
+color: ffd37fff
+layerOffset: -0.1
+y: 2.5
+x: -4
+}
+]
+
+abilities:[
+{
+type: MoveLightningAbility
+heatRegion: "gr-ash-full"
+chance: 0
+color: ffffff77
+}
+{
+type: ShieldRegenFieldAbility
+reload: 180
+amount: 30
+max: 300
+}
+]
+
+
+weapons:[
+
+{
+reload: 300
+shootStatus: slow
+shootStatusDuration: 70
+chargeSound: chargeVela
+shootSound: ash-artillery-shoot
+shoot:{
+firstShotDelay: 90
+}
+
+parts:[
+{
+type: ShapePart
+hollow: true
+circle: true
+
+radius: 80
+radiusTo: 0
+
+progress: charge
+color: ffaa5f00
+colorTo: ffaa5fff
+}
+{
+type: ShapePart
+hollow: true
+circle: true
+
+radius: 80
+radiusTo: 0
+
+progress: warmup
+color: ffaa5f00
+colorTo: ffaa5fff
+}
+]
+
+bullet:{
+type: BasicBulletType
+width: 15
+height: 21
+
+speed: 6.5
+lifetime: 90
+homingPower: 0.04
+
+splashDamage: 250
+splashDamageRadius: 40
+scaledSplashDamage: true
+
+hitShake: 25
+despawnHit: true
+
+recoil: 2.5
+trailRotation: true
+trailInterval: 1
+trailEffect: randLifeSpark
+trailColor: ffaa5f
+
+damage: 1
+shieldDamageMultiplier: 250
+
+hitEffect: {
+type: MultiEffect
+effects:[
+launchPod
+{
+type: WrapEffect
+effect: scatheExplosionSmall
+color: ffaa5f
+}
+{
+type: WrapEffect
+effect: titanExplosion
+color: ffaa5f77
+}
+]
+}
+
+hitSound: ash-artillery-hit
+}
+
+}
+
+# Fuse weapon
+{
+name: "cr-weapon"
+reload: 25
+x: 0
+y: -2
+mirror: false
+
+rotate: true
+rotateSpeed: 3.25
+shake: 2
+
+shootSound: shootFuse
+shoot:{
+type: ShootSpread
+shots: 3
+spread: 15
+}
+
+bullet: {
+type: ShrapnelBulletType
+serrations: 0
+fromColor: f3e979
+toColor: f3e979
+length: 37.5
+width: 6
+
+damage: 17.5
+shootEffect: none
+smokeEffect: none
+hitColor: f3e979
+hitEffect: hitBeam
+
+smokeEffect: {
+type: ParticleEffect
+particles: 4
+cone: 45
+colorFrom: f3e979
+colorTo: f3e979
+lenFrom: 4
+lenTo: 6
+strokeFrom: 3
+strokeTo: 0
+length: 40
+line: true
+lifetime: 12
+}
+
+
+}
+  
+}
+# fuse weapon end
+]
+

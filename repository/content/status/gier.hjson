@@ -1,0 +1,9 @@
+research:{
+    planet: gier
+    root: true
+    name: "gier"
+    requiresUnlock: false
+}
+name: Gier
+show: false
+outline: false

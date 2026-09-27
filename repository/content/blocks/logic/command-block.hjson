@@ -1,0 +1,33 @@
+type: Wall
+# CommandBlock
+name: "Command Block"
+customShadow: true
+envEnabled: -1
+alwaysUnlocked: true
+fullOverride: "gr-command-block-modern"
+
+description: "
+Simple panel allowing the use of [accent]Command[] presets.
+"
+/*
+[accent]<Commands>[]
+- Clear all units
+- Stop player unit
+- Change team
+- Toggle canGameOver
+- Toggle editor [grey](saving while enabled crashes)[]
+- Toggle disableUnitCap 
+- Spawn unit
+- Get current unit [grey](saves to spawn unit)[]
+- Unit library [grey](Only accesses vanilla units)[]
+- Fill core
+*/
+
+category: logic
+solid: false
+buildVisibility: worldProcessorOnly
+targetable: false
+underBullets: true
+
+health: 100000
+armor: 1000

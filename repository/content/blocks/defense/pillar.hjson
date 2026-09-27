@@ -1,0 +1,34 @@
+type: BaseShield
+size: 2
+radius: 6
+name: Pillar
+
+rebuildable: true
+category: defense
+
+health: 1500
+
+group: walls
+databaseTag: "adv-depleted-thorium"
+armor: 5
+  
+sides: 4
+description: "
+Projects a force field upwards
+
+Preventing any non-ally unit
+from flying over it
+[salmon]
+- Explosive
+"
+
+baseExplosiveness: 12
+shieldColor: B58DA5FF
+buildVisibility: shown
+
+priority: 1
+hasPower: false
+research: insulated-wall
+
+researchCostMultiplier: 0.25
+requirements: [depleted-thorium/25, silicon/25, titanium/10]

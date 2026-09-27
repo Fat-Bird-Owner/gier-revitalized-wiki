@@ -1,0 +1,62 @@
+type: Battery
+health: 1050
+name: Surge Pile
+description: "
+Extremely destructive pile of surge alloy.
+Stores large amounts of power.
+
+[accent]
+- When attacked: Released lightning arcs[green]
+
+- 1x1[salmon]
+- Explodes into damaging lightning arcs
+"
+
+fullOverride: "gr-surge-pile"
+hasShadow: false
+configureSound: shootArc
+drawer: [
+{
+type: DrawRegion
+name: "gr-rail-shadow"
+drawPlan: false
+layer: 10
+}
+{
+type: DrawRegion
+}
+{
+type: DrawGlowRegion
+suffix: "-glow"
+color: ff795e
+}
+]
+
+requirements: [surge-alloy/18]
+category: power
+databaseTag: "adv-surge-alloy"
+shownPlanets: [gier, kela]
+
+research: power-cell
+researchCostMultiplier: 0.25
+
+consumes: {
+powerBuffered: 1000
+}
+  
+destroyBullet: {
+type: EmptyBulletType
+fragBullets: 7
+instantDisappear: true
+despawnHit: true
+despawnEffect: none
+hitEffect: none
+fragBullet: {
+type: LightningBulletType
+lightningLength: 5
+lightningLengthRand: 5
+lightningColor: f3e979
+damage: 6.5
+}
+
+}

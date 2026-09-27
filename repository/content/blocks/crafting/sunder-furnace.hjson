@@ -1,0 +1,110 @@
+type: GenericCrafter
+size: 4
+name: Sunder Furnace
+category: crafting
+priority: 5
+description: "
+[sky]Priority:[] 5
+
+Huge Smelting furnace, Able to smelt both metaglass and silicon at the same time.
+[green]
+- Produces silicon and metaglass chunks[red]
+- Extremely explosive
+- Requires power
+"
+
+customShadow: true
+baseExplosiveness: 150
+destroyBullet: {
+type: BombBulletType
+splashDamage: 3000
+splashDamageRadius: 80
+scaledSplashDamage: true
+}
+
+requirements:[lead/1250,copper/850,graphite/650]
+buildtime: 1500
+research:{
+parent: hydro-drill
+objectives:[core-facility]
+}
+envEnabled: -1
+databaseTag: "gier"
+researchCostMultiplier: 0.05
+squareSprite: false
+
+itemCapacity: 240
+outputItems: [
+metaglass-chunk/60
+silicon/60
+]
+craftTime: 300
+consumes:{
+power: 5
+items:[
+sand/120
+lead/60
+graphite/60
+]
+
+
+
+
+}
+
+craftEffect:{
+type: RadialEffect
+lengthOffset: 12
+effect: {
+type: MultiEffect
+effects:[
+{
+type: ParticleEffect
+colorFrom: 4f4f4f55
+colorTo: 7f7f7f00
+sizeFrom: 2
+sizeTo: 6
+particles: 45
+cone: 10
+lifetime: 75
+length: 40
+interp: sineOut
+layer: 64
+}
+{
+type: ParticleEffect
+colorFrom: 4f4f4f55
+colorTo: 7f7f7f00
+sizeFrom: 1
+sizeTo: 4
+particles: 25
+cone: 15
+lifetime: 85
+length: 48
+interp: sineOut
+layer: 64
+}
+]
+}
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawArcSmelt
+}
+{
+type: DrawParticles
+color: 4f4f4f
+alpha: 0.35
+}
+{
+type: DrawDefault
+}
+]
+}

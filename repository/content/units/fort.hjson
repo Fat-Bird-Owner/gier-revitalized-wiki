@@ -1,0 +1,157 @@
+type: flying
+# IframeUnit
+databaseCategory: "threats"
+
+// IFrame Duration (frames)
+crushDamage: 45
+
+/*description: "
+Whenever this unit takes damage it becomes invincible for a short duration.
+
+[sky]Priority[]: 5
+[blue]IFrame Duration[]: 0.416 [grey]sec[]
+[salmon]Damage Threshold[]: (10-65)
+
+[green]- Big hitbox
+- Cannot be retriggered while invincible
+- Cant be triggered by explosions
+
+[red]Hard counter: Since this unit is high priority using [#8c7fa9][Tensions][red] can knock it away.
+- Avoid letting it tank damage for other units.
+
+[sky]Affiliations:[lightgrey] SBDC, PTC - Epsilon
+"*/
+
+speed: 3
+name: Fort
+flying: true
+outlineColor: 2f2f3f
+accel: 0.071667
+drag: 0.05
+faceTarget: true
+drawSoftShadow: false
+isEnemy: false
+health: 1500
+targetPriority: 10
+
+weapons:[
+{
+mirror: false
+x: 0
+y: 0
+minWarmup: 0.9
+reload: 180
+
+chargeSound: chargeVela
+shoot:{
+firstShotDelay: 60
+}
+
+parts:[
+{
+type: ShapePart
+hollow: true
+circle: true
+layer: 110
+
+stroke: 0
+strokeTo: 4
+
+color: FFD37F00
+colorTo: FFD37FFF
+
+radius: 80
+radiusTo: 0
+}
+{
+type: ShapePart
+hollow: true
+circle: true
+layer: 110
+
+stroke: 0
+strokeTo: 4
+
+color: FFD37F00
+colorTo: FFD37FFF
+
+radius: 160
+radiusTo: 0
+}
+{
+type: ShapePart
+hollow: true
+circle: true
+layer: 110
+progress: charge
+
+stroke: 0
+strokeTo: 4
+
+color: FFD37F00
+colorTo: FFD37FFF
+
+radius: 120
+radiusTo: 0
+}
+]
+
+bullet:{
+type: BasicBulletType
+splashDamage: 85
+splashDamageRadius: 125
+buildingDamageMultiplier: 0.5
+
+speed: 5
+lifetime: 25
+
+knockback: 25
+hitShake: 15
+impact: true
+
+despawnHit: true
+instantDisappear: true
+
+status: anchored
+statusDuration: 120
+
+hitSound: explosionNavanax
+hitEffect:{
+type: WaveEffect
+layer: 110
+interp: sineOut
+
+strokeFrom: 4
+strokeTo: 0
+
+colorFrom: FFD37FFF
+colorTo: FFD37F00
+
+sizeTo: 0
+sizeTo: 140
+
+lifetime: 50
+}}
+
+}
+]
+
+range: 15
+engineSize: 0
+hitSize: 17.5
+armor: 5
+
+research: {
+parent: barracade
+objectives:[fort]
+}
+
+parts:[
+{
+type: HoverPart
+color: FFD37F
+radius: 12
+layerOffset: -0.1
+y: -6.5
+}
+]

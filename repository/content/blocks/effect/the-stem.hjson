@@ -1,0 +1,124 @@
+type: GenericCrafter
+name: "gr-gren-router"
+
+drawer:{
+type: DrawRegion
+name: "gr-gren-router"
+}
+
+buildVisibility: sandboxOnly
+category: effect
+drawTeamOverlay: false
+
+destroyBullet:{
+type: EmptyBulletType
+lifetime: 180
+speed: 0
+keepVelocity: false
+hitShake: 225
+despawnHit: true
+despawnUnit: router-god
+fragBullets: 1
+fragBullet:{
+type: ExplosionBulletType
+splashDamage: 2500
+splashDamageRadius: 800
+scaledSplashDamage: true
+}
+
+collides: false
+
+splashDamage: 1250
+splashDamageRadius: 800
+scaledSplashDamage: true
+hitSound: explosionReactor2
+hitEffect:{
+type: WaveEffect
+sizeFrom: 0
+sizeTo: 800
+strokeFrom: 0
+strokeTo: 24
+colorFrom: 3a8f64ff
+colorTo: 3a8f6400
+interp: sineIn
+lifetime: 90
+layer: 113
+}
+
+}
+
+destroyEffect:{
+type: SeqEffect
+layer: 111
+effects:[
+{
+type: WaveEffect
+colorFrom: 3a8f64
+colorTo: 3a8f6400
+strokeFrom: 5
+strokeTo: 5
+sizeFrom: 400
+sizeTo: 400
+lifetime: 30
+interp: sineIn
+}
+{
+type: WaveEffect
+colorFrom: 3a8f64
+colorTo: 3a8f6400
+strokeFrom: 5
+strokeTo: 5
+sizeFrom: 300
+sizeTo: 300
+lifetime: 30
+}
+{
+type: WaveEffect
+colorFrom: 3a8f64
+colorTo: 3a8f6400
+strokeFrom: 5
+strokeTo: 5
+sizeFrom: 200
+sizeTo: 200
+lifetime: 30
+}
+{
+type: WaveEffect
+colorFrom: 3a8f64
+colorTo: 3a8f6400
+strokeFrom: 5
+strokeTo: 5
+sizeFrom: 100
+sizeTo: 100
+lifetime: 30
+interp: sineOut
+}
+{
+type: ParticleEffect
+cone: 0
+particles: 1
+region: "gr-gren-router"
+length: 0
+sizeFrom: 24
+sizeTo: 24
+colorFrom: ffffff00
+colorTo: ffffffff
+lifetime: 90
+interp: sineOut
+}
+]
+}
+
+destroyBulletSameTeam: true
+forceTeam: 6
+
+# Thanks smolkeys for grammar fix
+description: "
+[#3a8f64]One of his.
+A deity in sense of the word.
+To kill one of his kind is a great treachery.
+
+[red]Warning:
+- Could ruin the map beyond recovery.
+- Turrets perceive it as an enemy. Be wary of placing your defenses.[]
+"

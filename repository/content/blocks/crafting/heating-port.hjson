@@ -1,0 +1,39 @@
+type: HeatProducer
+name: Heating port
+description: "
+Burns graphite to produce heat, Which is
+than channel using oxide.
+
+[salmon]- Explosive
+"
+requirements:[lead/75,copper/50,silicon/35,oxide/25]
+envEnabled: -1
+
+baseExplosiveness: 5
+heatOutput: 4
+warmupRate: 0.025
+
+rotateDraw: false
+databaseTag: "adv-oxide"
+research:{
+parent: oxidization-reactor
+researchCostMultiplier: 0.5
+}
+
+category: crafting
+productionTime: 60
+consumes:{
+items:[graphite/1]
+}
+
+drawer:{
+type: DrawMulti
+drawers:[
+{
+type: DrawDefault
+}
+{
+type: DrawHeatOutput
+}
+]
+}

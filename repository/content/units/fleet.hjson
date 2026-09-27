@@ -1,0 +1,55 @@
+type: flying
+name: Fleet
+
+description: "
+Very fragile.
+[red]Self duplicating assault units.
+
+[green]- Very easy to pick off
+[red]- Very deadly in massive swarms
+"
+
+flying: true
+speed: 3.5
+accel: 0.035
+drag: 0.02
+hitSize: 12
+
+health: 200
+outlineRadius: 0
+armor: 2.5
+circleTarget: true
+omniMovement: false
+engineOffset: 7.5
+trailScl: 1
+trailLength: 4
+range: 150
+  
+abilities:[
+{
+type: UnitSpawnAbility
+spawnTime: 1300
+unit: fleet
+}
+]
+  
+weapons:[
+{
+reload: 5
+shootCone: 10
+x: 0
+y: 0
+mirror: false
+shootSound: shootCyclone
+
+bullet:{
+type: BasicBulletType
+speed: 2.5
+lifetime: 60
+width: 10.5
+height: 7.5
+damage: 10
+homingPower: 0.01
+}
+}
+]
