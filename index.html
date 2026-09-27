@@ -294,14 +294,6 @@ async function loadWiki() {
             );
         });
 
-        subtitle.textContent =
-        "GitHub returned " +
-        files.length +
-        " files. Content files: " +
-        contentFiles.length +
-        ". Truncated: " +
-        tree.truncated;
-        
         const spriteFiles = files.filter(file => {
             const path = file.path.toLowerCase();
 
@@ -329,26 +321,9 @@ async function loadWiki() {
             contentFiles.length +
             " content files...";
 
-        const batchSize = 20;
-
-        for(let i = 0; i < contentFiles.length; i += batchSize) {
-        const batch =
-        contentFiles.slice(i, i + batchSize);
-
         await Promise.all(
-        batch.map(async file => {
-        await loadContent(file);
-        console.log("LOADED:", file.path);
-        })
+            contentFiles.map(loadContent)
         );
-
-        subtitle.textContent =
-        "Loaded " +
-        contents.size +
-        " / " +
-        contentFiles.length +
-        " content files...";
-        }
 
         for(const content of contents.values()) {
             content.sprite =
@@ -358,7 +333,7 @@ async function loadWiki() {
         buildSidebar();
 
         status.textContent =
-            contentFiles.length + " entries / " + contents.size + " entries" ;
+            contents.size + " entries";
 
         subtitle.textContent =
             "Gier: Revitalized contents";
@@ -429,7 +404,7 @@ async function loadContent(file) {
         const text =
             await response.text();
 
-        contents.set(file.path, {
+        contents.set(name, {
             name,
             type,
             path: file.path,
@@ -511,7 +486,7 @@ function buildSidebar() {
 }
 
 function openPage(name) {
-    const content = [...contents.values()].find(content => content.name === name);;
+    const content = contents.get(name);
 
     if(!content)
         return;
@@ -560,7 +535,7 @@ function openPage(name) {
     addStat(
         information,
         "Description",
-        content.description
+        Hjson.parse(content).description || "..."
     );
     
     addStat(
@@ -579,7 +554,23 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (stat.key != "health" !=  stat.key != "speed" && stat.key != "armor") continue;
+        if (stat.key == "health"){
+
+        let size = stat.size || 1;
+        let value = 40 * (size * size);
+        if (stat.value) value = stat.value;
+            
+            addStat(
+                stats,
+                stat.key,
+                value,
+                stat.depth
+            );
+            
+        continue; 
+        }
+            
+        if ( stat.key != "speed" && stat.key != "armor") continue;
             
             addStat(
                 stats,
@@ -665,7 +656,100 @@ function addStat(
 }
 
 function parseHJSON(text) {
-    return Hjson.parse(text);
+    const result = [];
+    const lines = text.split("\n");
+    let depth = 0;
+
+    for(let line of lines) {
+        line = line.trim();
+
+        if(!line)
+            continue;
+
+        if(line.startsWith("//"))
+            continue;
+
+        if(line.startsWith("#"))
+            continue;
+
+        let quote = false;
+        let comment = -1;
+
+        for(let i = 0; i < line.length - 1; i++) {
+            if(
+                line[i] === '"' &&
+                line[i - 1] !== "\\"
+            ) {
+                quote = !quote;
+            }
+
+            if(
+                !quote &&
+                line[i] === "/" &&
+                line[i + 1] === "/"
+            ) {
+                comment = i;
+                break;
+            }
+        }
+
+        if(comment !== -1)
+            line = line
+                .slice(0, comment)
+                .trim();
+
+        if(!line)
+            continue;
+
+        if(line.endsWith("{")) {
+            depth++;
+            continue;
+        }
+
+        if(line === "}" || line === "},") {
+            depth = Math.max(
+                0,
+                depth - 1
+            );
+            continue;
+        }
+
+        const match =
+            line.match(
+                /^([A-Za-z0-9_@.-]+)\s*:\s*(.+?)(?:,)?$/
+            );
+
+        if(!match)
+            continue;
+
+        let value =
+            match[2].trim();
+
+        if(
+            value.length >= 2 &&
+            (
+                (
+                    value.startsWith('"') &&
+                    value.endsWith('"')
+                ) ||
+                (
+                    value.startsWith("'") &&
+                    value.endsWith("'")
+                )
+            )
+        ) {
+            value =
+                value.slice(1, -1);
+        }
+
+        result.push({
+            key: match[1],
+            value,
+            depth
+        });
+    }
+
+    return result;
 }
 
 loadWiki();
