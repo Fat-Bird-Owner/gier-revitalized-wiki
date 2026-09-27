@@ -178,12 +178,10 @@ input {
 <main id="main">
     <h1 id="title">Content Wiki</h1>
     <div id="subtitle">
-        Select your main folder to begin.
+        
     </div>
     <div id="page">
         <div class="empty">
-            Select a folder containing<br>
-            <b>content/</b> and <b>sprites/</b>
         </div>
     </div>
 </main>
@@ -192,7 +190,7 @@ let contents = {};
 let contentList = [];
 let currentPage = null;
 let spriteURLs = [];
-const folder = document.getElementById("repository");
+const folder = document.getElementById("folder");
 const search = document.getElementById("search");
 const sidebar = document.getElementById("sidebar");
 const title = document.getElementById("title");
