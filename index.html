@@ -333,7 +333,7 @@ async function loadWiki() {
         buildSidebar();
 
         status.textContent =
-            contentFiles.length + " entries / " + content.size + " entries" ;
+            contentFiles.length + " entries / " + contents.size + " entries" ;
 
         subtitle.textContent =
             "Gier: Revitalized contents";
@@ -404,7 +404,7 @@ async function loadContent(file) {
         const text =
             await response.text();
 
-        contents.set(name, {
+        contents.set(file.path, {
             name,
             type,
             path: file.path,
