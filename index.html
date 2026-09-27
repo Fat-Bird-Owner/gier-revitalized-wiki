@@ -496,15 +496,15 @@ function openPage(name) {
             <div class="section"> <b>!Notices!<b> </div>
             <p>
                 This wiki is for one of my mods called gier: revitalized
-                beward there may be some inaccuaries
+                beware there may be some inaccuaries<br><br>
 
                 Mainly around the names of blocks
-                additionally aside from important informations like names, health, etc...
+                additionally aside from important informations like names, health, etc...<br><br>
 
                 Most stats aren't display as of now
-                For the time being your expected to atleast known how to read JSON
+                For the time being your expected to atleast known how to read JSON<br><br>
 
-                or just read the description if provied
+                or just read the description if provied<br><br>
 
                 (And yes contribution is accepted)
                 
@@ -585,8 +585,8 @@ function openPage(name) {
         if (stat.key !== "craftTime" && stat.key !== "hitSize" && stat.key !== "size" && stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
 
             let value = stat.value;
-            if (stat.key !== "speed") value *= (60/8);
-            if (stat.key !== "hitSize") value /= 8;
+            if (stat.key == "speed") value *= (60/8);
+            if (stat.key == "hitSize") value /= 8;
             
             addStat(
                 stats,
