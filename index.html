@@ -321,9 +321,16 @@ async function loadWiki() {
             contentFiles.length +
             " content files...";
 
-        await Promise.all(
-            contentFiles.map(loadContent)
-        );
+        for(const file of contentFiles) {
+        await loadContent(file);
+
+        subtitle.textContent =
+        "Loaded " +
+        contents.size +
+        " / " +
+        contentFiles.length +
+        " content files...";
+        }
 
         for(const content of contents.values()) {
             content.sprite =
@@ -486,7 +493,7 @@ function buildSidebar() {
 }
 
 function openPage(name) {
-    const content = contents.get(name);
+    const content = const content = [...contents.values()].find(content => content.name === name);;
 
     if(!content)
         return;
