@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Content Wiki</title>
+<style>
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #1f1f1a;
+    color: #ddd;
+    font-family: Arial, sans-serif;
+}
+button,
+input {
+    font: inherit;
+}
+#top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    background: #292925;
+    border-bottom: 1px solid #444;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    z-index: 10;
+}
+#folder {
+    max-width: 180px;
+}
+#search {
+    width: 250px;
+    max-width: 40vw;
+    background: #3a3a35;
+    border: 1px solid #555;
+    color: white;
+    padding: 8px;
+}
+#menuButton {
+    background: #3a3a35;
+    border: 1px solid #555;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+#sidebar {
+    position: fixed;
+    top: 55px;
+    bottom: 0;
+    left: -310px;
+    width: 310px;
+    background: #292925;
+    border-right: 1px solid #444;
+    overflow-y: auto;
+    transition: left 0.2s;
+    z-index: 9;
+}
+#sidebar.open {
+    left: 0;
+}
+.navType {
+    padding: 10px;
+    font-weight: bold;
+    background: #33332e;
+    border-bottom: 1px solid #444;
+}
+.navItem {
+    display: block;
+    padding: 7px 15px;
+    color: #ccc;
+    cursor: pointer;
+    text-decoration: none;
+}
+.navItem:hover {
+    background: #3b3b36;
+}
+#main {
+    padding: 80px 25px 30px 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+#title {
+    font-size: 32px;
+    margin-bottom: 5px;
+}
+#subtitle {
+    color: #999;
+    margin-bottom: 25px;
+}
+.sprite {
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+    image-rendering: pixelated;
+    background: #292925;
+    border: 1px solid #444;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.section {
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 1px solid #555;
+    padding-bottom: 6px;
+    margin-top: 30px;
+}
+.stats {
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid #444;
+}
+.stat {
+    display: flex;
+    border-bottom: 1px solid #444;
+}
+.stat:last-child {
+    border-bottom: none;
+}
+.statName {
+    width: 40%;
+    padding: 8px;
+    color: #aaa;
+    background: #292925;
+}
+.statValue {
+    width: 60%;
+    padding: 8px;
+    color: white;
+    background: #32322d;
+    word-break: break-word;
+}
+.raw {
+    width: 100%;
+    max-width: 900px;
+    min-height: 300px;
+    background: #292925;
+    color: #ccc;
+    border: 1px solid #444;
+    padding: 15px;
+    overflow: auto;
+    white-space: pre;
+    font-family: monospace;
+}
+.status {
+    color: #999;
+    font-size: 13px;
+}
+.empty {
+    color: #888;
+    text-align: center;
+    margin-top: 100px;
+}
+</style>
+</head>
+<body>
+<div id="top">
+    <button id="menuButton">☰</button>
+    <input
+        id="folder"
+        type="file"
+        webkitdirectory
+        multiple
+    >
+    <input
+        id="search"
+        type="text"
+        placeholder="Search content..."
+    >
+</div>
+<div id="sidebar"></div>
+<main id="main">
+    <h1 id="title">Content Wiki</h1>
+    <div id="subtitle">
+        Select your main folder to begin.
+    </div>
+    <div id="page">
+        <div class="empty">
+            Select a folder containing<br>
+            <b>content/</b> and <b>sprites/</b>
+        </div>
+    </div>
+</main>
+<script>
+let contents = {};
+let contentList = [];
+let currentPage = null;
+let spriteURLs = [];
+const folder = document.getElementById("folder");
+const search = document.getElementById("search");
+const sidebar = document.getElementById("sidebar");
+const title = document.getElementById("title");
+const subtitle = document.getElementById("subtitle");
+const page = document.getElementById("page");
+const menuButton = document.getElementById("menuButton");
+
+folder.addEventListener("change", async function() {
+    contents = {};
+    contentList = [];
+    clearSprites();
+    page.innerHTML = "";
+    const files = [...folder.files];
+    if(files.length === 0)
+        return;
+    subtitle.textContent =
+        "Scanning " + files.length + " files...";
+    const contentFiles = [];
+    const spriteFiles = [];
+    for(const file of files) {
+        const path =
+            file.webkitRelativePath
+                .replace(/\\/g, "/");
+        const lower = path.toLowerCase();
+        if(lower.includes("/content/")) {
+            if(
+                lower.endsWith(".hjson") ||
+                lower.endsWith(".json")
+            ) {
+                contentFiles.push(file);
+            }
+        }
+        if(lower.includes("/sprites/")) {
+            if(
+                lower.endsWith(".png") ||
+                lower.endsWith(".jpg") ||
+                lower.endsWith(".jpeg") ||
+                lower.endsWith(".webp")
+            ) {
+                spriteFiles.push(file);
+            }
+        }
+    }
+
+    for(const file of contentFiles) {
+        const info = getContentInfo(file);
+        if(!info)
+            continue;
+        const text = await file.text();
+        contents[info.name] = {
+            name: info.name,
+            type: info.type,
+            path: file.webkitRelativePath,
+            file: file,
+            text: text,
+            stats: parseHJSON(text),
+            sprite: null
+        };
+        contentList.push(info.name);
+    }
+
+    for(const sprite of spriteFiles) {
+        const spriteName =
+            getFileName(sprite);
+        if(contents[spriteName]) {
+            contents[spriteName].sprite = sprite;
+        }
+    }
+    contentList.sort((a, b) =>
+        a.toLowerCase()
+            .localeCompare(
+                b.toLowerCase()
+            )
+    );
+    buildNavigation();
+    subtitle.textContent =
+        "Found " +
+        contentList.length +
+        " content files and " +
+        spriteFiles.length +
+        " sprites.";
+    if(contentList.length > 0) {
+        openPage(contentList[0]);
+    } else {
+        page.innerHTML =
+            "<div class='empty'>No content files found.</div>";
+    }
+});
+
+function getContentInfo(file) {
+    let path =
+        file.webkitRelativePath
+            .replace(/\\/g, "/");
+    const index =
+        path.toLowerCase()
+            .indexOf("/content/");
+    if(index === -1)
+        return null;
+    const relative =
+        path.slice(index + 9);
+    const parts =
+        relative.split("/");
+    if(parts.length < 2)
+        return null;
+    const type =
+        parts[0];
+    const filename =
+        parts[parts.length - 1];
+    const name =
+        filename.replace(
+            /\.(hjson|json)$/i,
+            ""
+        );
+    return {
+        type: type,
+        name: name
+    };
+}
+
+function getFileName(file) {
+    const filename =
+        file.webkitRelativePath
+            .replace(/\\/g, "/")
+            .split("/")
+            .pop();
+    return filename.replace(
+        /\.[^.]+$/,
+        ""
+    );
+}
+
+function parseHJSON(text) {
+    const result = [];
+    const lines =
+        text.split("\n");
+    let depth = 0;
+    for(let rawLine of lines) {
+        let line =
+            rawLine.trim();
+        if(!line)
+            continue;
+
+        if(line.startsWith("//"))
+            continue;
+        if(line.startsWith("#"))
+            continue;
+
+        let quote = false;
+        let commentIndex = -1;
+        for(let i = 0; i < line.length - 1; i++) {
+            if(line[i] === '"' &&
+               line[i - 1] !== "\\") {
+                quote = !quote;
+            }
+            if(
+                !quote &&
+                line[i] === "/" &&
+                line[i + 1] === "/"
+            ) {
+                commentIndex = i;
+                break;
+            }
+        }
+        if(commentIndex !== -1)
+            line = line.slice(0, commentIndex).trim();
+        if(!line)
+            continue;
+
+        if(line.endsWith("{")) {
+            depth++;
+            continue;
+        }
+        if(line === "}" || line === "},") {
+            depth--;
+            continue;
+        }
+
+        const match =
+            line.match(
+                /^([A-Za-z0-9_@.-]+)\s*:\s*(.+?)(?:,)?$/
+            );
+        if(!match)
+            continue;
+        const key =
+            match[1];
+        let value =
+            match[2].trim();
+      
+        if(value === "{")
+            continue;
+
+        if(
+            value.length >= 2 &&
+            (
+                (
+                    value.startsWith('"') &&
+                    value.endsWith('"')
+                ) ||
+                (
+                    value.startsWith("'") &&
+                    value.endsWith("'")
+                )
+            )
+        ) {
+            value =
+                value.slice(
+                    1,
+                    -1
+                );
+        }
+        result.push({
+            key: key,
+            value: value,
+            depth: depth
+        });
+    }
+    return result;
+}
+
+function buildNavigation() {
+    sidebar.innerHTML = "";
+    const groups = {};
+    for(const name of contentList) {
+        const content =
+            contents[name];
+        if(!groups[content.type])
+            groups[content.type] = [];
+        groups[content.type].push(name);
+    }
+    const types =
+        Object.keys(groups)
+            .sort();
+    for(const type of types) {
+        const heading =
+            document.createElement("div");
+        heading.className =
+            "navType";
+        heading.textContent =
+            type;
+        sidebar.appendChild(heading);
+        for(const name of groups[type]) {
+            const item =
+                document.createElement("a");
+            item.className =
+                "navItem";
+            item.textContent =
+                name;
+            item.onclick =
+                function() {
+                    openPage(name);
+                    sidebar.classList.remove(
+                        "open"
+                    );
+                };
+            sidebar.appendChild(item);
+        }
+    }
+}
+
+function openPage(name) {
+    const content =
+        contents[name];
+    if(!content)
+        return;
+    currentPage =
+        name;
+    title.textContent =
+        name;
+    subtitle.textContent =
+        content.type +
+        " / " +
+        content.path;
+    page.innerHTML = "";
+
+    if(content.sprite) {
+        const img =
+            document.createElement("img");
+        img.className =
+            "sprite";
+        const url =
+            URL.createObjectURL(
+                content.sprite
+            );
+        spriteURLs.push(url);
+        img.src =
+            url;
+        img.alt =
+            name;
+        page.appendChild(img);
+    }
+
+    addSection("Information");
+    const infoStats =
+        document.createElement("div");
+    infoStats.className =
+        "stats";
+    addStat(
+        infoStats,
+        "Name",
+        content.name
+    );
+    addStat(
+        infoStats,
+        "Type",
+        content.type
+    );
+    addStat(
+        infoStats,
+        "File",
+        content.path
+    );
+    page.appendChild(infoStats);
+
+    if(content.stats.length > 0) {
+        addSection("Properties");
+        const stats =
+            document.createElement("div");
+        stats.className =
+            "stats";
+        for(const stat of content.stats) {
+            addStat(
+                stats,
+                stat.key,
+                stat.value,
+                stat.depth
+            );
+        }
+        page.appendChild(stats);
+    }
+
+    addSection("Source");
+    const raw =
+        document.createElement("pre");
+    raw.className =
+        "raw";
+    raw.textContent =
+        content.text;
+    page.appendChild(raw);
+}
+
+function addSection(text) {
+    const section =
+        document.createElement("div");
+    section.className =
+        "section";
+    section.textContent =
+        text;
+    page.appendChild(section);
+}
+
+function addStat(
+    container,
+    key,
+    value,
+    depth = 0
+) {
+    const row =
+        document.createElement("div");
+    row.className =
+        "stat";
+    const name =
+        document.createElement("div");
+    name.className =
+        "statName";
+    name.textContent =
+        key;
+    const val =
+        document.createElement("div");
+    val.className =
+        "statValue";
+    val.textContent =
+        value;
+    if(depth > 0) {
+        name.style.paddingLeft =
+            (8 + depth * 15) + "px";
+    }
+    row.appendChild(name);
+    row.appendChild(val);
+    container.appendChild(row);
+}
+
+search.addEventListener(
+    "input",
+    function() {
+        const query =
+            search.value
+                .toLowerCase()
+                .trim();
+        const items =
+            sidebar.querySelectorAll(
+                ".navItem"
+            );
+        items.forEach(
+            item => {
+                const name =
+                    item.textContent
+                        .toLowerCase();
+                item.style.display =
+                    name.includes(query)
+                    ? "block"
+                    : "none";
+            }
+        );
+    }
+);
+
+menuButton.onclick =
+    function() {
+        sidebar.classList.toggle(
+            "open"
+        );
+    };
+
+function clearSprites() {
+    for(const url of spriteURLs) {
+        URL.revokeObjectURL(url);
+    }
+    spriteURLs = [];
+}
+</script>
+</body>
+</html>
