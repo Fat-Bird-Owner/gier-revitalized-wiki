@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Content Wiki</title>
+<title>Gier: Revitalized Wiki</title>
 <style>
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     background: #1f1f1a;
     color: #ddd;
     font-family: Arial, sans-serif;
 }
+
 button,
 input {
     font: inherit;
 }
+
 #top {
     position: fixed;
     top: 0;
@@ -32,24 +35,30 @@ input {
     padding: 8px;
     z-index: 10;
 }
-#folder {
-    max-width: 180px;
-}
-#search {
-    width: 250px;
-    max-width: 40vw;
-    background: #3a3a35;
-    border: 1px solid #555;
-    color: white;
-    padding: 8px;
-}
-#menuButton {
+
+#menu {
     background: #3a3a35;
     border: 1px solid #555;
     color: white;
     padding: 8px 12px;
     cursor: pointer;
 }
+
+#search {
+    width: 250px;
+    max-width: 45vw;
+    background: #3a3a35;
+    border: 1px solid #555;
+    color: white;
+    padding: 8px;
+}
+
+#status {
+    color: #999;
+    font-size: 13px;
+    margin-left: auto;
+}
+
 #sidebar {
     position: fixed;
     top: 55px;
@@ -59,41 +68,56 @@ input {
     background: #292925;
     border-right: 1px solid #444;
     overflow-y: auto;
-    transition: left 0.2s;
+    transition: left .2s;
     z-index: 9;
 }
+
 #sidebar.open {
     left: 0;
 }
-.navType {
-    padding: 10px;
-    font-weight: bold;
-    background: #33332e;
+
+.group {
     border-bottom: 1px solid #444;
 }
-.navItem {
-    display: block;
-    padding: 7px 15px;
+
+.groupTitle {
+    padding: 10px;
+    background: #33332e;
+    font-weight: bold;
+}
+
+.item {
+    padding: 8px 15px;
     color: #ccc;
     cursor: pointer;
-    text-decoration: none;
 }
-.navItem:hover {
+
+.item:hover {
     background: #3b3b36;
 }
+
 #main {
-    padding: 80px 25px 30px 25px;
     max-width: 1100px;
     margin: auto;
+    padding: 80px 25px 30px;
 }
+
 #title {
+    margin: 0 0 5px;
     font-size: 32px;
-    margin-bottom: 5px;
 }
+
 #subtitle {
     color: #999;
     margin-bottom: 25px;
 }
+
+.empty {
+    color: #888;
+    text-align: center;
+    margin-top: 100px;
+}
+
 .sprite {
     width: 128px;
     height: 128px;
@@ -104,31 +128,37 @@ input {
     padding: 10px;
     margin-bottom: 20px;
 }
+
 .section {
     font-size: 23px;
     font-weight: bold;
     border-bottom: 1px solid #555;
     padding-bottom: 6px;
-    margin-top: 30px;
+    margin: 30px 0 10px;
 }
+
 .stats {
     width: 100%;
-    max-width: 700px;
+    max-width: 750px;
     border: 1px solid #444;
 }
+
 .stat {
     display: flex;
     border-bottom: 1px solid #444;
 }
+
 .stat:last-child {
-    border-bottom: none;
+    border-bottom: 0;
 }
+
 .statName {
     width: 40%;
     padding: 8px;
     color: #aaa;
     background: #292925;
 }
+
 .statValue {
     width: 60%;
     padding: 8px;
@@ -136,232 +166,500 @@ input {
     background: #32322d;
     word-break: break-word;
 }
+
 .raw {
     width: 100%;
     max-width: 900px;
     min-height: 300px;
-    background: #292925;
-    color: #ccc;
-    border: 1px solid #444;
     padding: 15px;
+    background: #292925;
+    border: 1px solid #444;
+    color: #ccc;
     overflow: auto;
     white-space: pre;
     font-family: monospace;
 }
-.status {
-    color: #999;
-    font-size: 13px;
-}
-.empty {
-    color: #888;
-    text-align: center;
-    margin-top: 100px;
+
+.error {
+    color: #d88;
+    background: #352525;
+    border: 1px solid #633;
+    padding: 15px;
 }
 </style>
 </head>
+
 <body>
+
 <div id="top">
-    <button id="menuButton">☰</button>
-    <input
-        id="folder"
-        type="file"
-        webkitdirectory
-        multiple
-    >
-    <input
-        id="search"
-        type="text"
-        placeholder="Search content..."
-    >
+    <button id="menu">☰</button>
+    <input id="search" type="text" placeholder="Search content...">
+    <div id="status">Loading...</div>
 </div>
+
 <div id="sidebar"></div>
+
 <main id="main">
     <h1 id="title">Content Wiki</h1>
+
     <div id="subtitle">
-        
+        Loading Gier: Revitalized...
     </div>
+
     <div id="page">
         <div class="empty">
+            Loading content...
         </div>
     </div>
 </main>
+
 <script>
-let contents = {};
-let contentList = [];
-let currentPage = null;
-let spriteURLs = [];
-const folder = document.getElementById("folder");
+const OWNER = "Fat-Bird-Owner";
+const REPO = "gier-revitalized";
+const BRANCH = "main";
+
+const API =
+    "https://api.github.com/repos/" +
+    OWNER + "/" +
+    REPO +
+    "/git/trees/" +
+    BRANCH +
+    "?recursive=1";
+
+const RAW =
+    "https://raw.githubusercontent.com/" +
+    OWNER + "/" +
+    REPO +
+    "/" +
+    BRANCH +
+    "/";
+
+const menu = document.getElementById("menu");
 const search = document.getElementById("search");
 const sidebar = document.getElementById("sidebar");
 const title = document.getElementById("title");
 const subtitle = document.getElementById("subtitle");
 const page = document.getElementById("page");
-const menuButton = document.getElementById("menuButton");
+const status = document.getElementById("status");
 
-folder.addEventListener("change", async function() {
-    contents = {};
-    contentList = [];
-    clearSprites();
-    page.innerHTML = "";
-    const files = [...folder.files];
-    if(files.length === 0)
-        return;
-    subtitle.textContent =
-        "Scanning " + files.length + " files...";
-    const contentFiles = [];
-    const spriteFiles = [];
-    for(const file of files) {
-        const path =
-            file.webkitRelativePath
-                .replace(/\\/g, "/");
-        const lower = path.toLowerCase();
-        if(lower.includes("/content/")) {
-            if(
-                lower.endsWith(".hjson") ||
-                lower.endsWith(".json")
-            ) {
-                contentFiles.push(file);
-            }
-        }
-        if(lower.includes("/sprites/")) {
-            if(
-                lower.endsWith(".png") ||
-                lower.endsWith(".jpg") ||
-                lower.endsWith(".jpeg") ||
-                lower.endsWith(".webp")
-            ) {
-                spriteFiles.push(file);
-            }
-        }
-    }
+const contents = new Map();
 
-for(const file of files) {
-    const path = file.webkitRelativePath.replace(/\\/g, "/");
-    const parts = path.split("/");
-    const lower = path.toLowerCase();
+menu.onclick = () => {
+    sidebar.classList.toggle("open");
+};
 
-    if(parts.includes("content")) {
-        if(
-            lower.endsWith(".hjson") ||
-            lower.endsWith(".json")
-        ) {
-            contentFiles.push(file);
-        }
-    }
+search.addEventListener("input", () => {
+    const query = search.value.toLowerCase().trim();
 
-    if(parts.includes("sprites")) {
-        if(
-            lower.endsWith(".png") ||
-            lower.endsWith(".jpg") ||
-            lower.endsWith(".jpeg") ||
-            lower.endsWith(".webp")
-        ) {
-            spriteFiles.push(file);
-        }
-    }
-}
-
-    for(const sprite of spriteFiles) {
-        const spriteName =
-            getFileName(sprite);
-        if(contents[spriteName]) {
-            contents[spriteName].sprite = sprite;
-        }
-    }
-    contentList.sort((a, b) =>
-        a.toLowerCase()
-            .localeCompare(
-                b.toLowerCase()
-            )
-    );
-    buildNavigation();
-    subtitle.textContent =
-        "Found " +
-        contentList.length +
-        " content files and " +
-        spriteFiles.length +
-        " sprites.";
-    if(contentList.length > 0) {
-        openPage(contentList[0]);
-    } else {
-        page.innerHTML =
-            "<div class='empty'>No content files found.</div>";
-    }
+    sidebar.querySelectorAll(".item").forEach(item => {
+        item.style.display =
+            item.textContent.toLowerCase().includes(query)
+                ? "block"
+                : "none";
+    });
 });
 
-function getContentInfo(file) {
-    const path = file.webkitRelativePath.replace(/\\/g, "/");
-    const parts = path.split("/");
-    const index = parts.indexOf("content");
+async function loadWiki() {
+    try {
+        status.textContent = "Loading...";
 
-    if(index === -1)
-        return null;
+        const response = await fetch(API);
 
-    const relative = parts.slice(index + 1);
+        if(!response.ok)
+            throw new Error(
+                "GitHub API returned " + response.status
+            );
 
-    if(relative.length < 2)
-        return null;
+        const tree = await response.json();
 
-    const type = relative[0];
-    const filename = relative[relative.length - 1];
+        if(tree.truncated)
+            throw new Error(
+                "GitHub returned a truncated file tree."
+            );
 
-    const name = filename.replace(
-        /\.(hjson|json)$/i,
-        ""
-    );
+        const files = tree.tree.filter(
+            file => file.type === "blob"
+        );
 
-    return {
-        type: type,
-        name: name
-    };
+        const contentFiles = files.filter(file => {
+            const path = file.path.toLowerCase();
+
+            return (
+                path.startsWith("content/") &&
+                (
+                    path.endsWith(".hjson") ||
+                    path.endsWith(".json")
+                )
+            );
+        });
+
+        const spriteFiles = files.filter(file => {
+            const path = file.path.toLowerCase();
+
+            return (
+                path.startsWith("sprites/") &&
+                (
+                    path.endsWith(".png") ||
+                    path.endsWith(".jpg") ||
+                    path.endsWith(".jpeg") ||
+                    path.endsWith(".webp")
+                )
+            );
+        });
+
+        const sprites = new Map();
+
+        for(const file of spriteFiles) {
+            const name = file.path
+                .split("/")
+                .pop()
+                .replace(/\.[^.]+$/, "");
+
+            sprites.set(name, file.path);
+        }
+
+        subtitle.textContent =
+            "Loading " +
+            contentFiles.length +
+            " content files...";
+
+        await Promise.all(
+            contentFiles.map(loadContent)
+        );
+
+        for(const content of contents.values()) {
+            content.sprite =
+                findSprite(content.name, sprites);
+        }
+
+        buildSidebar();
+
+        status.textContent =
+            contents.size + " entries";
+
+        subtitle.textContent =
+            "Gier: Revitalized content";
+
+        if(contents.size > 0) {
+            const first =
+                [...contents.values()]
+                    .sort((a, b) =>
+                        a.name.localeCompare(b.name)
+                    )[0];
+
+            openPage(first.name);
+        } else {
+            page.innerHTML =
+                "<div class='empty'>" +
+                "No content files found." +
+                "</div>";
+        }
+
+    } catch(error) {
+        console.error(error);
+
+        status.textContent = "Error";
+
+        subtitle.textContent =
+            "Failed to load repository.";
+
+        page.innerHTML =
+            "<div class='error'>" +
+            error.message +
+            "</div>";
+    }
 }
 
-function getFileName(file) {
+async function loadContent(file) {
+    const parts = file.path.split("/");
+    const contentIndex = parts.indexOf("content");
+
+    if(contentIndex === -1)
+        return;
+
+    const relative =
+        parts.slice(contentIndex + 1);
+
+    if(relative.length < 2)
+        return;
+
+    const type = relative[0];
+
     const filename =
-        file.webkitRelativePath
-            .replace(/\\/g, "/")
-            .split("/")
-            .pop();
-    return filename.replace(
-        /\.[^.]+$/,
-        ""
+        relative[relative.length - 1];
+
+    const name =
+        filename.replace(
+            /\.(hjson|json)$/i,
+            ""
+        );
+
+    try {
+        const response =
+            await fetch(
+                RAW + file.path
+            );
+
+        if(!response.ok)
+            return;
+
+        const text =
+            await response.text();
+
+        contents.set(name, {
+            name,
+            type,
+            path: file.path,
+            text,
+            stats: parseHJSON(text),
+            sprite: null
+        });
+
+    } catch(error) {
+        console.error(
+            "Failed to load",
+            file.path,
+            error
+        );
+    }
+}
+
+function findSprite(name, sprites) {
+    if(sprites.has(name))
+        return sprites.get(name);
+
+    const lower = name.toLowerCase();
+
+    for(const [spriteName, path] of sprites) {
+        if(spriteName.toLowerCase() === lower)
+            return path;
+    }
+
+    return null;
+}
+
+function buildSidebar() {
+    sidebar.innerHTML = "";
+
+    const groups = {};
+
+    for(const content of contents.values()) {
+        if(!groups[content.type])
+            groups[content.type] = [];
+
+        groups[content.type].push(content);
+    }
+
+    for(const type of Object.keys(groups).sort()) {
+        const group =
+            document.createElement("div");
+
+        group.className = "group";
+
+        const heading =
+            document.createElement("div");
+
+        heading.className = "groupTitle";
+        heading.textContent = type;
+
+        group.appendChild(heading);
+
+        groups[type]
+            .sort((a, b) =>
+                a.name.localeCompare(b.name)
+            )
+            .forEach(content => {
+                const item =
+                    document.createElement("div");
+
+                item.className = "item";
+                item.textContent = content.name;
+
+                item.onclick = () => {
+                    openPage(content.name);
+                    sidebar.classList.remove("open");
+                };
+
+                group.appendChild(item);
+            });
+
+        sidebar.appendChild(group);
+    }
+}
+
+function openPage(name) {
+    const content = contents.get(name);
+
+    if(!content)
+        return;
+
+    title.textContent = content.name;
+
+    subtitle.textContent =
+        content.type +
+        " / " +
+        content.path;
+
+    page.innerHTML = "";
+
+    if(content.sprite) {
+        const image =
+            document.createElement("img");
+
+        image.className = "sprite";
+        image.alt = content.name;
+
+        image.src =
+            RAW + content.sprite;
+
+        page.appendChild(image);
+    }
+
+    addSection("Information");
+
+    const information =
+        document.createElement("div");
+
+    information.className = "stats";
+
+    addStat(
+        information,
+        "Name",
+        content.name
     );
+
+    addStat(
+        information,
+        "Type",
+        content.type
+    );
+
+    addStat(
+        information,
+        "File",
+        content.path
+    );
+
+    page.appendChild(information);
+
+    if(content.stats.length) {
+        addSection("Properties");
+
+        const stats =
+            document.createElement("div");
+
+        stats.className = "stats";
+
+        for(const stat of content.stats) {
+            addStat(
+                stats,
+                stat.key,
+                stat.value,
+                stat.depth
+            );
+        }
+
+        page.appendChild(stats);
+    }
+
+    addSection("Source");
+
+    const source =
+        document.createElement("pre");
+
+    source.className = "raw";
+    source.textContent = content.text;
+
+    page.appendChild(source);
+}
+
+function addSection(text) {
+    const section =
+        document.createElement("div");
+
+    section.className = "section";
+    section.textContent = text;
+
+    page.appendChild(section);
+}
+
+function addStat(
+    container,
+    key,
+    value,
+    depth = 0
+) {
+    const row =
+        document.createElement("div");
+
+    row.className = "stat";
+
+    const name =
+        document.createElement("div");
+
+    name.className = "statName";
+    name.textContent = key;
+
+    const val =
+        document.createElement("div");
+
+    val.className = "statValue";
+    val.textContent = value;
+
+    if(depth > 0) {
+        name.style.paddingLeft =
+            (8 + depth * 15) + "px";
+    }
+
+    row.appendChild(name);
+    row.appendChild(val);
+
+    container.appendChild(row);
 }
 
 function parseHJSON(text) {
     const result = [];
-    const lines =
-        text.split("\n");
+    const lines = text.split("\n");
     let depth = 0;
-    for(let rawLine of lines) {
-        let line =
-            rawLine.trim();
+
+    for(let line of lines) {
+        line = line.trim();
+
         if(!line)
             continue;
 
         if(line.startsWith("//"))
             continue;
+
         if(line.startsWith("#"))
             continue;
 
         let quote = false;
-        let commentIndex = -1;
+        let comment = -1;
+
         for(let i = 0; i < line.length - 1; i++) {
-            if(line[i] === '"' &&
-               line[i - 1] !== "\\") {
+            if(
+                line[i] === '"' &&
+                line[i - 1] !== "\\"
+            ) {
                 quote = !quote;
             }
+
             if(
                 !quote &&
                 line[i] === "/" &&
                 line[i + 1] === "/"
             ) {
-                commentIndex = i;
+                comment = i;
                 break;
             }
         }
-        if(commentIndex !== -1)
-            line = line.slice(0, commentIndex).trim();
+
+        if(comment !== -1)
+            line = line
+                .slice(0, comment)
+                .trim();
+
         if(!line)
             continue;
 
@@ -369,8 +667,12 @@ function parseHJSON(text) {
             depth++;
             continue;
         }
+
         if(line === "}" || line === "},") {
-            depth--;
+            depth = Math.max(
+                0,
+                depth - 1
+            );
             continue;
         }
 
@@ -378,15 +680,12 @@ function parseHJSON(text) {
             line.match(
                 /^([A-Za-z0-9_@.-]+)\s*:\s*(.+?)(?:,)?$/
             );
+
         if(!match)
             continue;
-        const key =
-            match[1];
+
         let value =
             match[2].trim();
-      
-        if(value === "{")
-            continue;
 
         if(
             value.length >= 2 &&
@@ -402,220 +701,21 @@ function parseHJSON(text) {
             )
         ) {
             value =
-                value.slice(
-                    1,
-                    -1
-                );
+                value.slice(1, -1);
         }
+
         result.push({
-            key: key,
-            value: value,
-            depth: depth
+            key: match[1],
+            value,
+            depth
         });
     }
+
     return result;
 }
 
-function buildNavigation() {
-    sidebar.innerHTML = "";
-    const groups = {};
-    for(const name of contentList) {
-        const content =
-            contents[name];
-        if(!groups[content.type])
-            groups[content.type] = [];
-        groups[content.type].push(name);
-    }
-    const types =
-        Object.keys(groups)
-            .sort();
-    for(const type of types) {
-        const heading =
-            document.createElement("div");
-        heading.className =
-            "navType";
-        heading.textContent =
-            type;
-        sidebar.appendChild(heading);
-        for(const name of groups[type]) {
-            const item =
-                document.createElement("a");
-            item.className =
-                "navItem";
-            item.textContent =
-                name;
-            item.onclick =
-                function() {
-                    openPage(name);
-                    sidebar.classList.remove(
-                        "open"
-                    );
-                };
-            sidebar.appendChild(item);
-        }
-    }
-}
-
-function openPage(name) {
-    const content =
-        contents[name];
-    if(!content)
-        return;
-    currentPage =
-        name;
-    title.textContent =
-        name;
-    subtitle.textContent =
-        content.type +
-        " / " +
-        content.path;
-    page.innerHTML = "";
-
-    if(content.sprite) {
-        const img =
-            document.createElement("img");
-        img.className =
-            "sprite";
-        const url =
-            URL.createObjectURL(
-                content.sprite
-            );
-        spriteURLs.push(url);
-        img.src =
-            url;
-        img.alt =
-            name;
-        page.appendChild(img);
-    }
-
-    addSection("Information");
-    const infoStats =
-        document.createElement("div");
-    infoStats.className =
-        "stats";
-    addStat(
-        infoStats,
-        "Name",
-        content.name
-    );
-    addStat(
-        infoStats,
-        "Type",
-        content.type
-    );
-    addStat(
-        infoStats,
-        "File",
-        content.path
-    );
-    page.appendChild(infoStats);
-
-    if(content.stats.length > 0) {
-        addSection("Properties");
-        const stats =
-            document.createElement("div");
-        stats.className =
-            "stats";
-        for(const stat of content.stats) {
-            addStat(
-                stats,
-                stat.key,
-                stat.value,
-                stat.depth
-            );
-        }
-        page.appendChild(stats);
-    }
-
-    addSection("Source");
-    const raw =
-        document.createElement("pre");
-    raw.className =
-        "raw";
-    raw.textContent =
-        content.text;
-    page.appendChild(raw);
-}
-
-function addSection(text) {
-    const section =
-        document.createElement("div");
-    section.className =
-        "section";
-    section.textContent =
-        text;
-    page.appendChild(section);
-}
-
-function addStat(
-    container,
-    key,
-    value,
-    depth = 0
-) {
-    const row =
-        document.createElement("div");
-    row.className =
-        "stat";
-    const name =
-        document.createElement("div");
-    name.className =
-        "statName";
-    name.textContent =
-        key;
-    const val =
-        document.createElement("div");
-    val.className =
-        "statValue";
-    val.textContent =
-        value;
-    if(depth > 0) {
-        name.style.paddingLeft =
-            (8 + depth * 15) + "px";
-    }
-    row.appendChild(name);
-    row.appendChild(val);
-    container.appendChild(row);
-}
-
-search.addEventListener(
-    "input",
-    function() {
-        const query =
-            search.value
-                .toLowerCase()
-                .trim();
-        const items =
-            sidebar.querySelectorAll(
-                ".navItem"
-            );
-        items.forEach(
-            item => {
-                const name =
-                    item.textContent
-                        .toLowerCase();
-                item.style.display =
-                    name.includes(query)
-                    ? "block"
-                    : "none";
-            }
-        );
-    }
-);
-
-menuButton.onclick =
-    function() {
-        sidebar.classList.toggle(
-            "open"
-        );
-    };
-
-function clearSprites() {
-    for(const url of spriteURLs) {
-        URL.revokeObjectURL(url);
-    }
-    spriteURLs = [];
-}
+loadWiki();
 </script>
+
 </body>
 </html>
