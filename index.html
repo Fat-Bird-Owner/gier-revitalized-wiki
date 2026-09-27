@@ -401,17 +401,18 @@ async function loadContent(file) {
         if(!response.ok)
             return;
 
-        const text =
-            await response.text();
+        const text = await response.text();
 
-        contents.set(name, {
-            name,
-            type,
-            path: file.path,
-            text,
-            stats: parseHJSON(text),
-            sprite: null
-        });
+    const data = Hjson.parse(text);
+    contents.set(name, {
+    name,
+    type,
+    path: file.path,
+    text,
+    stats: parseHJSON(text),
+    description: data.description || "...",
+    sprite: null
+    });
 
     } catch(error) {
         console.error(
@@ -535,7 +536,7 @@ function openPage(name) {
     addStat(
         information,
         "Description",
-        content.description || "..."
+        content.description
     );
     
     
