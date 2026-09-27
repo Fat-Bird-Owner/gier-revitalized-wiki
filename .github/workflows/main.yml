@@ -54,7 +54,7 @@ jobs:
         run: |
 
           # Clone the source repository temporarily
-          git clone https://github.com/OWNER/REPOSITORY.git temp-repo
+          git clone https://github.com/Fat-Bird-Owner/gier-revitalized.git temp-repo
 
           # Remove its Git information
           # This prevents it from becoming a Git repository inside ours
