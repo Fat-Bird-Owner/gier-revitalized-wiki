@@ -405,6 +405,7 @@ async function loadContent(file) {
 
     contents.set(name, {
     name,
+    localizedName: getLocalizedName(text),
     type,
     path: file.path,
     text,
@@ -491,7 +492,7 @@ function openPage(name) {
     if(!content)
         return;
 
-    title.textContent = content.stats.name || content.name;
+    title.textContent = content.localizedName || content.name;
 
     subtitle.textContent =
         content.type +
@@ -523,7 +524,7 @@ function openPage(name) {
     addStat(
         information,
         "Name",
-        colorText(content.name)
+        colorText(content.localizedName)
     );
     
     addStat(
@@ -659,6 +660,14 @@ function colorText(text) {
             /\[([a-zA-Z]+|#[0-9a-fA-F]{6})\]/g,
             " "
         );
+}
+
+function getLocalizedName(text) {
+    const match = text.match(
+        /name\s*:\s*"([\s\S]*?)"\s*(?:\n|$)/
+    );
+
+    return colorText(match ? match[1].trim() : "...");
 }
     
 function parseHJSON(text) {
