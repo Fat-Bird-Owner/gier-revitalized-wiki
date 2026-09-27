@@ -328,7 +328,10 @@ async function loadWiki() {
         contentFiles.slice(i, i + batchSize);
 
         await Promise.all(
-        batch.map(loadContent)
+        batch.map(async file => {
+        await loadContent(file);
+        console.log("LOADED:", file.path);
+        })
         );
 
         subtitle.textContent =
