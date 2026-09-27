@@ -213,6 +213,7 @@ input {
     </div>
 </main>
 
+<script src="hjson.js"><script>
 <script>
 const OWNER = "Fat-Bird-Owner";
 const REPO = "gier-revitalized";
@@ -655,100 +656,7 @@ function addStat(
 }
 
 function parseHJSON(text) {
-    const result = [];
-    const lines = text.split("\n");
-    let depth = 0;
-
-    for(let line of lines) {
-        line = line.trim();
-
-        if(!line)
-            continue;
-
-        if(line.startsWith("//"))
-            continue;
-
-        if(line.startsWith("#"))
-            continue;
-
-        let quote = false;
-        let comment = -1;
-
-        for(let i = 0; i < line.length - 1; i++) {
-            if(
-                line[i] === '"' &&
-                line[i - 1] !== "\\"
-            ) {
-                quote = !quote;
-            }
-
-            if(
-                !quote &&
-                line[i] === "/" &&
-                line[i + 1] === "/"
-            ) {
-                comment = i;
-                break;
-            }
-        }
-
-        if(comment !== -1)
-            line = line
-                .slice(0, comment)
-                .trim();
-
-        if(!line)
-            continue;
-
-        if(line.endsWith("{")) {
-            depth++;
-            continue;
-        }
-
-        if(line === "}" || line === "},") {
-            depth = Math.max(
-                0,
-                depth - 1
-            );
-            continue;
-        }
-
-        const match =
-            line.match(
-                /^([A-Za-z0-9_@.-]+)\s*:\s*(.+?)(?:,)?$/
-            );
-
-        if(!match)
-            continue;
-
-        let value =
-            match[2].trim();
-
-        if(
-            value.length >= 2 &&
-            (
-                (
-                    value.startsWith('"') &&
-                    value.endsWith('"')
-                ) ||
-                (
-                    value.startsWith("'") &&
-                    value.endsWith("'")
-                )
-            )
-        ) {
-            value =
-                value.slice(1, -1);
-        }
-
-        result.push({
-            key: match[1],
-            value,
-            depth
-        });
-    }
-
-    return result;
+    return Hjson.parse(text);
 }
 
 loadWiki();
