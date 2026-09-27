@@ -553,25 +553,8 @@ function openPage(name) {
         stats.className = "stats";
         
         addSection("Properties");
-
-        for(const stat of content.stats) {
-        if (stat.key == "health"){
-
-        let size = stat.size || 1;
-        let value = 40 * (size * size);
-        if (stat.value) value = stat.value;
-            
-            addStat(
-                stats,
-                stat.key,
-                value,
-                stat.depth
-            );
-            
-        continue; 
-        }
-            
-        if ( stat.key != "speed" && stat.key != "armor") continue;
+  
+        if (stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
             
             addStat(
                 stats,
