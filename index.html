@@ -266,7 +266,10 @@ const whiteListProp = [
 "lightningLength",
 "lightningSound",
 "chanceDeflect",
-"powerProduction"
+"powerProduction",
+"type",
+"category",
+"databaseTag"
 ]
     
 menu.onclick = () => {
@@ -614,7 +617,7 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (canRead(stat)) continue;
+        if (!canRead(stat)) continue;
 
             let value = stat.value;
             if (stat.key == "speed") {
