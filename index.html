@@ -244,7 +244,31 @@ const page = document.getElementById("page");
 const status = document.getElementById("status");
 
 const contents = new Map();
-
+const whiteListProp = [
+"hitSize", 
+"size",
+"health",
+"speed", 
+"armor",
+"itemDrop", 
+"outputItem",
+"outputItems",
+"outputLiquid", 
+"outputLiquids",
+"flammability",
+"explosiveness",
+"charge",
+"hardness",
+"cost" ,
+"range",
+"lightningChance",
+"lightningDamage",
+"lightningLength",
+"lightningSound",
+"chanceDeflect",
+"powerProduction"
+]
+    
 menu.onclick = () => {
     sidebar.classList.toggle("open");
 };
@@ -261,28 +285,12 @@ search.addEventListener("input", () => {
 });
 
 function canRead(stat){
-if (stat.key !== "craftTime" && 
-    stat.key !== "hitSize" && 
-    stat.key !== "size" && 
-    stat.key !== "health" && 
-    stat.key !== "speed" && 
-    stat.key !== "armor" &&
-    stat.key !== "itemDrop" && 
-    stat.key !== "outputItem" &&
-    stat.key !== "outputItems" &&
-    stat.key !== "outputLiquid" && 
-    stat.key !== "outputLiquids" &&
-    stat.key !== "flammability" &&
-    stat.key !== "explosiveness" &&
-    stat.key !== "charge" &&
-    stat.key !== "hardness" &&
-    stat.key !== "cost" &&
-    stat.key !== "range"
-){
+for (let i = 0; i < whiteListProp.length; i++){
+if (stat.key !== whiteListProp[i]){
     return true;
-} else {
-    return false;
 }}
+    return false;
+}
     
 async function loadWiki() {
     try {
@@ -624,6 +632,10 @@ function openPage(name) {
             value = String(value) + " sec"
             }
 
+            if (stat.key == "powerProduction")'
+            value *= 60;
+            }
+            
             if (stat.key == "size"){
             value = String(value) + " x " + String(value);
             }
