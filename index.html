@@ -394,7 +394,7 @@ async function loadContent(file) {
 
     contents.set(name, {
     name,
-    localizedName: colorText(name.replace(/-/, " ").charAt(0).toUpperCase() + name.slice(1)),
+    localizedName: colorText(name.replace("-", " ").charAt(0).toUpperCase() + name.slice(1)),
     type,
     path: file.path,
     text,
@@ -547,8 +547,6 @@ function openPage(name) {
     image.style.position = "absolute";
     image.style.left = "0";
     image.style.top = "0";
-    image.style.width = "128px";
-    image.style.height = "128px";
     image.style.imageRendering = "pixelated";
 
     stack.appendChild(image);
@@ -567,7 +565,7 @@ function openPage(name) {
     addStat(
         information,
         "Name",
-        colorText(content.stats.name)
+        colorText(content.localizedName)
     );
     
     addStat(
