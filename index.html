@@ -260,6 +260,24 @@ search.addEventListener("input", () => {
     });
 });
 
+function canRead(stat){
+if (stat.key !== "craftTime" && 
+    stat.key !== "hitSize" && 
+    stat.key !== "size" && 
+    stat.key !== "health" && 
+    stat.key !== "speed" && 
+    stat.key !== "armor" &&
+    stat.key !== "itemDrop" && 
+    stat.key !== "outputItem" &&
+    stat.key !== "outputItems" &&
+    stat.key !== "outputLiquid" && 
+    stat.key !== "outputLiquids"
+){
+    return true;
+} else {
+    return false;
+}}
+    
 async function loadWiki() {
     try {
         status.textContent = "Loading...";
@@ -582,7 +600,7 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if (stat.key !== "craftTime" && stat.key !== "hitSize" && stat.key !== "size" && stat.key !== "health" && stat.key !== "speed" && stat.key !== "armor") continue;
+        if () continue;
 
             let value = stat.value;
             if (stat.key == "speed") {
