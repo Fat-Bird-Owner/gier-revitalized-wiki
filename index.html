@@ -536,10 +536,10 @@ function openPage(name) {
                 Mainly around the names of blocks<br>
                 additionally aside from important informations like names, health, etc...<br><br>
 
-                Most stats aren't display as of now<br>
-                For the time being your expected to atleast known how to read JSON<br><br>
+                Some stats aren't display as of now<br>
+                For the time being your expected to know how to read JSON<br><br>
 
-                or just read the description if provied<br><br>
+                or just read the description if provided<br><br>
 
                 (And yes contribution is accepted)
                 
@@ -739,9 +739,6 @@ function getDescription(text) {
 
 function colorText(text) {
     return text
-        .replace(/&/g, " ")
-        .replace(/</g, " ")
-        .replace(/>/g, " ")
         .replace(
             /\[([a-zA-Z]+|#[0-9a-fA-F]{6})\]/g,
             " "
