@@ -418,7 +418,7 @@ async function loadContent(file) {
 
     contents.set(name, {
     name,
-    localizedName: colorText(name.replace(/-/, " ").charAt(0).toUpperCase() + name.slice(1)),
+    localizedName: colorText(getName(text)),
     type,
     path: file.path,
     text,
@@ -739,6 +739,16 @@ function getLocalizedName(text) {
     );
 
     return colorText(match ? match[1].trim() : "...");
+}
+
+function getName(text) {
+    const match = text.match(
+        /name\s*:\s*(?:"([^"]*)"|([^\n,]+))/
+    );
+
+    return match
+        ? (match[1] ?? match[2]).trim()
+        : "...";
 }
     
 function parseHJSON(text) {
