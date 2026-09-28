@@ -326,7 +326,7 @@ async function loadWiki() {
         );
 
         for(const content of contents.values()) {
-            content.sprites =
+            content.sprite =
                 findSprite(content.name, sprites);
         }
 
@@ -394,13 +394,13 @@ async function loadContent(file) {
 
     contents.set(name, {
     name,
-    localizedName: colorText(name.replace("-", " ").charAt(0).toUpperCase() + name.slice(1)),
+    localizedName: colorText(name.replace(/-/, " ").charAt(0).toUpperCase() + name.slice(1)),
     type,
     path: file.path,
     text,
     stats: parseHJSON(text),
     description: getDescription(text),
-    sprites: []
+    sprite: null
     });
 
     } catch(error) {
@@ -413,21 +413,17 @@ async function loadContent(file) {
 }
 
 function findSprite(name, sprites) {
-    const result = [];
+    if(sprites.has(name))
+        return sprites.get(name);
+
     const lower = name.toLowerCase();
-
+    
     for(const [spriteName, path] of sprites) {
-        const spriteLower = spriteName.toLowerCase();
-
-        if(
-        spriteLower.includes(lower) &&
-        !spriteLower.includes("old")
-        ) {
-        result.push(path);
-        }
+        if(spriteName.toLowerCase() === lower + "-preview" || spriteName.toLowerCase() === lower + "1"  || spriteName.toLowerCase() === lower)
+            return path;
     }
 
-    return result;
+    return null;
 }
 
 function buildSidebar() {
@@ -532,27 +528,17 @@ function openPage(name) {
 
     page.innerHTML = "";
 
-    if(content.sprites.length > 0) {
-    const stack = document.createElement("div");
+    if(content.sprite) {
+        const image =
+            document.createElement("img");
 
-    stack.style.position = "relative";
-    stack.style.width = "128px";
-    stack.style.height = "128px";
+        image.className = "sprite";
+        image.alt = content.name;
 
-    for(const sprite of content.sprites) {
-    const image = document.createElement("img");
+        image.src =
+            RAW + content.sprite;
 
-    image.src = RAW + sprite;
-
-    image.style.position = "absolute";
-    image.style.left = "0";
-    image.style.top = "0";
-    image.style.imageRendering = "pixelated";
-
-    stack.appendChild(image);
-    }
-
-    page.appendChild(stack);
+        page.appendChild(image);
     }
 
     addSection("Information");
