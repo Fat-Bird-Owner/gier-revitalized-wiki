@@ -600,7 +600,7 @@ function openPage(name) {
         addSection("Properties");
 
         for(const stat of content.stats) {
-        if () continue;
+        if (canRead(stat)) continue;
 
             let value = stat.value;
             if (stat.key == "speed") {
