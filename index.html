@@ -286,7 +286,7 @@ search.addEventListener("input", () => {
 
 function canRead(stat){
 for (let i = 0; i < whiteListProp.length; i++){
-if (stat.key !== whiteListProp[i]){
+if (stat.key === whiteListProp[i]){
     return true;
 }}
     return false;
