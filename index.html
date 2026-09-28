@@ -271,7 +271,13 @@ if (stat.key !== "craftTime" &&
     stat.key !== "outputItem" &&
     stat.key !== "outputItems" &&
     stat.key !== "outputLiquid" && 
-    stat.key !== "outputLiquids"
+    stat.key !== "outputLiquids" &&
+    stat.key !== "flammability" &&
+    stat.key !== "explosiveness" &&
+    stat.key !== "charge" &&
+    stat.key !== "hardness" &&
+    stat.key !== "cost" &&
+    stat.key !== "range"
 ){
     return true;
 } else {
@@ -608,7 +614,7 @@ function openPage(name) {
             value = String(value) + " tiles/sec"
             }
             
-            if (stat.key == "hitSize") {
+            if (stat.key == "range" || stat.key == "hitSize") {
             value /= 8;
             value = String(value) + " tiles"
             }
