@@ -514,7 +514,11 @@ function buildSidebar() {
                 image.alt = content.name;
                     
                 image.src = RAW + content.sprite;
-
+                image.style.width = "32px";
+                image.style.height = "32px";
+                image.style.objectFit = "contain";
+                image.style.display = "block";
+                    
                 group.appendChild(image);
                 }
 
