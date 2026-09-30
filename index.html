@@ -505,8 +505,6 @@ function buildSidebar() {
                     document.createElement("div");
 
                 item.className = "item";
-                item.textContent = content.localizedName;
-
                 if(content.sprite) {
                 const image = document.createElement("img");
 
@@ -517,11 +515,14 @@ function buildSidebar() {
                 image.style.width = "32px";
                 image.style.height = "32px";
                 image.style.objectFit = "contain";
-                image.style.display = "block";
-                    
+                image.style.display = "inline-block";
+                image.style.verticalAlign = "middle";
                 item.appendChild(image);
                 }
 
+                item.appendChild(
+                document.createTextNode(content.localizedName)
+                )
                 
                 item.onclick = () => {
                     openPage(content.name);
