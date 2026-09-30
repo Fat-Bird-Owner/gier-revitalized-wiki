@@ -1,0 +1,32 @@
+type: ConsumeGenerator
+size: 2
+name: Slag Turbine
+
+powerProduction: 1.5
+consumes: {
+liquids: [slag/0.166667]
+}
+
+requirements: [titanium/100, copper/75, lead/75, silicon/50]
+category: power
+buildVisibility: sandboxOnly
+
+drawer: [
+{
+type: DrawRegion
+suffix: "-bottom"
+}
+{
+type: DrawLiquidTile
+drawLiquid: slag
+}
+{
+type: DrawBlurSpin
+blurThresh: 1
+suffix: "-rotator"
+rotateSpeed: 5
+}
+{
+type: DrawDefault
+}
+]
