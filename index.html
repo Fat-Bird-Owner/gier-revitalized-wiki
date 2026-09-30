@@ -507,6 +507,18 @@ function buildSidebar() {
                 item.className = "item";
                 item.textContent = content.localizedName;
 
+                if(content.sprite) {
+                const image = document.createElement("img");
+
+                image.className = "sprite";
+                image.alt = content.name;
+                    
+                image.src = RAW + content.sprite;
+
+                group.appendChild(image);
+                }
+
+                
                 item.onclick = () => {
                     openPage(content.name);
                     sidebar.classList.remove("open");
