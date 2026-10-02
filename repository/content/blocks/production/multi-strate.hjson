@@ -1,25 +1,34 @@
 type: AttributeCrafter
-size: 2
-name: Sand Strate
-description: "Scrapes sand particles from the ground, if there is any."
+size: 3
+name: Multi Strate
+description: "
+Scrapes sand at insane speeds, Requires ozone and power
+"
 
-customShadow: true
-#research: hydro-drill
-researchCostMultiplier: 0.25
+# customShadow: true
+research: sand-strate
 attribute: sand
 databaseTag: "gier"
 envEnabled: -1
 
 category: crafting
-outputItem: sand/10
+outputItem: sand/2
+craftTime: 15
 itemCapacity: 50
 baseEfficiency: 0
 customShadow: true
+boostScale: 0.44445
 
 buildVisibility: shown
 displayEfficiency: false
-requirements:[copper/35,lead/25]
+requirements:[lead/200, copper/200, silicon/100, depleted-thorium/100, dense-alloy/75]
+buildTime: 240
 minEfficiency: 0.1
+
+consumes: {
+power: 0.5
+liquids: [ozone/0.083334]
+}
 
 drawer:{
 type: DrawMulti
@@ -27,7 +36,7 @@ drawers:[
 {
 type: DrawBlurSpin
 suffix: "-rotator"
-blurThresh: 0
+blurThresh: 1
 x: 6
 y: 6
 rotateSpeed: 3.5
@@ -35,7 +44,7 @@ rotateSpeed: 3.5
 {
 type: DrawBlurSpin
 suffix: "-rotator"
-blurThresh: 0
+blurThresh: 1
 x: 6
 y: -6
 rotateSpeed: 3.5
@@ -43,7 +52,7 @@ rotateSpeed: 3.5
 {
 type: DrawBlurSpin
 suffix: "-rotator"
-blurThresh: 0
+blurThresh: 1
 x: -6
 y: 6
 rotateSpeed: 3.5
@@ -51,13 +60,21 @@ rotateSpeed: 3.5
 {
 type: DrawBlurSpin
 suffix: "-rotator"
-blurThresh: 0
+blurThresh: 1
 x: -6
 y: -6
 rotateSpeed: 3.5
+}
+{
+type: DrawParticles
+color: f7cba4
 }
 {
 type: DrawDefault
+}
+{
+type: DrawRegion
+suffix: -top
 }
 ]
 }
