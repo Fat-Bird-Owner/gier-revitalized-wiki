@@ -631,9 +631,31 @@ function openPage(name) {
 
         const stats = document.createElement("div");
         stats.className = "stats";
-        
-        addSection("Properties");
+    
+        const properties = [];
+        const weapons = {};
 
+        for(const stat of content.stats) {
+            if(canRead(stat))
+            continue;
+
+        if(stat.section === "properties") {
+            properties.push(stat);
+            continue;
+        }
+
+        if(!weapons[stat.weapon])
+        weapons[stat.weapon] = {
+            weapon: [],
+            shoot: [],
+            bullet: []
+        };
+
+            weapons[stat.weapon][stat.section].push(stat);
+        }
+        
+        addSection("Properties");   
+        
         for(const stat of content.stats) {
         if (!canRead(stat) || stat.depth > 0) continue;
 
@@ -670,6 +692,65 @@ function openPage(name) {
         }
         
         page.appendChild(stats);
+
+        for(const number in weapons) {
+
+    addSection("Weapon " + number);
+
+    const weaponStats =
+        document.createElement("div");
+
+    weaponStats.className = "stats";
+
+    for(const stat of weapons[number].weapon) {
+        addStat(
+            weaponStats,
+            stat.key,
+            stat.value,
+            stat.depth
+        );
+    }
+
+    page.appendChild(weaponStats);
+
+    if(weapons[number].shoot.length) {
+        addSection("Shoot");
+
+        const shootStats =
+            document.createElement("div");
+
+        shootStats.className = "stats";
+
+        for(const stat of weapons[number].shoot) {
+            addStat(
+                shootStats,
+                stat.key,
+                stat.value,
+                stat.depth
+            );
+        }
+
+        page.appendChild(shootStats);
+    }
+
+    if(weapons[number].bullet.length) {
+        addSection("Bullet");
+
+        const bulletStats = document.createElement("div");
+        bulletStats.className = "stats";
+
+        for(const stat of weapons[number].bullet) {
+        addStat(
+            bulletStats,
+            stat.key,
+            stat.value,
+            stat.depth
+        );
+            }
+
+                page.appendChild(bulletStats);
+            }
+        }
         
     }
 
@@ -785,7 +866,12 @@ function getName(text) {
 function parseHJSON(text) {
     const result = [];
     const lines = text.split("\n");
+
     let depth = 0;
+    let context = [];
+    let weaponNumber = 0;
+    let inWeapons = false;
+    let inEffect = false;
 
     for(let line of lines) {
         line = line.trim();
@@ -821,23 +907,74 @@ function parseHJSON(text) {
         }
 
         if(comment !== -1)
-            line = line
-                .slice(0, comment)
-                .trim();
+            line = line.slice(0, comment).trim();
 
         if(!line)
             continue;
 
-        if(line.endsWith("{")) {
+        const objectMatch =
+            line.match(/^([A-Za-z0-9_@.-]+)\s*:\s*\{$/);
+
+        if(objectMatch) {
+            const name = objectMatch[1];
+
+            context.push(name);
             depth++;
+
+            if(name === "bullet")
+                inEffect = false;
+
+            if(name === "trailEffect")
+                inEffect = true;
+
+            continue;
+        }
+
+        if(line === "{" || line === "{,") {
+            depth++;
+
+            if(inWeapons && depth === 2) {
+                weaponNumber++;
+                context.push("weapon");
+            }
+
             continue;
         }
 
         if(line === "}" || line === "},") {
-            depth = Math.max(
-                0,
-                depth - 1
-            );
+            const oldContext = context.pop();
+
+            if(oldContext === "trailEffect")
+                inEffect = false;
+
+            depth = Math.max(0, depth - 1);
+
+            continue;
+        }
+
+        if(line === "],") {
+            if(inWeapons) {
+                inWeapons = false;
+                weaponNumber = 0;
+            }
+
+            depth = Math.max(0, depth - 1);
+            continue;
+        }
+
+        if(line === "]") {
+            if(inWeapons) {
+                inWeapons = false;
+                weaponNumber = 0;
+            }
+
+            depth = Math.max(0, depth - 1);
+            continue;
+        }
+
+        if(line.match(/^weapons\s*:\s*\[$/)) {
+            inWeapons = true;
+            depth++;
             continue;
         }
 
@@ -849,8 +986,15 @@ function parseHJSON(text) {
         if(!match)
             continue;
 
-        let value =
-            match[2].trim();
+        const key = match[1];
+
+        if(
+            key.toLowerCase().includes("color") ||
+            inEffect
+        )
+            continue;
+
+        let value = match[2].trim();
 
         if(
             value.length >= 2 &&
@@ -865,20 +1009,32 @@ function parseHJSON(text) {
                 )
             )
         ) {
-            value =
-                value.slice(1, -1);
+            value = value.slice(1, -1);
+        }
+
+        let section = "properties";
+
+        if(inWeapons) {
+            if(context.includes("bullet"))
+                section = "bullet";
+            else if(context.includes("shoot"))
+                section = "shoot";
+            else
+                section = "weapon";
         }
 
         result.push({
-            key: match[1],
+            key,
             value,
-            depth
+            depth,
+            section,
+            weapon: weaponNumber
         });
     }
 
     return result;
 }
-
+    
 loadWiki();
 </script>
 
