@@ -1,10 +1,9 @@
 type: AttributeCrafter
 size: 2
-name: Oil Centrifuge
+name: Centrifuge
 description: "
 Absorbs ground oil.
-Oil is hardened in to coal and crushed.
-the water is then used during the cooling proccess.
+Oil is hardened in to coal and crushed. the water is then used during for cooling proccess.
 
 [green]- Converts oil into graphite
 - Water is required
@@ -37,7 +36,7 @@ liquids: [water/0.016667]
 }
 
 outputItem: graphite/3
-customShadow: true
+hasShadow: false
 craftTime: 90
 
 drawer:{
@@ -45,21 +44,46 @@ type: DrawMulti
 drawers:[
 {
 type: DrawRegion
+x: -2
+y: -2
+color: 00000044	
+drawPlan: false
+}
+{
+type: DrawRegion
 suffix: "-bottom"
 }
 {
 type: DrawParticles
 color: 596ab866
-particles: 9
+particles: 4
 particleSize: 1.5
 particleLife: 105
+}
+{
+type: DrawLiquidTile
+drawLiquid: water
+alpha: 0.25
+padding: 2
+}
+{
+type: DrawRegion
+rotateSpeed: 3
+suffix: "-rotator"
+}
+{
+type: DrawLiquidTile
+drawLiquid: water
+alpha: 0.25
+padding: 2
 }
 {
 type: DrawDefault
 }
 {
-type: DrawGlowRegion
-color: ffaa5f
+type: DrawRegion
+suffix: "-bottom"
+color: 00000055
 }
 ]
 }
