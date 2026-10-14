@@ -2,6 +2,16 @@ type: UnitAssembler
 size: 3
 name: Imprinter
 
+description: "
+Fabricates units using the required resources, Liquids could be inputted to add status effects
+
+Liquid use per-unit: [lightgrey]25 units[]
+
+[sky]Cyrofluid[] - [accent]Overdrive[]
+[white]Steam[] - [accent]Overclock[]
+[#ea8878ff]Overdrive Fluid[] - [accent]Overdrive Bound[]
+"
+
 requirements:[lead/300, copper/275, graphite/150, silicon/125, depleted-thorium/50]
 category: units
 customShadow: true
@@ -14,6 +24,22 @@ research: freight-conveyor
 researchCostMultiplier: 0.25
 databaseTag: "adv-depleted-thorium"
 
+liquidCapacity: 50
+consumes: {
+power: 1.5
+
+liquids: {
+optional: true
+booster: true
+liquids: [
+overdrive-fluid/0
+liquid-steam/0
+cryofluid/0
+]
+}
+
+}
+
 plans: [
 {
 type: AssemblerUnitPlan
@@ -23,7 +49,6 @@ time: 1500
 itemReq: [
 copper/50
 lead/50
-silicon/50
 ]
 
 requirements: [
@@ -37,9 +62,8 @@ unit: dove
 
 time: 1800
 requirements: [
-gr-observer/3
+gr-observer/2
 gr-packed-graphite/2
-gr-modular-frame/1
 ]
 
 }
@@ -48,9 +72,9 @@ type: AssemblerUnitPlan
 unit: construct
 
 time: 2100
+
+itemReq: [titanium/25]
 requirements: [
-gr-spare-cell/1
-gr-modular-frame/1
 gr-packed-beryllium/2
 ]
 
@@ -61,7 +85,7 @@ unit: electrode
 
 time: 2500
 
-itemReq: [water-capsule/5]
+itemReq: [surge-alloy/50]
 
 requirements: [
 gr-power-cell/1
